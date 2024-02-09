@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Definición del conjunto de caracteres y título de la página -->
+    <meta charset="UTF-8">
+    <title>ventas</title>
+
+    <!-- Enlace al icono de la página -->
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2511/PNG/96/coat_rain_jacket_raincoat_autumn_clothing_icon_150805.png" type="image/x-icon">
+
+    <!-- Enlace al archivo CSS de Bootstrap para estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<style>
+    /* Estilos personalizados para el fondo y la tarjeta */
+    body {
+        background-image: url('https://img.freepik.com/fotos-premium/dos-mujeres-posicion-bolsas-compras-fondo-naranja_398492-3752.jpg?w=2000');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position:center;
+        margin: 0; /* Elimina el margen predeterminado del cuerpo */
+        padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .card {
+        width: 520px;
+        background: rgba(255, 255, 255, 0.5); /* Fondo blanco con opacidad del 70% */
+        backdrop-filter: blur(1px); /* Efecto de desenfoque para mejorar la transparencia */
+    }
+
+    .card-header {
+        background-image: url('https://w.forfun.com/fetch/15/159efd54ce603cfcca2d252b65ad3373.jpeg');
+        color: #f6f1f1;
+    }
+</style>
+<body>
+<!-- Contenedor principal con margen superior -->
+<div class="container mt-5">
+    <div class="col-sm-3">
+        <!-- Formulario para confirmar la compra -->
+        <form th:action="@{/save2}" th:object="${ventas}" method="POST">
+            <div class="card">
+                <!-- Encabezado de la tarjeta con título centrado -->
+                <div class="card-header">
+                    <h3>
+                        <center>CONFIRMAR COMPRA</center>
+                    </h3>
+                </div>
+                <center> <h2>Detalles 🎁</h2></center>
+                <center> <div id="detalles-compra">
+                    <!-- Aquí se mostrarán los detalles de la compra -->
+                </div></center>
+                <div class="card-body">
+                    <!-- Campos del formulario: NOMBRE COMPLETO, ID, TELEFONO, CODIGO POSTAL, DOCUMENTO, TIPO DE DOCUMENTO, DIRECCION, CIUDAD, CORREO, TIPO DE PAGO, TIPO DE PRODUCTO, CANTIDAD, PRECIO -->
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <center><label>NOMBRE COMPLETO</label></center>
+                            <input th:field="*{nombres}" type="text" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>ID</label>
+                            <input th:field="*{id}" type="number" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>TELEFONO</label>
+                            <input th:field="*{telefono}" type="number" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>CODIGO POSTAL</label>
+                            <input th:field="*{codigopostal}" type="number" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>DOCUMENTO</label>
+                            <input th:field="*{documento}" type="number" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>TIPO DE DOCUMENTO</label>
+                            <select class="form-control" th:field="*{tipodocumento}" required>
+                                <option value="Cédula de ciudadanía">Cédula de ciudadanía </option>
+                                <option value="Cédula extranjera">Cédula extranjera</option>
+                                <option value="Permiso  de permanencia">Permiso de permanencia</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>DIRECCION </label>
+                            <input th:field="*{direccion}" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>CIUDAD </label>
+                            <input th:field="*{ciudad}" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>CORREO</label>
+                            <input th:field="*{correo}" type="email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>TIPO DE PAGO</label>
+                            <select class="form-control" th:field="*{tipopago}" required>
+                                <option value="NEQUI">NEQUI</option>
+                                <option value="DAVIPLATA">DAVIPLATA</option>
+                                <option value="BANCOLOMBIA">BANCOLOMBIA</option>
+                                <option value="TARJETA DEBITO VISA">MASTERCAD</option>
+                                <option value="PAYPAL">PAYPAL</option>
+                                <option value="CONTRAENTREGA">CONTRAENTREGA</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>TIPO DE PRODUCTO</label>
+                            <select class="form-control" th:field="*{tipoproducto}" required>
+                                <option value="Impermeable Siliconado 100%">Impermeable Siliconado 100%</option>
+                                <option value="Impermeable Desechable Adulto">Impermeable Desechable Adulto</option>
+                                <option value="Impermeable Para Moto">Impermeable Para Moto </option>
+                                <option value="Moto bicicleta Plastico reflectivo">Moto bicicleta Plastico reflectivo </option>
+                                <option value="Pijama Cubierta">Pijama Cubierta </option>
+                                <option value="Capa Plástica Desechable">Capa Plástica Desechable </option>
+                                <option value="Capa Plástica siliconado">Capa Plástica siliconado </option>
+                                <option value="Impermeable siliconado rojo ">Impermeable siliconado rojo </option>
+                                <option value="Protector Antideslizante">Protector Antideslizante </option>
+                                <option value="Tipo sudadera 100% impermeable"> Tipo sudadera 100% impermeable </option>
+                                <option value="Sudadera camufladae">Sudadera camuflada </option>
+                                <option value="Impermeable niños de coloroes">Impermeable niños de coloroes </option>
+
+                                <!-- ... (opciones adicionales) -->
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>CANTIDAD</label>
+                            <input th:field="*{cantidad}" type="number" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>PRECIO</label>
+                            <input th:field="*{precio}" type="number" class="form-control" required>
+                        </div>
+                    </div>
+                    <!-- Pie de la tarjeta con botones de guardar y atrás -->
+                    <div class="card-footer">
+                        <center> <input type="submit" value="Guardar" class="btn btn-success">
+                            <a th:href="@{/impermeable}" class="btn btn-warning">Atrás</a> </center>
+                    </div>
+                </div>
+                <script>
+                    // Función para mostrar el mensaje de inicio de sesión exitoso
+                    function mostrarMensaje() {
+                        alert(" Venta exitosa ✅");
+                    }
+                    // Agregar un evento 'onsubmit' al formulario para llamar a la función cuando se envía el formulario
+                    document.querySelector('form').addEventListener('submit', function() {
+                        mostrarMensaje();
+                    });
+
+                    document.addEventListener("DOMContentLoaded", () => {
+                        // Recupera los datos del carrito desde localStorage
+                        const carritoAlmacenado = localStorage.getItem("carrito");
+
+                        if (carritoAlmacenado) {
+                            const carrito = JSON.parse(carritoAlmacenado);
+                            const detallesCompra = document.getElementById("detalles-compra");
+
+                            carrito.forEach(producto => {
+                                const detalleProducto = document.createElement("p");
+                                detalleProducto.textContent = `${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: ${producto.precio}`;
+                                detallesCompra.appendChild(detalleProducto);
+                            });
+                        } else {
+                            // Manejar el caso en el que no hay datos de carrito disponibles
+                            alert("No hay datos de carrito disponibles.");
+                            // Puedes redirigir al usuario a la página principal u otra página según tu lógica
+                            window.location.href = "index.html";
+                        }
+
+                        const formularioCompra = document.getElementById("formularioCompra");
+
+                        formularioCompra.addEventListener("submit", function (event) {
+                            event.preventDefault();
+
+                            // Aquí puedes agregar lógica para procesar el formulario
+                            const nombre = document.getElementById("nombre").value;
+                            const email = document.getElementById("email").value;
+
+                            // Puedes enviar estos datos a tu servidor o realizar cualquier otra acción necesaria
+
+                            // Limpia el carrito después de la compra
+                            localStorage.removeItem("carrito");
+                            // Puedes redirigir al usuario a una página de confirmación o a donde desees
+                            window.location.href = "impermeable.html";
+                        });
+                    });
+
+                </script>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

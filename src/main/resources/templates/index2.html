@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>IMPERMEABLES BARBOSA LEGENDS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('https://i.blogs.es/cfa482/illusion_1440x900/1366_521.jpg');
+            background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-attachment: fixed; /* Fija la imagen de fondo mientras se desplaza por la página */
+            background-position: center; /* Centra la imagen de fondo */
+        }
+        .container {
+            margin-top: 50px;
+            margin-left: auto; /* Margen izquierdo automático */
+            margin-right: 300px; /* Margen derecho específico */
+
+        }
+
+        .table {
+            background-image: url('https://fondosmil.co/fondo/11565.jpg');
+            background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-attachment: fixed; /* Fija la imagen de fondo mientras se desplaza por la página */
+            background-position: center; /* Centra la imagen de fondo */
+        }
+
+        .table th, .table td {
+            border: none;
+        }
+        .btn {
+            margin-right: 10px; /* Espaciado entre los botones */
+        }
+        .mb-3 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #formBusqueda {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #inputBusqueda {
+            border-radius: 5px;
+            padding: 8px;
+            margin-right: 5px;
+            width: 200px;
+        }
+
+        #btnBuscar {
+            border-radius: 5px;
+            padding: 8px 15px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <center><a th:href="@{/nuevo1}" class="btn btn-primary mb-4">AGREGAR INICIO DE SESIÓN ✔️ </a></center>
+    <div class="mb-3">
+        <form id="formBusqueda" class="form-inline">
+            <label class="sr-only" for="inputBusqueda"></label>
+            <input type="text" class="form-control mb-2 mr-sm-2" id="inputBusqueda" placeholder="🔍 Buscar por ID ︎">
+            <button type="button" class="btn btn-primary mb-2" onclick="buscarUsuarios()">Buscar</button>
+        </form>
+    </div>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>CORREO</th>
+            <th>CONTRASEÑA</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="impermeable:${impermeable}">
+            <td th:text="${impermeable.id}"></td>
+            <td th:text="${impermeable.correo}"></td>
+            <td th:text="${impermeable.contrasena}"></td>
+            <td>
+                <div class="btn-group">
+                    <a th:href="@{'/editar12/' + ${impermeable.id}}" class="btn btn-warning">Editar✍️</a>
+                    <a th:href="@{'/eliminar12/' + ${impermeable.id}}" class="btn btn-danger">Eliminar🗑️</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <script>
+        function buscarUsuarios() {
+            var inputBusqueda = document.getElementById("inputBusqueda");
+            var filtro = inputBusqueda.value.toUpperCase();
+            var tabla = document.querySelector("table");
+            var filas = tabla.getElementsByTagName("tr");
+
+            for (var i = 0; i < filas.length; i++) {
+                var celdaId = filas[i].getElementsByTagName("td")[0]; // Cambiado a la posición de la columna del ID
+                if (celdaId) {
+                    var textoCelda = celdaId.textContent || celdaId.innerText;
+                    if (textoCelda.toUpperCase().indexOf(filtro) > -1) {
+                        filas[i].style.display = "";
+                    } else {
+                        filas[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</div>
+</body>
+</html>

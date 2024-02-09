@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Protein</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2050/PNG/512/dumbbell_gym_icon_124413.png" type="image/x-icon"><!--para agregar el icono a la pagina -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,800;1,600&display=swap');
+        /* Establece estilos iniciales para todos los elementos, eliminando márgenes, rellenos y decoraciones predeterminados */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+
+        }
+
+        /* Establece la fuente predeterminada para el cuerpo del documento */
+        body {
+            font-family: 'Poppinns', sans-serif;
+            background:url("static/gym.jpg");
+            background-size: cover;
+            background-position: center;
+
+        }
+        /* Hace que las imágenes se ajusten al 100% de su contenedor */
+        img {
+            max-width: 100%;
+        }
+
+        /* Define el estilo para el contenedor principal, limitando su ancho y centrando en la página */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Establece estilos para el encabezado, utilizando flexbox para alinear y distribuir elementos */
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: rgba(28, 21, 21, 0.8);
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Evita que haya desplazamiento */
+
+        }
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw; /* Ancho de la ventana del navegador */
+            height: 120vh; /* Altura de la ventana del navegador */
+            z-index: -1;
+            overflow: hidden; /* Para evitar que el video se desborde */
+            display: flex;
+            justify-content: center; /* Centra horizontalmente el video */
+            align-items: center; /* Centra verticalmente el video */
+        }
+
+        #video-container video {
+            min-width: 100%; /* Mínimo ancho del video igual al ancho de la ventana del navegador */
+            min-height: 100%; /* Mínimo altura del video igual a la altura de la ventana del navegador */
+            width: auto; /* Ancho automático para mantener la relación de aspecto */
+            height: auto; /* Altura automática para mantener la relación de aspecto */
+        }
+
+        /* Establece estilos para el menú, posición absoluta para que sea fijo en la parte superior */
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%; /* Hace que el menú ocupe toda la página de ancho */
+            height: 8%;
+            backdrop-filter: blur(10px); /* Desenfoque del fondo del elemento */
+            display: flex;
+            align-items:center;
+            justify-content: space-between;
+            background-color: rgba(28, 30, 30, 0.62);
+            transition: background-color 0.5s;
+            z-index: 1000;
+            padding: 0px 20px; /* Agregado padding para espacio interno */
+            max-width: 1350px; /* Define el ancho máximo del menú */
+            margin: 0 auto; /* Centra el menú horizontalmente */
+        }
+        /* Estilos para el logotipo del sitio */
+        .logo {
+            font-size: 15px;
+            color: #eaebef;
+            text-transform: uppercase;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        /* Estilos para los elementos de la barra de navegación */
+        .menu .navbar ul li {
+            position: relative; /* Posición relativa para posicionar elementos secundarios */
+            float: left; /* Hace que los elementos floten a la izquierda */
+            margin-right: 10px;
+        }
+
+        /* Estilos para los enlaces dentro de los elementos de la barra de navegación */
+        .menu .navbar ul li a {
+            font-size: 14px;
+            padding: 15px;
+            color: #e9eef6;
+            display: block;
+            text-decoration: none;
+            transition: all 0.5s ease;
+        }
+
+        /* Estilos para el estado de hover de los enlaces en la barra de navegación  y cambiar transicion*/
+
+        .menu .navbar ul li a:hover {
+            color: #f1f3ed;
+            text-decoration: none;
+            padding:20px 5px;
+            background: #111111;
+            border-radius: 25px;
+        }
+
+        /* Oculta un elemento con el id 'menu' (posiblemente un menú específico) */
+        #menu {
+            display: none;
+        }
+
+        /* Establece el ancho de los iconos de menú */
+        .menu-icono {
+            width: 20px;
+        }
+
+        /* Estilos para la etiqueta de menú (posiblemente un botón de menú en dispositivos más pequeños) */
+        .menu label {
+            cursor: pointer; /* Muestra un cursor de puntero cuando pasa sobre el elemento */
+            display: none; /* Inicialmente, oculta la etiqueta de menú */
+        }
+
+        /* Estilos para los elementos de submenú */
+        .submenu {
+            position: relative; /* Posición relativa para posicionar elementos secundarios */
+        }
+
+        /* Inicialmente, oculta el elemento con el id 'carrito' cuando está dentro del submenú */
+        .submenu #carrito {
+            display: none;
+            width: 100%;
+
+        }
+
+        /* Muestra el elemento con el id 'carrito' cuando se pasa el cursor sobre el submenú */
+        .submenu:hover #carrito {
+            display: block;
+            position: absolute; /* Posición absoluta para posicionar con respecto al contenedor padre más cercano */
+            right: 0;
+            backdrop-filter: blur(10px); /* Desenfoque del fondo del elemento */
+            top: 140%;
+            z-index: 1; /* Hace que el carrito esté por encima de otros elementos */
+            background-color: #4E485076; /* Color de fondo con opacidad */
+            padding: 10px;
+            min-width: 400px;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-right: 30px;
+        }
+
+
+        /* Estilos para las tablas en el contenido */
+        table {
+            width: 100%;
+        }
+
+        /* Estilos para los elementos th y td (celdas de la tabla) */
+        th, td {
+            color: #EFF3F4;
+        }
+
+        /* Estilos para los botones y espaciado entre ellos */
+        .btn {
+            margin-right: 10px; /* Espaciado entre los botones */
+        }
+
+        /* Estilos para el botón "borrar" */
+        .borrar {
+            background-color: #9BCE21;
+            border-radius: 50%;
+            padding: 5px 10px;
+            color: #EFF3F4;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        /* Estilos para la sección del encabezado */
+        /* para agregar imagen de fondo*/
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            }
+
+        /* Estilos para la parte de texto del encabezado */
+        .header-txt {
+            flex-basis: 50%;
+            margin-right: 25px;
+        }
+
+        /* Estilos para el elemento span */
+        span {
+            color: #9BCE21;
+            font-size: 37px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        /* Estilos para el título h1 en el encabezado */
+        .header-txt h1 {
+            font-size: 70px;
+            text-transform: capitalize;
+            line-height: 1;
+            color: #de960f;
+            margin-bottom: 35px;
+        }
+
+        /* Estilos para el párrafo en el encabezado */
+        .header-txt p {
+            font-size: 17px;
+            color: #c6d0d0;
+            margin-bottom: 35px;
+        }
+
+        /* Estilos para los botones en la sección del encabezado */
+        .butons {
+            display: flex;
+        }
+
+        /* Estilos para el botón específico (.btn-1) */
+        .btn-1 {
+            display: inline-block;
+            padding: 2px 15px;
+            background-color: #98CE21;
+            margin-right: 10px;
+            color: #FFFFFF;
+            text-transform: capitalize;
+            margin-bottom: 100px;
+            text-decoration: none;
+        }
+
+        /* Estilos para la parte de la imagen en el encabezado */
+        .header-img {
+            flex-basis: 80%;
+            text-align: center;
+        }
+
+        /* Estilos para la imagen en la parte de la imagen del encabezado */
+        .header-img img {
+            height: 350px;
+        }
+
+        /* Estilos para la sección de ofertas */
+        .oferts {
+            padding: 100px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Estilos para cada oferta individual (.ofert-1) */
+        .ofert-1 {
+            flex-basis: calc(34.3% - 28px);
+            padding: 30px 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos específicos para las ofertas (.b1, .b2, .b3) */
+        .b1 {
+            background-color: #91DDD8;
+        }
+        .b2 {
+            background-color: #FA9824;
+        }
+        .b3 {
+            background-color: #9BCE21;
+        }
+
+        /* Estilos para el texto en la sección de ofertas */
+        .ofert-txt {
+            flex-basis: 70%;
+        }
+
+        /* Estilos para el título h3 en la sección de ofertas */
+        .ofert-txt h3 {
+            color: #FFFFFF;
+            font-size: 30px;
+        }
+
+        /* Estilos para los enlaces en la sección de ofertas */
+        .ofert-txt a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        /* Estilos para la parte de la imagen en la sección de ofertas */
+        .ofert-img {
+            flex-basis: 40%;
+        }
+
+        /* Estilos para la sección de productos */
+        .product {
+            padding: 0 0 50px 0;
+            text-align: center;
+        }
+
+        /* Estilos para el título h2 en la sección de productos */
+        h2 {
+            font-size: 40px;
+            color: #111419;
+        }
+
+        /* Estilos para el contenedor de las cajas de productos */
+        .box-container {
+            margin-top: 55px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* Estilos para cada caja de producto (.box) */
+        .box {
+            border-top: 2px solid #9BCE21;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            background-color: #EFF3F4;
+            display: none; /* Inicialmente, las cajas están ocultas */
+        }
+
+        /* Muestra las primeras 8 cajas de productos */
+        .box:nth-child(1),
+        .box:nth-child(2),
+        .box:nth-child(3),
+        .box:nth-child(4),
+        .box:nth-child(5),
+        .box:nth-child(6),
+        .box:nth-child(7),
+        .box:nth-child(8) {
+            display: inline-block;
+        }
+
+        /* Estilos para la imagen dentro de la caja de producto */
+        .box img {
+            height: 200px;
+        }
+
+        /* Estilos para el título h3 dentro del contenido de producto */
+        .product-txt h3 {
+            font-size: 20px;
+            color: #111419;
+            margin-bottom: 10px;
+        }
+
+        /* Estilos para el párrafo dentro del contenido de producto */
+        .product-txt p {
+            margin-bottom: 25px;
+            color: #515557;
+        }
+
+        /* Estilos para la clase .precio dentro del contenido de producto */
+        .precio {
+            font-size: 17px;
+            font-weight: 700;
+            color: #FF9100;
+        }
+
+        /* Estilos para los botones .btn-2, .btn-3 */
+        .btn-2,
+        .btn-3 {
+            background-color: #9BCE21;
+            margin-top: 50px;
+            display: inline-block;
+            padding: 11px 35px;
+            border-radius: 25px;
+            color: #FFFFFF;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        /* Estilos específicos para .btn-2:hover, .btn-3:hover, .btn-1:hover */
+        .btn-2:hover,
+        .btn-3:hover,
+        .btn-1:hover {
+            background-color: #13462E;
+        }
+
+        /* Estilos específicos para .btn-3 */
+        .btn-3 {
+            margin: 0;
+            padding: 8px 25px;
+            border-radius: 5px;
+        }
+
+        /* Estilos para la sección de testimonios */
+        .testimonial {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        /* Estilos para el contenido de testimonios */
+        .testimonial-content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        /* Estilos específicos para .testimonial-1 */
+        .testimonial-1 {
+            flex-basis: calc(50% - 20px);
+            padding: 50px;
+            text-align: left;
+            background-color: #F6FAFB;
+            border-top: 5px solid #9BCE21;
+        }
+
+        /* Estilos para la imagen dentro de .testimonial-1 */
+        .testimonial-1 img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para el título h4 dentro de .testimonial-1 */
+        .testimonial-1 h4 {
+            font-size: 17px;
+            color: #9BCE21;
+        }
+
+        /* Estilos para el párrafo dentro de .testimonial-1 */
+        .testimonial-1 p {
+            color: #515557;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para la sección del pie de página */
+        .footer {
+            background-color: #1d1d1e;
+            padding: 80px 0;
+        }
+
+        /* Estilos para el contenido del pie de página */
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Estilos para la sección de enlaces en el pie de página */
+        .link h3 {
+            color: #FFFFFF;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        /* Estilos para los enlaces en la sección de enlaces del pie de página */
+        .link a {
+            color: #AEAFAF;
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        /* Estilos al pasar el mouse sobre los enlaces en la sección de enlaces del pie de página */
+        .link a:hover {
+            color: #9BCE21;
+        }
+
+        /* Estilos para la sección de medios más pequeños (responsive) */
+        @media (max-width: 991px) {
+
+            /* Estilos para el menú en dispositivos más pequeños */
+            .menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: #EFF3F4;
+                padding: 20px;
+                z-index: 1000;
+            }
+
+            /* Muestra el ícono del menú en dispositivos más pequeños */
+            .menu label {
+                display: initial;
+            }
+
+            /* Ajustes de diseño para la barra de navegación en dispositivos más pequeños */
+            .menu .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            /* Ajustes de diseño para los elementos de la barra de navegación en dispositivos más pequeños */
+            .menu .navbar ul li {
+                margin-right: 20px;
+            }
+
+            /* Muestra la barra de navegación cuando el menú está marcado (hamburguesa) */
+            #menu:checked ~ .navbar {
+                display: initial;
+            }
+
+            /* Estilos para el logo en dispositivos más pequeños */
+            .logo {
+                font-size: 25px;
+                color: #9BCE21;
+                text-transform: uppercase;
+                font-weight: 800;
+                text-decoration: none;
+            }
+
+            /* Estilos para los enlaces en la barra de navegación en dispositivos más pequeños */
+            .menu .navbar ul li a {
+                font-size: 18px;
+                color: #111419;
+                text-decoration: none;
+            }
+
+            /* Ajustes de diseño para el carrito en dispositivos más pequeños */
+            .submenu:hover #carrito {
+                .header {
+                width: 100%;
+            }
+
+            /* Ajustes de diseño para el encabezado en dispositivos más pequeños */
+                padding: 50px 0 0 0;
+            }
+
+            /* Ajustes de diseño para el contenido del encabezado en dispositivos más pequeños */
+            .header-content {
+                padding: 30px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            /* Ajustes de diseño para el texto en el encabezado en dispositivos más pequeños */
+            .header-txt {
+                margin-right: 0;
+            }
+
+            /* Ajustes de diseño para los botones en dispositivos más pequeños */
+            .butons {
+                justify-content: center;
+            }
+
+            /* Ajustes de diseño para .btn-1 en dispositivos más pequeños */
+            .btn-1 {
+                margin-bottom: 0;
+            }
+
+            /* Oculta la imagen en dispositivos más pequeños */
+            .header-img {
+                display: none;
+            }
+
+            /* Ajustes de diseño para la sección de ofertas en dispositivos más pequeños */
+            .oferts {
+                padding: 30px;
+                flex-direction: column;
+            }
+
+            /* Ajustes de diseño para .ofert-1 en dispositivos más pequeños */
+            .ofert-1 {
+                margin-bottom: 15px;
+            }
+
+            /* Ajustes de diseño para la sección de productos en dispositivos más pequeños */
+            .product {
+                padding: 0 30px 30px 30px;
+            }
+
+            /* Ajustes de diseño para la sección de testimonios en dispositivos más pequeños */
+            .testimonial {
+                padding: 30px;
+            }
+
+            /* Ajustes de diseño para el contenido de testimonios en dispositivos más pequeños */
+            .testimonial-content {
+                margin-top: 20px;
+                flex-direction: column;
+            }
+
+            /* Estilos para los elementos del carrito en dispositivos más pequeños */
+            .imagen-carrito,
+            .nombre-carrito,
+            .precio-carrito,
+            .cantidad-carrito {
+                text-align: center;
+                padding: 10px;
+                vertical-align: middle; /* Centra el contenido verticalmente */
+            }
+        }
+
+
+    </style>
+</head>
+<!-- Inicio del cuerpo de la página -->
+<body>
+<div id="video-container"></div>
+<script>
+    // Inserta la API de YouTube
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Función para cargar el video
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('video-container', {
+            height: '100%',
+            width: '100%',
+            videoId: 'k7JWO9xFH5s', // Reemplaza 'TU_ID_DE_VIDEO_YOUTUBE' con el ID de tu video de YouTube
+            playerVars: {
+                'autoplay': 1,
+                'controls': 0,
+                'loop': 1,
+                'mute': 0,
+                'playlist': 'k7JWO9xFH5s', // Reemplaza 'TU_ID_DE_VIDEO_YOUTUBE' con el ID de tu video de YouTube
+                'modestbranding': 1,
+                'showinfo': 0,
+                'autohide': 1,
+                'disablekb': 1,
+                'enablejsapi': 1,
+                'origin': window.location.origin
+            },
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    // Función para desactivar la reproducción automática cuando esté lista
+    function onPlayerReady(event) {
+        event.target.playvideo(); // Reproduce el video automáticamente
+    }
+</script>
+
+<!-- Encabezado de la página -->
+<header class="header">
+    <!-- Contenedor del menú -->
+    <div class="menu container">
+        <!-- Logo de la página con enlace (sin destino real) -->
+        <img src="https://cdn.icon-icons.com/icons2/3766/PNG/512/gym_dumbbells_weight_icon_231338.png" height="50" width="50">
+        <a href="#" class="logo" > GYM PROTEIN ⚡ </a>
+
+        <!-- Input checkbox para el menú desplegable en dispositivos móviles -->
+        <input type="checkbox" id="menu" />
+
+        <!-- Etiqueta para el ícono de menú -->
+        <label for="menu">
+            <!-- Imagen del ícono de menú -->
+            <img src="https://assets.stickpng.com/images/588a6507d06f6719692a2d15.png" height="50" width="50" class="menu-icono"  alt="menu">
+        </label>
+
+        <!-- Menú de navegación -->
+        <nav class="navbar">
+            <!-- Lista desordenada de enlaces -->
+            <ul>
+                <li><a href="#inicio">INICIO</a></li>
+                <li><a href="#nosotros">RECETARIO</a></li>
+                <li><a href="#producto">PRODUCTOS</a></li>
+                <li><a href="#cliente">RUTINAS</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenedor del carrito de compras -->
+        <div>
+            <ul>
+                <!-- Submenú del carrito de compras -->
+                <div class="submenu">
+                    <!-- Ícono de carrito de compras -->
+                    <img id="img-carrito" src="https://cdn-icons-png.flaticon.com/128/4305/4305700.png" width="45" height="35" alt="car">
+
+                    <!-- Contenido del carrito de compras (tabla y botones) -->
+                    <div id="carrito">
+                        <table id="lista-carrito">
+                            <thead>
+                            <!-- Encabezados de la tabla -->
+                            <tr div class="producto-carrito">
+                                <th class="imagen-carrito">Imagen</th>
+                                <th class="nombre-carrito">Nombre</th>
+                                <th class="precio-carrito">Precio</th>
+                                <th class="cantidad-carrito">Cantidad</th>
+                            </tr>
+                            </thead>
+                            <!-- Cuerpo de la tabla (productos se agregan dinámicamente) -->
+                            <tbody></tbody>
+                        </table>
+                        <!-- Enlaces para vaciar el carrito y proceder a la compra -->
+                        <center>
+                            <a id="vaciar-carrito" class="btn-3">Vaciar carrito</a>
+                            <a th:href="@{/comprar}" class="btn btn-3 " id="comprar-venta">Comprar</a>
+                        </center>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<!-- Contenido principal de la página -->
+<div id="inicio" class="header-content container">
+    <!-- Texto de bienvenida y ofertas especiales -->
+    <div class="header-txt">
+        <span>Bienvenido a nuestra Bienvenido</span>
+        <h1>OFERTAS ESPECIALES</h1>
+        <p>
+            <!-- Descripción de productos y características -->
+            BIENVENIDO A
+            GYM PROTEIN,
+            VIVE LA MEJOR EXPERIENCIA DE
+            ENTRENAMIENTO Y DESCUBRE
+            TU VERDADERO POTENCIAL
+        </p>
+        <div class="btn-group">
+            <a th:href="@{/nuevo}" class="btn btn-primary mb-4">EMPIENZA HOY 💪</a>
+            <a th:href="@{/iniciar}" class="btn btn-success mb-4">INICIAR SESION</a>
+        </div>
+        <!-- Características de productos -->
+        <p>✔️ El ejercicio te ayuda a mejorar tu salud física y mental y a contar con un sistema inmune fuerte. Llena tu vida de energía y motivación. Supera tus límites con programas de entrenamiento diseñados por profesionales de la salud, de acuerdo con tus objetivos.</p>
+
+        <div class="butons">
+
+            <a href="https://industriasfenix.com/" class="btn-1">Información</a>
+            <a href="https://industriasfenix.com/emprendedores/" class="btn-1">leer Más</a>
+        </div>
+        <!-- Grupo de botones de acción (registro e inicio de sesión) -->
+        <!-- Enlaces adicionales -->
+
+    </div>
+
+    <!-- Imagen principal -->
+    <div class="header-img">
+
+    </div>
+</div>
+
+<!-- Sección de ofertas con clase "oferts" y contenedor -->
+<section class="oferts container">
+
+    <!-- Primera oferta con id "nosotros" y clases adicionales "ofert-1" y "b1" -->
+    <div id="nosotros" class="ofert-1 b1">
+        <!-- Contenido de texto de la primera oferta -->
+        <div class="ofert-txt">
+            <h3>Nuestra visión</h3>
+            <!-- Descripción de la visión de la empresa en el año 2024 -->
+            <a>✔ Ser en el año 2024, la empresa de producción y comercialización de trajes impermeables
+                Alto reconocimiento en el mercado.
+                Cobertura de 100% a nivel nacional y con un 35%  de la producción de la empresa para el mercado de exportación.</a>
+        </div>
+        <!-- Imagen asociada a la primera oferta -->
+        <div class="ofert-img">
+            <img src="https://industriasfenix.com/wp-content/uploads/elementor/thumbs/Estudio-855-1-scaled-q5zkfvh29n5p5atrqrmfmlrah8supic9sfa45xqm9c.jpg">
+        </div>
+    </div>
+
+    <!-- Segunda oferta con clase "ofert-1" y "b2" -->
+    <div class="ofert-1 b2">
+        <!-- Contenido de texto de la segunda oferta -->
+        <div class="ofert-txt">
+            <h3>Nuestra misión </h3>
+            <!-- Descripción de la misión de Legends Industrias -->
+            <a> ✔ Legends Industrias es una organización dedicada a la fabricación y comercialización
+                de productos en material reciclables de alta calidad, nuestra prioridad es brindarle a jóvenes y madres cabeza de hogar oportunidades de empleabilidad y crecimiento personal y profesional.</a>
+        </div>
+        <!-- Imagen asociada a la segunda oferta -->
+        <div class="ofert-img">
+            <img src="https://industriasfenix.com/wp-content/uploads/2023/08/Fenix-Adventure-Pro-1_new-1.png">
+        </div>
+    </div>
+
+    <!-- Tercera oferta con clase "ofert-1" y "b3" -->
+    <div class="ofert-1 b3">
+        <!-- Contenido de texto de la tercera oferta -->
+        <div class="ofert-txt">
+            <h3>Nuestros valores corporativos</h3>
+            <!-- Lista de valores corporativos con iconos -->
+            <a> ✔ RESPONSABILIDAD <img src="https://industriasfenix.com/wp-content/uploads/2023/03/social.png" height="30" width="30">
+                ✔TRABAJO EN EQUIPO. <img src="https://industriasfenix.com/wp-content/uploads/2023/03/meeting-1.png" height="30" width="30">
+                ✔HONESTIDAD<img src="https://industriasfenix.com/wp-content/uploads/2023/03/honesto.png" height="30" width="30">
+                ️️              ✔ESPÍRITU DE SERVICIO<img src="https://industriasfenix.com/wp-content/uploads/2023/03/public-service.png" height="30" width="30">
+            </a>
+        </div>
+        <!-- Imagen asociada a la tercera oferta -->
+        <div class="ofert-img">
+            <img src="https://industriasfenix.com/wp-content/uploads/2023/07/dry_turtle_1_4.png">
+        </div>
+    </div>
+</section>
+
+<main class="product container">
+    <!-- seccion de productos -->
+        <span><h1>PRODUCTOS</h1></span>
+        <h1> </h1>
+    <!-- Inicio del contenedor de la caja -->
+        <div class="box-container" id="lista-1">
+            <div id="producto"   class="box">
+                <!-- Imagen con enlace a la URL proporcionada -->
+                <img src="https://http2.mlstatic.com/D_NQ_NP_808218-MCO70906589972_082023-O.webp" height="250" width="150">                <!-- Títulos del producto -->
+                <h3>Proteina Whey </h3>
+                <p> Standard 2 Libras</p>
+                <!-- Marca del producto -->
+                <p>Optimum Nutrition</p>
+                <!-- Precio del producto -->
+                <p class="precio">$172.900</p>
+                <!-- Enlace para agregar al carrito con identificador de datos "1" -->
+                <a class="agregar-carrito btn-3" data-id="1">
+                    Agregar al carrito
+                </a>
+            </div>
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_932888-MCO41162729382_032020-O.webp" height="250" width="200">
+            <h3>Creatine Power </h3>
+            <p>Lb 10 Libras </p>
+            <p> Megaplex  </p>
+            <p class="precio">$219.990</p>
+            <a  class="agregar-carrito btn-3" data-id="2">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_870878-MCO71606544858_092023-O.webp" height="250" width="150">
+            <h3>Bi Pro, Proteina </h3>
+            <p>Classic 2 LB </p>
+            <p>Oficial BiPro</p>
+            <p class="precio">$149.900</p>
+            <a  class="agregar-carrito btn-3" data-id="3">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_641528-MCO46752755175_072021-O.webp" height="250" width="250">
+            <h3> Proteína calórica </h3>
+            <h3> 10 Libras  </h3>
+            <p>Gainer Pro</p>
+            <p class="precio">$204.900</p>
+            <a  class="agregar-carrito btn-3" data-id="4">
+                Agregar al carrito
+            </a>
+        </div>
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_623495-MCO69729714168_052023-O.webp" height="250" width="200">
+            <h3>Kit Tres Termos </h3>
+            <p>Botella Motivacional </p>
+            <p>Pines</p>
+            <p class="precio">$69.900</p>
+            <a  class="agregar-carrito btn-3" data-id="5">
+                Agregar al carrito
+            </a>
+        </div>
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_964157-MCO72258605863_102023-O.webp" height="250" width="200">
+            <h3>Termo 3 en 1</h3>
+            <p>Mezclador Proteína Termo Gym</p>
+            <p>Calidad Shaker </p>
+            <p class="precio">$13.500</p>
+            <a  class="agregar-carrito btn-3" data-id="6">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_725514-MCO51990260864_102022-O.webp" height="250" width="200">
+            <h3>Termo Botella </h3>
+            <p>Gym Estruche Cargadera Pbold </p>
+            <p> Calidad Pbold</p>
+            <p class="precio">$99.990</p>
+            <a  class="agregar-carrito btn-3" data-id="7">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_819127-MCO69440969075_052023-O.webp" height="250" width="200">
+            <h3>Buzo Deportivo </h3>
+            <p>Slim Fit Gym Lycra Fria</p>
+            <p> Calidad UV </p>
+            <p class="precio">$80.900</p>
+            <a  class="agregar-carrito btn-3" data-id="8">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_924715-MLU73416156287_122023-O.webp" height="250" width="200">
+            <h3> Bolso Deportivo   </h3>
+            <p> Hombre o Mujer Color Rojo</p>
+            <p>Marca Limits</p>
+            <p class="precio">$34.500</p>
+            <a  class="agregar-carrito btn-3" data-id="9">
+                Agregar al carrito
+            </a>
+        </div>
+
+        <div class="box">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_679164-MLU70783372048_082023-O.webp" height="250" width="200">
+            <h3>Maletín Puma </h3>
+            <p>Para Gym con Color Negro</p>
+            <p>Calidad Puma</p>
+            <p class="precio">$153.000</p>
+            <a  class="agregar-carrito btn-3" data-id="10">
+                Agregar al carrito
+            </a>
+        </div>
+            <div class="box">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_942738-MCO70697904040_072023-O.webp" height="250" width="200">
+                <h3>Pantaloneta Licra</h3>
+                <p>Short Gym</p>
+                <p>Calidad  Procter </p>
+                <p class="precio">$65.900</p>
+                <a  class="agregar-carrito btn-3" data-id="11">
+                    Agregar al carrito
+                </a>
+            </div>
+            <div class="box">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_966732-MCO73669179639_122023-O.webp" height="250" width="200">
+                <h3> Pantaloneta X2</h3>
+                <p>Licra Larga Hombre</p>
+                <p>Riple original</p>
+                <p class="precio">$121.505</p>
+                <a  class="agregar-carrito btn-3" data-id="12">
+                    Agregar al carrito
+                </a>
+            </div>
+        </div>
+        <div class="btn-2" id="load-more">Cargar Más</div>
+
+    </main>
+<!-- Inicio de la sección de testimonios con identificador "cliente" y clases "testimonial" y "container" -->
+<section id="cliente" class="testimonial container">
+
+    <!-- Título de la sección -->
+    <span>ENTRENADORES</span>
+
+    <!-- Encabezado de la sección -->
+
+    <!-- Contenedor para el contenido de los testimonios con clase "testimonial-content" -->
+    <div class="testimonial-content">
+
+        <!-- Primer testimonio con clase "testimonial-1" -->
+        <div class="testimonial-1">
+
+            <!-- Párrafo del testimonio -->
+            <p>
+                He logrado obtener muy buenos ingresos adicionales que me han
+                ayudado ha cumplir con mis obligaciones. Muy agradecido con Fenix!!!
+            </p>
+
+            <!-- Imagen asociada al testimonio -->
+            <img src="https://w7.pngwing.com/pngs/589/360/png-transparent-star-customer-service-review-rating-star-text-logo-computer-wallpaper.png" alt="920">
+
+            <!-- Nombre del cliente que proporcionó el testimonio -->
+            <h4>Pablo Marín</h4>
+        </div>
+
+        <div class="testimonial-1">
+            <p>
+                De verdad que son productos de muy buena calidad y muy cómodos, se venden muy bien y los clientes quedan satisfechos con la compra. 100% recomendados.
+            </p>
+            <img src="https://w7.pngwing.com/pngs/589/360/png-transparent-star-customer-service-review-rating-star-text-logo-computer-wallpaper.png" alt="920">
+            <h4>Sara Montoya</h4>
+        </div>
+        <div class="testimonial-1">
+            <p>
+                El equipo de Fenix te brinda toda la ayuda para que puedas generar buenos ingresos, si eres una persona organizada y disciplinada puedes aumentar tus ganancias de manera significativa.
+            </p>
+            <img src="https://w7.pngwing.com/pngs/589/360/png-transparent-star-customer-service-review-rating-star-text-logo-computer-wallpaper.png" alt="920">
+            <h4>Jaime Ortiz</h4>
+        </div>
+    </div>
+</section>
+<!-- Fin de la sección de testimonios -->
+
+<!-- Inicio de la sección -->
+<section>
+
+    <!-- Contenedor de contenido del encabezado con clase "header-content" y "container" -->
+    <div class="header-content container">
+        <!-- División con identificador "contacto" y clases "header-txt" -->
+        <div id="contacto" class="header-txt">
+
+            <!-- Texto "CONTACTO" dentro de una etiqueta de span -->
+           <center><span>CONTACTO</span></center>
+            <h1>COMUNICATE CON NOSOTROS </h1>
+
+            <!-- Párrafo de descripción y contacto -->
+            <p>
+                Si tienes alguna duda sobre cómo ser distribuidor(a), próximamente podrás comprar en nuestra tienda en línea, tienes alguna sugerencia o comentario. Escríbenos y estaremos atentos a comunicarnos contigo en el menor tiempo posible.
+            </p>
+            <p>📞 Nos puedes contactar 301 5015825 o el fijo 8741496. Llámanos! </p>
+            <p>📍 Estamos ubicados en el sector CRA 1 H # 6-50 B/ Centro, Neiva- Huila Colombia .</p>
+        </div>
+
+        <!-- División con clase "header-img" para la sección de imágenes -->
+        <div class="header-img">
+            <!-- División con clases "mapouter" y "gmap_canvas" para mostrar el mapa de Google -->
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <!-- Iframe del mapa de Google con ubicación específica -->
+                    <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=carrera%201%20h%206%2050%20&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <!-- Enlace de atribución de Google Maps -->
+                    <a href="https://putlocker-is.org">putlocker</a>
+                    <!-- Estilos CSS para el mapa -->
+                    <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style>
+                    <!-- Enlace a la información sobre cómo agregar un mapa de Google a un sitio web -->
+                    <a href="https://www.embedgooglemap.net">how to add a google map to my website</a>
+                    <!-- Estilos CSS adicionales para el mapa -->
+                    <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Fin de la sección -->
+
+<!-- Inicio del pie de página con clase "footer" -->
+<footer class="footer">
+    <!-- Contenedor del contenido del pie de página con clases "footer-content" y "container" -->
+    <div class="footer-content container">
+        <!-- División con clase "link" para las redes sociales -->
+        <div class="link">
+            <h3>REDES SOCIALES</h3>
+
+            <!-- Lista con enlaces a las redes sociales -->
+            <ul>
+                <li><a href="https://www.instagram.com/somosadventureco" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1582/PNG/128/instagram_108043.png" alt="Instagram" height="50" width="50"></a></li>
+                <li><a href="https://www.facebook.com/somosadventureco" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1582/PNG/128/facebook_108044.png" alt="Facebook" height="50" width="50"></a></li>
+                <li><a href="https://www.youtube.com/watch?v=7hppTWiiFeg" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1582/PNG/128/youtube_108041.png" alt="YouTube" height="50" width="50"></a></li>
+            </ul>
+        </div>
+
+        <!-- División con clase "link" para las ubicaciones -->
+        <div class="link">
+            <h3>UBICACIONES</h3>
+
+            <!-- Lista con enlaces a las ubicaciones en Google Maps -->
+            <ul>
+                <li><a href="https://www.google.com/maps/place/%C3%89xito+Neiva+Centro/@2.9263742,-75.2930004,18.25z/data=!4m14!1m7!3m6!1s0x8e3b75e471466777:0x4144ee5053477f58!2sCalixto!8m2!3d2.926052!4d-75.2894532!16s%2Fg%2F11sv94kzk5!3m5!1s0x8e3b747cf9273007:0x928b6619cc397bd3!8m2!3d2.926276!4d-75.291223!16s%2Fg%2F1q6jgrzyc?entry=ttu" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1512/PNG/96/31_104880.png" alt="Mapa" height="50" width="50"></a></li>
+                <li><a href="https://www.google.com/maps/place/Cl.+38+%237a-51,+Comuna+2,+Neiva,+Huila/@2.9489118,-75.2922335,17z/data=!3m1!4b1!4m5!3m4!1s0x8e3b745743b1727d:0x160ba89536782515!8m2!3d2.9489064!4d-75.2896586?entry=ttu" target="_blank"><img src="https://cdn.icon-icons.com/icons2/2444/PNG/96/location_map_pin_mark_icon_148685.png" alt="Mapa" height="50" width="50"></a></li>
+                <li><a href="https://www.google.com/maps/place/Cl.+40+%237a-51,+Comuna+2,+Neiva,+Huila/@2.9498518,-75.2924981,17z/data=!3m1!4b1!4m5!3m4!1s0x8e3b745724a9aa83:0xd8b81d6e2a29758d!8m2!3d2.9498464!4d-75.2899232?entry=ttu" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1261/PNG/96/1496676725-rounded-high-ultra-colour02-maps_84627.png" alt="Mapa" height="50" width="50"></a></li>
+            </ul>
+        </div>
+
+        <!-- División con clase "link" para correos electrónicos -->
+        <div class="link">
+            <h3>CORREOS</h3>
+
+            <!-- Lista con enlaces a correos electrónicos -->
+            <ul>
+                <li><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSKkHgCbTfxvgvbgKDPxwLVNdwRPlNmqHTKRjMwjCxHFBgHjBNQXRsRVFwzCWvdglglTwHZC" target="_blank"><img src="https://cdn.icon-icons.com/icons2/2642/PNG/96/google_mail_gmail_logo_icon_159346.png" alt="Gmail" height="50" width="50"></a></li>
+                <li><a href="https://outlook.live.com/mail/about/index_es-mx.html" target="_blank"><img src="https://cdn.icon-icons.com/icons2/615/PNG/96/Outlook_icon-icons.com_56596.png" alt="Outlook" height="50" width="50"></a></li>
+                <li><a href="https://www.skype.com/es/" target="_blank"><img src="https://cdn.icon-icons.com/icons2/122/PNG/96/skype_socialnetwork_20014.png" alt="Skype" height="50" width="50"></a></li>
+            </ul>
+        </div>
+
+        <!-- División con clase "link" para información adicional -->
+        <div class="link">
+            <!-- Título "INFORMACIÓN" -->
+            <h3>INFORMACIÓN</h3>
+
+            <!-- Lista  con enlaces a información adicional -->
+            <ul>
+                <li><a href="https://api.whatsapp.com/send/?phone=573213949267&text&type=phone_number&app_absent=0" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1582/PNG/128/whatsapp_108042.png" alt="WhatsApp" height="50" width="50"></a></li>
+                <li><a href="https://web.telegram.org/" target="_blank"><img src="https://cdn.icon-icons.com/icons2/923/PNG/96/telegram_icon-icons.com_72055.png" alt="Telegram" height="50" width="50"></a></li>
+                <li><a href="https://www.tiktok.com/upload?lang=es" target="_blank"><img src="https://cdn.icon-icons.com/icons2/2429/PNG/96/tik_tok_logo_icon_147226.png" alt="TikTok" height="50" width="50"></a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<!-- Fin del pie de página -->
+
+<script>
+    // Selecciona el botón "Load More" por su ID
+    let loadMoreBtn = document.querySelector('#load-more');
+
+    // Inicializa una variable para llevar el conteo de los elementos actuales
+    let currentItem = 8;
+
+    // Agrega un evento de clic al botón "Load More"
+    loadMoreBtn.onclick = () => {
+        // Selecciona todos los elementos con clase "box" dentro del contenedor con clase "box-container"
+        let boxes = [...document.querySelectorAll('.box-container .box')];
+
+        // Muestra los próximos 4 elementos en el conjunto de productos
+        for (var i = currentItem; i < currentItem + 4; i++) {
+            boxes[i].style.display = 'inline-block';
+        }
+
+        // Actualiza la variable currentItem para realizar un seguimiento de la posición actual
+        currentItem += 4;
+
+        // Oculta el botón "Load More" si se han mostrado todos los productos
+        if (currentItem >= boxes.length) {
+            loadMoreBtn.style.display = 'none';
+        }
+    }
+
+    // Agrega un evento que se dispara cuando el contenido HTML se ha cargado
+    document.addEventListener("DOMContentLoaded", () => {
+        // Inicializa un array para almacenar los productos en el carrito
+        let carrito = [];
+
+        // Obtiene referencias a elementos del DOM
+        const carritoContainer = document.getElementById("carrito");
+        const listaCarrito = document.querySelector("#lista-carrito tbody");
+        const vaciarCarritoBtn = document.getElementById("vaciar-carrito");
+        const comprarBtn = document.getElementById("comprar-venta");
+
+        // Función para redirigir a la página de registro de compra
+        function irARegistroCompra() {
+            // Verifica si hay productos en el carrito antes de redirigir
+            if (carrito.length > 0) {
+                // Almacena los datos del carrito en localStorage
+                localStorage.setItem("carrito", JSON.stringify(carrito));
+                // Redirige a la página de registro de compra
+                window.location.href = "ventas.html";
+            } else {
+                // Muestra un mensaje al usuario indicando que el carrito está vacío
+                alert("El carrito está vacío. Agrega productos antes de comprar.");
+            }
+        }
+        function comprarProducto(e) {
+            if (e.target.classList.contains("comprar-producto")) {
+                const productoId = e.target.getAttribute("data-id");
+                const productoComprado = carrito.find(item => item.id === productoId);
+
+                // Puedes almacenar los datos del producto en localStorage
+                localStorage.setItem("productoComprado", JSON.stringify(productoComprado));
+
+                // Redirige a la página de registro de compra
+                window.location.href = "ventas.html";
+            }
+        }
+
+        // Función para agregar un producto al carrito
+        function agregarProductoAlCarrito(e) {
+            if (e.target.classList.contains("agregar-carrito")) {
+                const productoSeleccionado = e.target.parentElement;
+                obtenerProductoInfo(productoSeleccionado);
+
+                // Muestra un mensaje de notificación
+                mostrarMensaje("PRODUCTO AGREGADO AL CARRITO🛒✔️");
+            }
+        }
+
+        // Función para mostrar mensajes de notificación
+        function mostrarMensaje(mensaje) {
+            // Puedes personalizar la forma en que se muestra el mensaje, por ejemplo, usando una alerta
+            alert(mensaje);
+        }
+
+        // Función para obtener la información del producto seleccionado
+        function obtenerProductoInfo(producto) {
+            const productoId = producto.querySelector(".agregar-carrito").getAttribute("data-id");
+            const productoExistente = carrito.find(item => item.id === productoId);
+
+            if (productoExistente) {
+                productoExistente.cantidad++;
+            } else {
+                const productoInfo = {
+                    imagen: producto.querySelector("img").src,
+                    nombre: producto.querySelector("h3").textContent,
+                    precio: producto.querySelector(".precio").textContent,
+                    id: productoId,
+                    cantidad: 1
+                };
+                carrito.push(productoInfo);
+            }
+            carritoHTML();
+        }
+
+        // Función para mostrar el carrito en el DOM
+        function carritoHTML() {
+            limpiarCarrito();
+            carrito.forEach(producto => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                <td>
+                    <img src="${producto.imagen}" width="50" >
+                </td>
+                <td>${producto.nombre}</td>
+                <td>${producto.precio}</td>
+                <td>${producto.cantidad}</td>
+                <td>
+                    <a class="borrar-producto" data-id="${producto.id}">❌</a>
+
+                </td>
+            `;
+                listaCarrito.appendChild(row);
+            });
+        }
+
+        // Función para limpiar el carrito en el DOM
+        function limpiarCarrito() {
+            while (listaCarrito.firstChild) {
+                listaCarrito.removeChild(listaCarrito.firstChild);
+            }
+        }
+
+        // Función para vaciar el carrito
+        function vaciarCarrito() {
+            carrito.splice(0, carrito.length);
+            carritoHTML();
+        }
+
+        // Función para eliminar un producto del carrito
+        function eliminarProducto(e) {
+            if (e.target.classList.contains("borrar-producto")) {
+                const productoId = e.target.getAttribute("data-id");
+                carrito = carrito.filter(producto => producto.id !== productoId);
+                carritoHTML();
+            }
+
+        }
+
+        // Eventos
+        document.addEventListener("click", agregarProductoAlCarrito);
+        carritoContainer.addEventListener("click", eliminarProducto);
+        vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
+        comprarBtn.addEventListener("click", irARegistroCompra);
+        document.addEventListener("click", comprarProducto );  // Agregamos este evento
+
+    });
+
+</script>
+<!-- Abre un div con la clase "footer" para el pie de página -->
+    <div class="footer">
+        <!-- Centra un párrafo que contiene el año y el mensaje de derechos de autor -->
+        <center><p>&copy; 2023  Impermeables Barbosa. Todos los derechos reservados</p></center>
+        <!-- Centra un párrafo que contiene un enlace a las políticas de privacidad -->
+        <center><p><a href="https://www.mintic.gov.co/portal/inicio/Secciones-auxiliares/Politicas/2627:Politicas-de-Privacidad-y-Condiciones-de-Uso">Políticas de privacidad </a></p></center>
+    </div>
+    </form>
+</body>
+</html>
+
+
+
+
