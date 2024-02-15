@@ -14,13 +14,19 @@
 <style>
     /* Estilos para el fondo y cuerpo del body */
     body {
-        background-image: url('https://estaticos-cdn.prensaiberica.es/clip/037f4d7a-8dd8-4262-90a3-fb5eda8365fc_alta-aspect-ratio_default_0.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position:center;
-        margin: 0; /* Elimina el margen predeterminado del cuerpo */
-        padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Evita que haya desplazamiento */
+    }
+    #video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120%;
+        z-index: -1; /* Para asegurarse de que el video esté detrás de todo */
     }
 
     /* Estilos para el contenedor principal */
@@ -45,6 +51,45 @@
     }
 </style>
 <body>
+<div id="video-container"></div>
+<script>
+    // Inserta la API de YouTube
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Función para cargar el video
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('video-container', {
+            height: '100%',
+            width: '100%',
+            videoId: 'eTHNZQ0xgNc', // Reemplaza 'TU_ID_DE_VIDEO_YOUTUBE' con el ID de tu video de YouTube
+            playerVars: {
+                'autoplay': 1,
+                'controls': 1,
+                'loop': 1,
+                'mute': 0,
+                'playlist': 'eTHNZQ0xgNc', // Reemplaza 'TU_ID_DE_VIDEO_YOUTUBE' con el ID de tu video de YouTube
+                'modestbranding': 1,
+                'showinfo': 0,
+                'autohide': 1,
+                'disablekb': 1,
+                'enablejsapi': 1,
+                'origin': window.location.origin
+            },
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    // Función para desactivar la reproducción automática cuando esté lista
+    function onPlayerReady(event) {
+        event.target.playVideo(); // Reproduce el video automáticamente
+    }
+</script>
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-sm-10">

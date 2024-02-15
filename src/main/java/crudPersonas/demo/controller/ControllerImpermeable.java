@@ -63,6 +63,12 @@ public class ControllerImpermeable {
         model.addAttribute("impermeable", new Impermeable());
         return "login";
     }
+    @GetMapping("/entrenamiento")
+    public String agregarentrenamiento(Model model) {
+        model.addAttribute("iRegistroActividadService", new Impermeable());
+        return "index4";
+    }
+
 
 
 }

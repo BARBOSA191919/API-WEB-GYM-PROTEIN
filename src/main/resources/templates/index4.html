@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GymProtein</title>
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2050/PNG/512/dumbbell_gym_icon_124413.png" type="image/x-icon"><!--para agregar el icono a la pagina -->
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      .navbar-brand {
+        font-weight: bold;
+        font-size: 24px;
+      }
+      .content-section {
+        display: none;
+      }
+      .content-section.active {
+        display: block;
+      }
+
+      .diaSemana {
+        width: 45%;
+        margin: 10px auto;
+        background-color: rgb(191, 191, 255);
+        box-sizing: border-box;
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+      }
+
+      #diaSemana {
+        margin: 0 auto;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .hoy {
+        order: -1;
+        width: 90%;
+        margin: 0 auto;
+        background-color: rgb(243, 243, 255);
+        box-sizing: border-box;
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+      }
+
+      .exercise {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+
+      .timer-controls {
+        display: flex;
+        gap: 10px;
+      }
+
+      .timer-controls > p {
+        cursor: pointer;
+      }
+      .card {
+        border: none;
+      }
+      .sem {
+        background-color: rgb(191, 191, 255);
+      }
+
+      .eje {
+        background-color: rgb(255, 191, 200);
+      }
+
+      .act {
+        background-color: rgb(255, 255, 191);
+      }
+
+      #actividad {
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      #ejercicios {
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .flotar {
+        position: relative;
+        right: 0;
+        transform: translateX(-50%);
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      #ejercicios-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .hoy-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+    </style>
+  </head>
+  <body class="bg-dark">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#" onclick="showContent('inicio')"
+          >GymProtein</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#inicio" onclick="showContent('inicio')"
+                >Inicio</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#semana" onclick="showContent('semana')"
+                >Semana</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#actividad"
+                onclick="showContent('actividad')"
+                >Actividad</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#ejercicios"
+                onclick="showContent('ejercicios')"
+                >Ejercicios</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="inicio" class="content-section active">
+        <div class="container">
+          <h1 class="text-center mt-4 mb-4 text-white">
+            ¿Qué quieres hacer hoy?
+          </h1>
+          <div class="row justify-content-center" style="gap: 10px">
+            <div class="col-md-5">
+              <div class="card">
+                <div class="card-body sem">
+                  <h5 class="card-title">
+                    <i class="fa fa-calendar"></i> Revisar Semana
+                  </h5>
+                  <p class="card-text">Explora tu semana y tu rutina.</p>
+                  <a
+                    href="#"
+                    class="btn btn-primary"
+                    onclick="showContent('semana')"
+                    >Revisar</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="card">
+                <div class="card-body act">
+                  <h5 class="card-title">
+                    <i class="fa fa-history"></i> Historial de Actividad
+                  </h5>
+                  <p class="card-text">
+                    Revisa tu historial de actividad física.
+                  </p>
+                  <a
+                    href="#"
+                    class="btn btn-primary"
+                    onclick="showContent('actividad')"
+                    >Ver Historial</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="card">
+                <div class="card-body eje">
+                  <h5 class="card-title">
+                    <i class="fas fa-dumbbell"></i> Gestionar Ejercicios
+                  </h5>
+                  <p class="card-text">
+                    Administra y organiza tus rutinas de ejercicio.
+                  </p>
+                  <a
+                    href="#"
+                    class="btn btn-primary"
+                    onclick="showContent('ejercicios')"
+                    >Gestionar</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="semana" class="content-section">
+        <h1 class="text-center mt-4 mb-4 text-white">
+          ¡Aqui están los ejercicios de la semana!
+        </h1>
+
+        <div
+          class="modal"
+          id="editarDia"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">
+                  Agregar ejercicios
+                </h5>
+                <button
+                  type="button"
+                  class="btn-danger rounded"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  x
+                </button>
+              </div>
+              <div class="modal-body"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="diaSemana"></div>
+        <div
+          class="modal fade"
+          id="exerciseModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exerciseModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exerciseModalLabel"></h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p id="exerciseModalDetails"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Contenido de la sección de Semana -->
+      </section>
+      <section id="actividad" class="content-section">
+        <h1 class="text-center mt-4 mb-4 text-white">¡Revisa tu Actividad!</h1>
+        <table class="table table-primary">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Día Semana</th>
+              <th scope="col">Ejercicio</th>
+              <th scope="col">Tiempo Total</th>
+            </tr>
+          </thead>
+          <tbody id="tablaActividad"></tbody>
+        </table>
+      </section>
+
+      <section id="ejercicios" class="content-section">
+        <div
+          class="container d-flex justify-content-between align-items-center"
+        >
+          <h1 class="text-left mt-4 mb-4 text-white">Ejercicios</h1>
+          <button
+            id="btnNuevoEjercicio"
+            data-toggle="modal"
+            data-target="#modalNuevoEjercicio"
+            class="btn btn-primary"
+          >
+            Nuevo Ejercicio
+          </button>
+        </div>
+        <div class="row" id="ejercicios-container"></div>
+
+        <div class="modal" id="modalNuevoEjercicio">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Nuevo Ejercicio</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formNuevoEjercicio">
+                  <div class="form-group">
+                    <label for="nombreEjercicio">Nombre:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombreEjercicio"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="descripcionEjercicio">Descripción:</label>
+                    <textarea
+                      class="form-control"
+                      id="descripcionEjercicio"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="idZonaCuerpo">Zona de Cuerpo:</label>
+                    <select class="form-control" id="idZonaCuerpo" required>
+                      <option value="">
+                        -- Seleccione una Zona de Cuerpo --
+                      </option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="modal"
+          id="editarEjercicio"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Editar Ejercicio
+                </h5>
+                <button
+                  type="button"
+                  class="btn-danger rounded"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  x
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formEditarEjercicio">
+                  <label for="nombreEjercicioEditar">Nombre:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nombreEjercicioEditar"
+                  />
+
+                  <label for="descripcionEjercicioEditar">Descripción:</label>
+                  <textarea
+                    class="form-control"
+                    id="descripcionEjercicioEditar"
+                  ></textarea>
+
+                  <label for="idZonaCuerpoEditar">Zona de Cuerpo:</label>
+                  <select
+                    class="form-control"
+                    id="idZonaCuerpoEditar"
+                    required
+                  ></select>
+                  <input
+                    type="submit"
+                    class="btn btn-primary"
+                    id="guardarCambios"
+                    value="Guardar Cambios"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+<script>
+
+      const registros = [];
+      const tablaActividad = document.getElementById("tablaActividad");
+
+      async function obtenerNombreDiaSemana(idDiaSemana) {
+        const response = await fetch(
+                `http://localhost:8080/diaSemana/listar/${idDiaSemana}`
+        );
+        const data = await response.json();
+        return data.nombre;
+      }
+
+      async function obtenerNombreEjercicio(idEjercicio) {
+        const response = await fetch(
+                `http://localhost:8080/ejercicio/listar/${idEjercicio}`
+        );
+        const data = await response.json();
+        console.log("data", data);
+        return data !== null ? data.nombre : null;
+      }
+
+      fetch("http://localhost:8080/actividad/listar")
+              .then((response) => response.json())
+              .then(async (data) => {
+                registros.push(...data);
+
+                for (const actividad of registros) {
+                  const row = document.createElement("tr");
+
+                  const nombreDiaSemana = await obtenerNombreDiaSemana(
+                          actividad.idDiaSemana
+                  );
+                  const nombreEjercicio = await obtenerNombreEjercicio(
+                          actividad.idEjercicio
+                  );
+                  console.log(nombreEjercicio);
+                  if (nombreEjercicio !== null) {
+                    row.innerHTML = `
+        <td>${actividad.id}</td>
+        <td>${actividad.estado}</td>
+        <td>${new Date(actividad.fecha).toLocaleString()}</td>
+        <td>${nombreDiaSemana}</td>
+        <td>${nombreEjercicio}</td>
+        <td>${actividad.tiempoTotal}</td>
+      `;
+
+                    tablaActividad.appendChild(row);
+                  }
+                }
+
+                console.log(registros);
+              })
+              .catch((error) => {
+                console.error("Hubo un error al obtener los datos:", error);
+              });
+    </script>
+    <script>
+      const regEjercicios = [];
+      const regSemana = [];
+      const regZonaCuerpo = [];
+      const contenedor = document.getElementById("ejercicios-container");
+      let ejercicioId = 0;
+
+      const fetchEjercicios = fetch("http://localhost:8080/ejercicio/listar")
+              .then((response) => response.json())
+              .then((data) => {
+                regEjercicios.push(...data);
+              })
+              .catch((error) => {
+                console.error("Hubo un error al obtener los datos de ejercicios:", error);
+              });
+
+      const fetchSemana = fetch("http://localhost:8080/diaSemana/listar")
+              .then((response) => response.json())
+              .then((data) => {
+                regSemana.push(...data);
+              })
+              .catch((error) => {
+                console.error(
+                        "Hubo un error al obtener los datos de días de la semana:",
+                        error
+                );
+              });
+
+      const fetchZonaCuerpo = fetch("http://localhost:8080/zonaCuerpo/listar")
+              .then((response) => response.json())
+              .then((data) => {
+                regZonaCuerpo.push(...data);
+              })
+              .catch((error) => {
+                console.error(
+                        "Hubo un error al obtener los datos de zonas del cuerpo:",
+                        error
+                );
+              });
+
+      Promise.all([fetchEjercicios, fetchSemana, fetchZonaCuerpo])
+              .then(() => {
+                regEjercicios.forEach((ejercicio) => {
+                  const zonaCuerpo = regZonaCuerpo.find(
+                          (zonaCuerpo) => zonaCuerpo.id === ejercicio.idZonaCuerpo
+                  );
+
+                  const card = `
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">${ejercicio.nombre}</h5>
+          <p class="card-text">${ejercicio.descripcion}</p>
+          <p class="card-text">${`Zona del Cuerpo: ${zonaCuerpo.nombre}`}</p>
+          <button class="btn btn-primary update-ejercicio" data-id="${
+                          ejercicio.id
+                  }" data-toggle="modal" data-target="#editarEjercicio">Actualizar</button>
+          <button class="btn btn-danger delete-ejercicio" data-id="${
+                          ejercicio.id
+                  }">Eliminar</button>
+        </div>
+      </div>
+    `;
+
+                  contenedor.insertAdjacentHTML("beforeend", card);
+                });
+              })
+              .catch((error) => {
+                console.error("Hubo un error al obtener los datos:", error);
+              });
+
+      Promise.all([fetchEjercicios, fetchSemana, fetchZonaCuerpo]).then(() => {
+        const updateButtons = document.querySelectorAll(".update-ejercicio");
+        updateButtons.forEach((button) => {
+          button.addEventListener("click", handleUpdateClick);
+        });
+      });
+
+      Promise.all([fetchEjercicios, fetchSemana, fetchZonaCuerpo]).then(() => {
+        const deleteButtons = document.querySelectorAll(".delete-ejercicio");
+        deleteButtons.forEach((button) => {
+          button.addEventListener("click", handleDeleteClick);
+        });
+      });
+
+      function handleDeleteClick(event) {
+        const ejercicioId = event.target.getAttribute("data-id");
+        fetch(`http://localhost:8080/ejercicio/eliminar/${ejercicioId}`, {
+          method: "DELETE",
+        })
+                .then((data) => {
+                  window.location.reload();
+                })
+                .catch((error) => {
+                  console.error("Hubo un error al eliminar el ejercicio:", error);
+                });
+      }
+
+      function handleUpdateClick(event) {
+        ejercicioId = event.target.getAttribute("data-id");
+        const selectedEjercicio = regEjercicios.find(
+                (ejercicio) => ejercicio.id == ejercicioId
+        );
+
+        const InputnombreEjercicioEditar = document.getElementById(
+                "nombreEjercicioEditar"
+        );
+
+        const InputdescripcionEjercicioEditar = document.getElementById(
+                "descripcionEjercicioEditar"
+        );
+
+        const InputidZonaCuerpoEditar = document.getElementById("idZonaCuerpoEditar");
+
+        InputidZonaCuerpoEditar.innerHTML = "";
+
+        regZonaCuerpo.forEach((zonaCuerpo) => {
+          const option = document.createElement("option");
+          option.value = zonaCuerpo.id;
+          option.textContent = zonaCuerpo.nombre;
+          InputidZonaCuerpoEditar.appendChild(option);
+        });
+
+        InputnombreEjercicioEditar.value = selectedEjercicio.nombre;
+        InputdescripcionEjercicioEditar.value = selectedEjercicio.descripcion;
+        InputidZonaCuerpoEditar.value = selectedEjercicio.idZonaCuerpo;
+
+        document
+                .getElementById("formEditarEjercicio")
+                .addEventListener("submit", () => {
+                  const nombreEjercicio = InputnombreEjercicioEditar.value;
+                  const descripcionEjercicio = InputdescripcionEjercicioEditar.value;
+                  const idZonaCuerpo = InputidZonaCuerpoEditar.value;
+
+                  const updatedEjercicio = {
+                    nombre: nombreEjercicio,
+                    descripcion: descripcionEjercicio,
+                    idZonaCuerpo: idZonaCuerpo,
+                  };
+
+                  fetch(`http://localhost:8080/ejercicio/actualizar/${ejercicioId}`, {
+                    method: "PUT",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(updatedEjercicio),
+                  }).then((data) => {
+                    window.location.reload();
+                  });
+                });
+      }
+
+      const botonCrear = document.getElementById("btnNuevoEjercicio");
+
+      botonCrear.addEventListener("click", () => {
+        const InputnombreEjercicio = document.getElementById("nombreEjercicio");
+
+        const InputdescripcionEjercicio = document.getElementById(
+                "descripcionEjercicio"
+        );
+
+        const InputidZonaCuerpo = document.getElementById("idZonaCuerpo");
+
+        regZonaCuerpo.forEach((zonaCuerpo) => {
+          const option = document.createElement("option");
+          option.value = zonaCuerpo.id;
+          option.textContent = zonaCuerpo.nombre;
+          InputidZonaCuerpo.appendChild(option);
+        });
+
+        document
+                .getElementById("formNuevoEjercicio")
+                .addEventListener("submit", () => {
+                  const nombreEjercicio = InputnombreEjercicio.value;
+                  const descripcionEjercicio = InputdescripcionEjercicio.value;
+                  const idZonaCuerpo = InputidZonaCuerpo.value;
+
+                  const updatedEjercicio = {
+                    nombre: nombreEjercicio,
+                    descripcion: descripcionEjercicio,
+                    idZonaCuerpo: idZonaCuerpo,
+                  };
+
+                  fetch(`http://localhost:8080/ejercicio/crear`, {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(updatedEjercicio),
+                  }).then((data) => {
+                    window.location.reload();
+                  });
+                });
+      });
+
+    </script>
+
+    <script>
+      function showContent(sectionId) {
+        document.querySelectorAll(".content-section").forEach(function (section) {
+          section.classList.remove("active");
+        });
+        document.getElementById(sectionId).classList.add("active");
+      }
+
+      const semana = document.getElementById("diaSemana");
+      const dias = [];
+      const ejercicio = [];
+      const fechaActual = new Date();
+      const nombreDiaActual = new Intl.DateTimeFormat("es-ES", { weekday: "long" })
+              .format(fechaActual)
+              .toLowerCase();
+
+      const tiemposPorEjercicio = {};
+
+      Promise.all([
+        fetch("http://localhost:8080/ejercicio/listar").then((response) =>
+                response.json()
+        ),
+        fetch("http://localhost:8080/diaSemana/listar").then((response) =>
+                response.json()
+        ),
+      ])
+              .then(([ejerciciosData, diasData]) => {
+                ejercicio.push(...ejerciciosData);
+                dias.push(...diasData);
+
+                let startTime;
+                let timer;
+
+                function startTimer(timerDisplay, ejercicioId) {
+                  startTime = Date.now();
+                  let elapsedTime = 0;
+
+                  return setInterval(function () {
+                    const currentTime = Date.now();
+                    elapsedTime += currentTime - startTime;
+                    startTime = currentTime;
+
+                    const totalSeconds = Math.floor(elapsedTime / 1000);
+                    const minutes = Math.floor(totalSeconds / 60);
+                    const seconds = totalSeconds % 60;
+
+                    const formattedTime = `${minutes < 10 ? "0" + minutes : minutes}:${
+                            seconds < 10 ? "0" + seconds : seconds
+                    }`;
+
+                    timerDisplay.textContent = `Tiempo: ${formattedTime}`;
+
+                    tiemposPorEjercicio[ejercicioId] = formattedTime;
+                  }, 1000);
+                }
+
+                dias.forEach((dia) => {
+                  const ejerciciosDia = ejercicio.filter((e) => e.idDiaSemana === dia.id);
+                  const card = document.createElement("div");
+                  card.classList.add("card", "diaSemana");
+
+                  if (dia.nombre.toLowerCase() === nombreDiaActual) {
+                    card.classList.add("hoy");
+                    card.classList.remove("diaSemana");
+
+                    const cardTitle = document.createElement("h5");
+                    cardTitle.innerHTML = `
+        <div class="hoy-title">
+        <div>
+        <h5 class="card-title">${dia.nombre}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Hoy</h6>
+        </div>
+        <button class="btn btn-success rounded-circle" id="agregarEjercicio" data-id="${dia.id}">+</button>
+        </div>
+        `;
+                    card.appendChild(cardTitle);
+
+                    semana.appendChild(card);
+
+                    ejerciciosDia.forEach((ejer) => {
+                      const exerciseDiv = document.createElement("div");
+                      exerciseDiv.classList.add("exercise");
+
+                      exerciseDiv.innerHTML = `
+          <div style="display: flex; align-items: center;">
+            <i class="fas fa-trash-alt btn-danger btn" id="borrarEjercicio" data-id="${ejer.id}"></i>
+            <p class="card-text ml-4">${ejer.nombre}</p>
+          </div>
+            <div class="timer-controls">
+              <span class="timer" style="display: none;">Tiempo: 00:00</span>
+              <button class="play-btn btn btn-success"><i class="fas fa-play"></i></button>
+              <button class="stop-btn btn btn-danger" style="display: none;"><i class="fas fa-stop"></i></button>
+            </div>
+          `;
+
+                      const exerciseName = exerciseDiv.querySelector(".card-text");
+                      const exerciseModal = document.getElementById("exerciseModal");
+                      const exerciseModalLabel =
+                              document.getElementById("exerciseModalLabel");
+                      const exerciseModalDetails = document.getElementById(
+                              "exerciseModalDetails"
+                      );
+
+                      exerciseName.addEventListener("click", function () {
+                        exerciseModalLabel.textContent = ejer.nombre;
+                        exerciseModalDetails.textContent = `Detalles del ejercicio: ${ejer.descripcion}`;
+                        $("#exerciseModal").modal("show");
+                      });
+                      card.appendChild(exerciseDiv);
+
+                      const playButton = exerciseDiv.querySelector(".play-btn");
+                      const stopButton = exerciseDiv.querySelector(".stop-btn");
+                      const timerDisplay = exerciseDiv.querySelector(".timer");
+                      const ejercicioId = ejer.id;
+
+                      playButton.addEventListener("click", function () {
+                        playButton.style.display = "none";
+                        stopButton.style.display = "inline-block";
+                        timer = startTimer(timerDisplay, ejercicioId);
+                        timerDisplay.style.display = "block";
+                      });
+
+                      stopButton.addEventListener("click", function () {
+                        clearInterval(timer);
+                        const tiempoTranscurrido = tiemposPorEjercicio[ejercicioId];
+
+                        const data = {
+                          idEjercicio: ejercicioId,
+                          estado: "Completado",
+                          idDiaSemana: dia.id,
+                          fecha: new Date(),
+                          tiempoTotal: tiempoTranscurrido.toString(),
+                        };
+
+                        fetch("http://localhost:8080/actividad/crear", {
+                          method: "POST",
+                          body: JSON.stringify(data),
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                        })
+                                .then((response) => response.json())
+                                .then((data) => {
+                                  console.log("Datos enviados al servidor:", data);
+                                })
+                                .catch((error) =>
+                                        console.error(
+                                                "Hubo un error al enviar los datos al servidor:",
+                                                error
+                                        )
+                                );
+                      });
+                    });
+                  } else {
+                    card.innerHTML = `
+        <div class="hoy-title">
+        <div>
+        <h5 class="card-title">${dia.nombre}</h5>
+        </div>
+        <button class="btn btn-success rounded-circle" data-id="${
+                            dia.id
+                    }" id="agregarEjercicio" >+</button>
+        </div>
+          ${ejerciciosDia
+                            .map(
+                                    (ejer) => `
+              <div style="display: flex; align-items: center;">
+              <i class="fas fa-trash-alt btn-danger btn" id="borrarEjercicio" data-id="${ejer.id}"></i>
+              <p class="card-text ml-4">${ejer.nombre}</p>
+            </div>
+              `
+                            )
+                            .join("")}
+        `;
+                    semana.appendChild(card);
+                  }
+                  const botonBorrar = document.querySelectorAll("#borrarEjercicio");
+
+                  botonBorrar.forEach((boton) => {
+                    boton.addEventListener("click", function () {
+                      const idEjercicio = boton.getAttribute("data-id");
+                      fetch(
+                              `http://localhost:8080/ejercicio/actualizarDia/${idEjercicio}/0`,
+                              {
+                                method: "PUT",
+                                headers: {
+                                  "Content-Type": "application/json",
+                                },
+                              }
+                      )
+                              .then((data) => {
+                                window.location.reload();
+                                console.log("Ejercicio eliminado:", data);
+                              })
+                              .catch((error) => {
+                                console.error("Error al eliminar el ejercicio:", error);
+                              });
+                    });
+                  });
+
+                  const agregarEjercicio = card.querySelector("#agregarEjercicio");
+
+                  agregarEjercicio.addEventListener("click", function () {
+                    const diaId = agregarEjercicio.getAttribute("data-id");
+                    const exerciseModalBody = document.querySelector(".modal-body");
+
+                    exerciseModalBody.innerHTML = "";
+
+                    ejercicio.forEach((ejer) => {
+                      const exerciseCheckbox = document.createElement("input");
+                      exerciseCheckbox.type = "checkbox";
+                      exerciseCheckbox.value = ejer.id;
+                      exerciseCheckbox.id = `exercise-${ejer.id}`;
+
+                      const exerciseLabel = document.createElement("label");
+                      exerciseLabel.htmlFor = `exercise-${ejer.id}`;
+                      exerciseLabel.textContent = ejer.nombre;
+
+                      const exerciseListItem = document.createElement("div");
+                      exerciseListItem.appendChild(exerciseCheckbox);
+                      exerciseListItem.appendChild(exerciseLabel);
+
+                      exerciseModalBody.appendChild(exerciseListItem);
+                    });
+
+                    const saveButton = document.createElement("button");
+                    saveButton.textContent = "Guardar";
+                    saveButton.classList.add("btn", "btn-primary", "save-exercises-btn");
+
+                    exerciseModalBody.appendChild(saveButton);
+
+                    $("#editarDia").modal("show");
+
+                    const saveExercisesButton = document.querySelector(
+                            ".save-exercises-btn"
+                    );
+
+                    saveExercisesButton.addEventListener("click", function () {
+                      const selectedExercises = [];
+                      const exerciseCheckboxes = document.querySelectorAll(
+                              ".modal-body input[type='checkbox']"
+                      );
+
+                      exerciseCheckboxes.forEach((checkbox) => {
+                        if (checkbox.checked) {
+                          selectedExercises.push(checkbox.value);
+                        }
+                      });
+
+                      selectedExercises.forEach((exerciseId) => {
+                        fetch(
+                                `http://localhost:8080/ejercicio/actualizarDia/${exerciseId}/${diaId}`,
+                                {
+                                  method: "PUT",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                }
+                        ).then((data) => {
+                          window.location.reload();
+                        });
+                      });
+
+                      $("#editarDia").modal("hide");
+                    });
+                  });
+                });
+              })
+              .catch((error) => {
+                console.error("Hubo un problema con la solicitud fetch:", error);
+              });
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="semana.js"></script>
+    <script src="actividad.js"></script>
+    <script src="ejercicios.js"></script>
+  </body>
+</html>

@@ -21,9 +21,7 @@
         /* Establece la fuente predeterminada para el cuerpo del documento */
         body {
             font-family: 'Poppinns', sans-serif;
-            background:url("static/gym.jpg");
             background-size: cover;
-            background-position: center;
 
         }
         /* Hace que las imágenes se ajusten al 100% de su contenedor */
@@ -157,7 +155,7 @@
             position: absolute; /* Posición absoluta para posicionar con respecto al contenedor padre más cercano */
             right: 0;
             backdrop-filter: blur(10px); /* Desenfoque del fondo del elemento */
-            top: 140%;
+            top: 100%;
             z-index: 1; /* Hace que el carrito esté por encima de otros elementos */
             background-color: #4E485076; /* Color de fondo con opacidad */
             padding: 10px;
@@ -393,13 +391,15 @@
         }
 
         /* Estilos específicos para .btn-2:hover, .btn-3:hover, .btn-1:hover */
-        .btn-2:hover,
         .btn-3:hover,
+        .btn-2:hover,
         .btn-1:hover {
-            background-color: #13462E;
+            background-color: #023b07;
         }
 
-        /* Estilos específicos para .btn-3 */
+
+
+            /* Estilos específicos para .btn-3 */
         .btn-3 {
             margin: 0;
             padding: 8px 25px;
@@ -646,7 +646,7 @@
 
     // Función para desactivar la reproducción automática cuando esté lista
     function onPlayerReady(event) {
-        event.target.playvideo(); // Reproduce el video automáticamente
+        event.target.playVideo(); // Reproduce el video automáticamente
     }
 </script>
 
@@ -685,7 +685,7 @@
                 <!-- Submenú del carrito de compras -->
                 <div class="submenu">
                     <!-- Ícono de carrito de compras -->
-                    <img id="img-carrito" src="https://cdn-icons-png.flaticon.com/128/4305/4305700.png" width="45" height="35" alt="car">
+                    <img id="img-carrito" src="https://cdn.icon-icons.com/icons2/65/PNG/96/shoppingcart_accept_compra_12832.png" width="50" height="62" alt="car">
 
                     <!-- Contenido del carrito de compras (tabla y botones) -->
                     <div id="carrito">
@@ -724,7 +724,8 @@
             <!-- Descripción de productos y características -->
             BIENVENIDO A
             GYM PROTEIN,
-            VIVE LA MEJOR EXPERIENCIA DE
+         VIVE LA MEJOR EXPERIENCIA
+            DE
             ENTRENAMIENTO Y DESCUBRE
             TU VERDADERO POTENCIAL
         </p>
@@ -733,12 +734,14 @@
             <a th:href="@{/iniciar}" class="btn btn-success mb-4">INICIAR SESION</a>
         </div>
         <!-- Características de productos -->
-        <p>✔️ El ejercicio te ayuda a mejorar tu salud física y mental y a contar con un sistema inmune fuerte. Llena tu vida de energía y motivación. Supera tus límites con programas de entrenamiento diseñados por profesionales de la salud, de acuerdo con tus objetivos.</p>
+        <p>✔️ No te rindas. Sufre ahora y vive el resto de tu vida como un campeón
+            - Muhammad Ali</p>
 
-        <div class="butons">
+        <div class="btn-group">
 
-            <a href="https://industriasfenix.com/" class="btn-1">Información</a>
-            <a href="https://industriasfenix.com/emprendedores/" class="btn-1">leer Más</a>
+            <a th:href="@{/entrenamiento}" class="btn btn-warning mb-6"> RECOMENDACIONES</a>
+
+            <a th:href="@{/entrenamiento}" class="btn btn-dark mb-6"> GYM EN TIEMPO REAL</a>
         </div>
         <!-- Grupo de botones de acción (registro e inicio de sesión) -->
         <!-- Enlaces adicionales -->
@@ -758,15 +761,15 @@
     <div id="nosotros" class="ofert-1 b1">
         <!-- Contenido de texto de la primera oferta -->
         <div class="ofert-txt">
-            <h3>Nuestra visión</h3>
+            <h3>LLEVA TU GYM CONTIGO
+
+            </h3>
             <!-- Descripción de la visión de la empresa en el año 2024 -->
-            <a>✔ Ser en el año 2024, la empresa de producción y comercialización de trajes impermeables
-                Alto reconocimiento en el mercado.
-                Cobertura de 100% a nivel nacional y con un 35%  de la producción de la empresa para el mercado de exportación.</a>
+            <a>✔ Ve tus clases donde sea con acceso móvil vía iOS y Android, o web y próximamente desde tu TV.</a>
         </div>
         <!-- Imagen asociada a la primera oferta -->
         <div class="ofert-img">
-            <img src="https://industriasfenix.com/wp-content/uploads/elementor/thumbs/Estudio-855-1-scaled-q5zkfvh29n5p5atrqrmfmlrah8supic9sfa45xqm9c.jpg">
+            <img src="https://instafit.com/page_builder_blocks/platforms_devices/02_tablet_phone.png">
         </div>
     </div>
 
@@ -774,14 +777,14 @@
     <div class="ofert-1 b2">
         <!-- Contenido de texto de la segunda oferta -->
         <div class="ofert-txt">
-            <h3>Nuestra misión </h3>
+            <h3>SUPLEMENTOS </h3>
             <!-- Descripción de la misión de Legends Industrias -->
-            <a> ✔ Legends Industrias es una organización dedicada a la fabricación y comercialización
-                de productos en material reciclables de alta calidad, nuestra prioridad es brindarle a jóvenes y madres cabeza de hogar oportunidades de empleabilidad y crecimiento personal y profesional.</a>
+            <a> ✔Complementa tu entrenamiento y acelera tus resultados con InstaFit Vegan Protein, la proteína vegetal más deliciosa del mundo.
+                23g de proteína, 100% vegetal y adicionada con BCAA's, vitamina B12 y extracto de café verde para efecto termogénico.</a>
         </div>
         <!-- Imagen asociada a la segunda oferta -->
         <div class="ofert-img">
-            <img src="https://industriasfenix.com/wp-content/uploads/2023/08/Fenix-Adventure-Pro-1_new-1.png">
+            <img src="https://saludconlupa.com/media/images/1_Bj4dJnP.width-1920.jpg">
         </div>
     </div>
 
@@ -789,17 +792,15 @@
     <div class="ofert-1 b3">
         <!-- Contenido de texto de la tercera oferta -->
         <div class="ofert-txt">
-            <h3>Nuestros valores corporativos</h3>
+            <h3>ACCESO ILIMITADO</h3>
             <!-- Lista de valores corporativos con iconos -->
-            <a> ✔ RESPONSABILIDAD <img src="https://industriasfenix.com/wp-content/uploads/2023/03/social.png" height="30" width="30">
-                ✔TRABAJO EN EQUIPO. <img src="https://industriasfenix.com/wp-content/uploads/2023/03/meeting-1.png" height="30" width="30">
-                ✔HONESTIDAD<img src="https://industriasfenix.com/wp-content/uploads/2023/03/honesto.png" height="30" width="30">
-                ️️              ✔ESPÍRITU DE SERVICIO<img src="https://industriasfenix.com/wp-content/uploads/2023/03/public-service.png" height="30" width="30">
+            <a>
+                ️ ✔Disfruta más de 1,000 workouts y programas de fitness, yoga y meditación ilimitados.
             </a>
         </div>
         <!-- Imagen asociada a la tercera oferta -->
         <div class="ofert-img">
-            <img src="https://industriasfenix.com/wp-content/uploads/2023/07/dry_turtle_1_4.png">
+            <img src="https://images-ng.pixai.art/images/orig/b91b9412-9c8c-4e09-9674-7e3f8cf7c9a4">
         </div>
     </div>
 </section>
@@ -959,31 +960,35 @@
         <div class="testimonial-1">
 
             <!-- Párrafo del testimonio -->
-            <p>
-                He logrado obtener muy buenos ingresos adicionales que me han
-                ayudado ha cumplir con mis obligaciones. Muy agradecido con Fenix!!!
-            </p>
+            <p> 🥇 Entrenador personal a tu disponibilidad fuerza. </p>
+            <p> 💪 Coach entrenador personal en Colombia. </p>
+            <p> ⛹️ 38.461 clientes. </p>
+            <p> 💸 Coach de gym desde $40.000/h.  </p>
 
             <!-- Imagen asociada al testimonio -->
-            <img src="https://w7.pngwing.com/pngs/589/360/png-transparent-star-customer-service-review-rating-star-text-logo-computer-wallpaper.png" alt="920">
+            <center> <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FnIMa98KRS9COetMKHVK9_IFC-Agusto.png" alt="920"></center>
 
             <!-- Nombre del cliente que proporcionó el testimonio -->
-            <h4>Pablo Marín</h4>
-        </div>
+            <center><h4>Agusto Marín</h4></center>
 
+         </div>
         <div class="testimonial-1">
-            <p>
-                De verdad que son productos de muy buena calidad y muy cómodos, se venden muy bien y los clientes quedan satisfechos con la compra. 100% recomendados.
-            </p>
-            <img src="https://w7.pngwing.com/pngs/589/360/png-transparent-star-customer-service-review-rating-star-text-logo-computer-wallpaper.png" alt="920">
-            <h4>Sara Montoya</h4>
+
+            <p> 🥇 Entrenador personal a tu disponibilidad cardio. </p>
+            <p> 💪 Coach entrenador personal en Colombia. </p>
+            <p> ⛹️ 48.461 clientes. </p>
+            <p> 💸 Coach de gym desde $30.000/h.  </p>
+
+           <center>  <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FSikptcPYS8GQF90qooq0_IFC-Karmona.png" alt="920"></center>
+           <center> <h4>Pablo Montoya</h4></center>
         </div>
         <div class="testimonial-1">
-            <p>
-                El equipo de Fenix te brinda toda la ayuda para que puedas generar buenos ingresos, si eres una persona organizada y disciplinada puedes aumentar tus ganancias de manera significativa.
-            </p>
-            <img src="https://w7.pngwing.com/pngs/589/360/png-transparent-star-customer-service-review-rating-star-text-logo-computer-wallpaper.png" alt="920">
-            <h4>Jaime Ortiz</h4>
+            <p> 🥇 Entrenador personal a tu disponibilidad calistenia. </p>
+            <p> 💪 Coach entrenador personal en Colombia. </p>
+            <p> ⛹️ 28.461 clientes. </p>
+            <p> 💸 Coach de gym desde 20.000/h.  </p>
+            <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2Fl1qos4eLQ92p8Wpn7Crl_IFC-Pilar.png" alt="920">
+            <h4>Ana Ortiz</h4>
         </div>
     </div>
 </section>
@@ -1003,10 +1008,12 @@
 
             <!-- Párrafo de descripción y contacto -->
             <p>
-                Si tienes alguna duda sobre cómo ser distribuidor(a), próximamente podrás comprar en nuestra tienda en línea, tienes alguna sugerencia o comentario. Escríbenos y estaremos atentos a comunicarnos contigo en el menor tiempo posible.
+                Únete a miles de InstaFitters y carga tu entrenamiento de motivación, tips y energía para lograr los resultados que buscas.
             </p>
-            <p>📞 Nos puedes contactar 301 5015825 o el fijo 8741496. Llámanos! </p>
-            <p>📍 Estamos ubicados en el sector CRA 1 H # 6-50 B/ Centro, Neiva- Huila Colombia .</p>
+            <p> <img  src="https://cdn.icon-icons.com/icons2/72/PNG/256/mobile_phone_14388.png" width="30" height="30" alt="car">
+            Nos puedes contactar 301 5015825 o el fijo 8741496. Llámanos! </p>
+            <p> <img  src="https://cdn.icon-icons.com/icons2/865/PNG/512/Citycons_location_icon-icons.com_67931.png" width="30" height="30" alt="car">
+                 Estamos ubicados en el sector CRA 1 H # 6-50 B/ Centro, Neiva- Huila Colombia.</p>
         </div>
 
         <!-- División con clase "header-img" para la sección de imágenes -->

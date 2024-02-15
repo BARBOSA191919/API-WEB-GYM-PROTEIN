@@ -14,13 +14,20 @@
 <style>
     /* Estilos personalizados para el fondo y la tarjeta */
     body {
-        background-image: url('https://img.freepik.com/fotos-premium/dos-mujeres-posicion-bolsas-compras-fondo-naranja_398492-3752.jpg?w=2000');
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position:center;
         margin: 0; /* Elimina el margen predeterminado del cuerpo */
         padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+    }
+    #video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120%;
+        z-index: -1; /* Para asegurarse de que el video esté detrás de todo */
     }
 
     .container {
@@ -33,7 +40,7 @@
     .card {
         width: 520px;
         background: rgba(255, 255, 255, 0.5); /* Fondo blanco con opacidad del 70% */
-        backdrop-filter: blur(1px); /* Efecto de desenfoque para mejorar la transparencia */
+        backdrop-filter: blur(5px); /* Efecto de desenfoque para mejorar la transparencia */
     }
 
     .card-header {
@@ -43,6 +50,45 @@
 </style>
 <body>
 <!-- Contenedor principal con margen superior -->
+<div id="video-container"></div>
+<script>
+    // Inserta la API de YouTube
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Función para cargar el video
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('video-container', {
+            height: '100%',
+            width: '100%',
+            videoId: 'IjTOob3BKOw', // Reemplaza 'TU_ID_DE_VIDEO_YOUTUBE' con el ID de tu video de YouTube
+            playerVars: {
+                'autoplay': 1,
+                'controls': 1,
+                'loop': 1,
+                'mute': 0,
+                'playlist': 'IjTOob3BKOw', // Reemplaza 'TU_ID_DE_VIDEO_YOUTUBE' con el ID de tu video de YouTube
+                'modestbranding': 1,
+                'showinfo': 0,
+                'autohide': 1,
+                'disablekb': 1,
+                'enablejsapi': 1,
+                'origin': window.location.origin
+            },
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    // Función para desactivar la reproducción automática cuando esté lista
+    function onPlayerReady(event) {
+        event.target.playVideo(); // Reproduce el video automáticamente
+    }
+</script>
 <div class="container mt-5">
     <div class="col-sm-3">
         <!-- Formulario para confirmar la compra -->
@@ -121,18 +167,18 @@
                         <div class="form-group col-md-6">
                             <label>TIPO DE PRODUCTO</label>
                             <select class="form-control" th:field="*{tipoproducto}" required>
-                                <option value="Impermeable Siliconado 100%">Impermeable Siliconado 100%</option>
-                                <option value="Impermeable Desechable Adulto">Impermeable Desechable Adulto</option>
-                                <option value="Impermeable Para Moto">Impermeable Para Moto </option>
-                                <option value="Moto bicicleta Plastico reflectivo">Moto bicicleta Plastico reflectivo </option>
-                                <option value="Pijama Cubierta">Pijama Cubierta </option>
-                                <option value="Capa Plástica Desechable">Capa Plástica Desechable </option>
-                                <option value="Capa Plástica siliconado">Capa Plástica siliconado </option>
-                                <option value="Impermeable siliconado rojo ">Impermeable siliconado rojo </option>
-                                <option value="Protector Antideslizante">Protector Antideslizante </option>
-                                <option value="Tipo sudadera 100% impermeable"> Tipo sudadera 100% impermeable </option>
-                                <option value="Sudadera camufladae">Sudadera camuflada </option>
-                                <option value="Impermeable niños de coloroes">Impermeable niños de coloroes </option>
+                                <option value="Impermeable Siliconado 100%">Proteina Whey Standard 2 LB</option>
+                                <option value="Impermeable Desechable Adulto">Creatine Power Lb 10 LB</option>
+                                <option value="Impermeable Para Moto">Bi Pro, Proteina Classic 2 LB  </option>
+                                <option value="Moto bicicleta Plastico reflectivo">Proteína calórica, 10 LB </option>
+                                <option value="Pijama Cubierta">Kit Tres Termos Botella Motivacional </option>
+                                <option value="Capa Plástica Desechable">Termo 3 en 1 </option>
+                                <option value="Capa Plástica siliconado">Termo Botella Gym Estruche Cargadera Pbold </option>
+                                <option value="Impermeable siliconado rojo ">Buzo Deportivo Slim Fit Gym Lycra </option>
+                                <option value="Protector Antideslizante"> Bolso Deportivo Hombre o Mujer Color Rojo </option>
+                                <option value="Tipo sudadera 100% impermeable"> Maletín Puma Para Gym con Color Negro </option>
+                                <option value="Sudadera camufladae">Pantaloneta Licra Short Gym </option>
+                                <option value="Impermeable niños de coloroes">Pantaloneta X2 Licra Larga Hombre </option>
 
                                 <!-- ... (opciones adicionales) -->
                             </select>
