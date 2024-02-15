@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <!-- Definición del conjunto de caracteres y título de la página -->
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+
+    <!-- Enlace al archivo CSS de Bootstrap para estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!-- Icono de la página -->
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2511/PNG/96/coat_rain_jacket_raincoat_autumn_clothing_icon_150805.png" type="image/x-icon">
+</head>
+<style>
+    /* Estilos para el fondo y cuerpo del body */
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Evita que haya desplazamiento */
+    }
+    #video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120%;
+        z-index: -1; /* Para asegurarse de que el video esté detrás de todo */
+    }
+
+    /* Estilos para el contenedor principal */
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    /* Estilos para la tarjeta de inicio de sesión */
+    .card {
+        width: 350px;
+        background: rgba(255, 255, 255, 0.5); /* Fondo blanco con opacidad del 70% */
+        backdrop-filter: blur(8px); /* Efecto de desenfoque para mejorar la transparencia */
+    }
+
+    /* Estilos para el encabezado de la tarjeta */
+    .card-header {
+        background-image: url('https://w.forfun.com/fetch/15/159efd54ce603cfcca2d252b65ad3373.jpeg');
+        color: white;
+    }
+</style>
+<body>
+<div id="video-container"></div>
+<script>
+    // Inserta la API de YouTube
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Función para cargar el video
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('video-container', {
+            height: '100%',
+            width: '100%',
+            videoId: 'eTHNZQ0xgNc', // Reemplaza 'TU_ID_DE_VIDEO_YOUTUBE' con el ID de tu video de YouTube
+            playerVars: {
+                'autoplay': 1,
+                'controls': 1,
+                'loop': 1,
+                'mute': 0,
+                'playlist': 'eTHNZQ0xgNc', // Reemplaza 'TU_ID_DE_VIDEO_YOUTUBE' con el ID de tu video de YouTube
+                'modestbranding': 1,
+                'showinfo': 0,
+                'autohide': 1,
+                'disablekb': 1,
+                'enablejsapi': 1,
+                'origin': window.location.origin
+            },
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    // Función para desactivar la reproducción automática cuando esté lista
+    function onPlayerReady(event) {
+        event.target.playVideo(); // Reproduce el video automáticamente
+    }
+</script>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-sm-10">
+            <div class="col-md-6">
+                <!-- Formulario de inicio de sesión -->
+                <form th:action="@{/saves}" th:object="${impermeable}" method="POST">
+                    <div class="card mb-4">
+                        <center>
+                            <!-- Encabezado de la tarjeta -->
+                            <div class="card-header">Iniciar Sesión</div>
+                        </center>
+                        <div class="card-body">
+                            <center>
+                                <!-- Campos del formulario: ID, Email, Contraseña -->
+                                <div class="form-group col-md-10">
+                                    <label>🤵‍ID</label>
+                                    <input th:field="*{id}" type="number" class="form-control" required>
+                                </div>
+                                <div class="form-group col-md-10">
+                                    <label>📧EMAIL</label>
+                                    <input th:field="*{correo}" type="email" class="form-control" required>
+                                </div>
+                                <div class="form-group col-md-10 ">
+                                    <label>🔒 CONTRASEÑA</label>
+                                    <input th:field="*{contrasena}" type="password" class="form-control" required>
+                                </div>
+                            </center>
+                            <!-- Pie de la tarjeta con botones y mensaje de registro -->
+                            <div class="card-footer">
+                                <center>
+                                    <input type="submit" value="Guardar" class="btn btn-success">
+                                    <a th:href="@{/impermeable}" class="btn btn-warning">Atrás</a>
+                                </center>
+                                <div class="form-group">
+                                    <span>Si eres nuevo usuario <a th:href="@{/nuevo}">regístrate aquí</a></span>
+                                </div>
+                            </div>
+                            <script>
+                                // Función para mostrar el mensaje de inicio de sesión exitoso
+                                function mostrarMensaje() {
+                                    alert(" Sesión exitosa ✅");
+                                }
+
+                                // Agregar un evento 'onsubmit' al formulario para llamar a la función cuando se envía el formulario
+                                document.querySelector('form').addEventListener('submit', function() {
+                                    mostrarMensaje();
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

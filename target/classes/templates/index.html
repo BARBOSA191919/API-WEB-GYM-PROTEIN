@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>IMPERMEABLES BARBOSA LEGENDS</title>
+    <!-- Enlace al archivo CSS de Bootstrap para estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('https://i.blogs.es/cfa482/illusion_1440x900/1366_521.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* Estilos para el contenedor principal */
+        .container {
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: 300px;
+        }
+
+        /* Estilos para la tabla con fondo */
+        .table {
+            background-image: url('https://fondosmil.co/fondo/11565.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* Estilos para eliminar los bordes de la tabla */
+        .table th, .table td {
+            border: none;
+        }
+
+        /* Estilos para los botones y el espacio entre ellos */
+        .btn {
+            margin-right: 10px;
+        }
+
+        /* Estilos para centrar y espaciar el formulario de búsqueda */
+        .mb-3 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Estilos para el formulario de búsqueda */
+        #formBusqueda {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilos para el input de búsqueda */
+        #inputBusqueda {
+            border-radius: 5px;
+            padding: 8px;
+            margin-right: 5px;
+            width: 200px;
+        }
+
+        /* Estilos para el botón de búsqueda */
+        #btnBuscar {
+            border-radius: 5px;
+            padding: 8px 15px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Botón para agregar un nuevo registro -->
+    <center><a th:href="@{/nuevo}" class="btn btn-primary mb-4">AGREGAR REGISTRO 🤵‍♂️ </a></center>
+
+    <!-- Formulario de búsqueda -->
+    <div class="mb-3">
+        <form id="formBusqueda" class="form-inline">
+            <label class="sr-only" for="inputBusqueda"></label>
+            <input type="text" class="form-control mb-2 mr-sm-2" id="inputBusqueda" placeholder="🔍 Buscar por nombre ︎">
+            <button type="button" class="btn btn-primary mb-2" onclick="buscarUsuarios()">Buscar</button>
+        </form>
+    </div>
+
+    <!-- Tabla con datos de personas -->
+    <table class="table table-bordered ">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>DOCUMENTO</th>
+            <th>DIRECCION</th>
+            <th>TIPO DE DOCUMENTO</th>
+            <th>EMAIL</th>
+            <th>CONTRASEÑA</th>
+            <th>EDAD</th>
+            <th>FECHA</th>
+            <th>SEXO</th>
+            <th>ACCIONES</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iteración sobre la lista de personas para mostrar en la tabla -->
+        <tr th:each="persona:${personas}">
+            <!-- Columnas con los datos de cada persona -->
+            <td th:text="${persona.id}"></td>
+            <td th:text="${persona.nombre}"></td>
+            <td th:text="${persona.apellido}"></td>
+            <td th:text="${persona.documento}"></td>
+            <td th:text="${persona.direccion}"></td>
+            <td th:text="${persona.tipodocumento}"></td>
+            <td th:text="${persona.email}"></td>
+            <td th:text="${persona.contra}"></td>
+            <td th:text="${persona.edad}"></td>
+            <td th:text="${persona.fecha}"></td>
+            <td th:text="${persona.sexo}"></td>
+            <!-- Columna de acciones con botones de editar y eliminar -->
+            <td>
+                <div class="btn-group">
+                    <a th:href="@{'/editar/' + ${persona.id}}" class="btn btn-warning">Editar✍️</a>
+                    <a th:href="@{'/eliminar/' + ${persona.id}}" class="btn btn-danger">Eliminar🗑️</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Script de JavaScript para la función de búsqueda -->
+    <script>
+        function buscarUsuarios() {
+            var inputBusqueda = document.getElementById("inputBusqueda");
+            var filtro = inputBusqueda.value.toUpperCase();
+            var tabla = document.querySelector("table");
+            var filas = tabla.getElementsByTagName("tr");
+
+            // Itera sobre las filas de la tabla
+            for (var i = 0; i < filas.length; i++) {
+                var celdaNombre = filas[i].getElementsByTagName("td")[1]; // Cambia el índice según la posición de la columna del nombre
+                if (celdaNombre) {
+                    var textoCelda = celdaNombre.textContent || celdaNombre.innerText;
+                    // Oculta o muestra la fila según si el texto de la celda contiene el filtro
+                    if (textoCelda.toUpperCase().indexOf(filtro) > -1) {
+                        filas[i].style.display = "";
+                    } else {
+                        filas[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</div>
+</body>
+</html>
