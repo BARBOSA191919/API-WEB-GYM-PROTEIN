@@ -1,0 +1,103 @@
+.navbar-brand {
+  font-weight: bold;
+  font-size: 24px;
+}
+.content-section {
+  display: none;
+}
+.content-section.active {
+  display: block;
+}
+
+.diaSemana {
+  width: 45%;
+  margin: 10px auto;
+  background-color: rgb(191, 191, 255);
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+#diaSemana {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.hoy {
+  order: -1;
+  width: 90%;
+  margin: 0 auto;
+  background-color: rgb(243, 243, 255);
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.exercise {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.timer-controls > p {
+  cursor: pointer;
+}
+.card {
+  border: none;
+}
+.sem {
+  background-color: rgb(191, 191, 255);
+}
+
+.eje {
+  background-color: rgb(255, 191, 200);
+}
+
+.act {
+  background-color: rgb(255, 255, 191);
+}
+
+#actividad {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#ejercicios {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.flotar {
+  position: relative;
+  right: 0;
+  transform: translateX(-50%);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#ejercicios-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.hoy-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

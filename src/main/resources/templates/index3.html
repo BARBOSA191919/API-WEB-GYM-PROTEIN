@@ -2,10 +2,12 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>IMPERMEABLES BARBOSA LEGENDS</title>
+    <title>GymProtein</title>
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2511/PNG/96/coat_rain_jacket_raincoat_autumn_clothing_icon_150805.png" type="image/x-icon"><!--para agregar el icono a la pagina -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+  <style>
         body {
             background-image: url('https://i.blogs.es/cfa482/illusion_1440x900/1366_521.jpg');
             background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
@@ -105,13 +107,34 @@
             <td>
                 <div class="btn-group">
                     <a th:href="@{'/editar13/' + ${ventas.id}}" class="btn btn-warning">Editar✍️</a>
-                    <a th:href="@{'/eliminar13/' + ${ventas.id}}" class="btn btn-danger">Eliminar🗑️</a>
+                    <a th:href="@{'/eliminar13/' + ${ventas.id}}" class="btn btn-danger" onclick="return confirmarEliminacion(event)">Eliminar🗑️</a>
                 </div>
             </td>
         </tr>
         </tbody>
     </table>
     <script>
+      function confirmarEliminacion(event) {
+        event.preventDefault(); // Evitar que el enlace se abra directamente
+
+        // Mostrar una ventana de confirmación con SweetAlert
+        // Mostrar una ventana de confirmación con SweetAlert
+        Swal.fire({
+          title: '¿Estás seguro?',
+          text: 'Una vez eliminado, no podrás recuperar este elemento.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Sí, eliminarlo',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Redirigir al enlace de eliminación después de que el usuario haya confirmado la acción
+            window.location.href = event.target.getAttribute('href');
+          }
+        });
+      }
         function buscarUsuarios() {
             var inputBusqueda = document.getElementById("inputBusqueda");
             var filtro = inputBusqueda.value.toUpperCase();

@@ -6,7 +6,10 @@
     <title>Gym Protein</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2050/PNG/512/dumbbell_gym_icon_124413.png" type="image/x-icon"><!--para agregar el icono a la pagina -->
-    <style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,800;1,600&display=swap');
         /* Establece estilos iniciales para todos los elementos, eliminando márgenes, rellenos y decoraciones predeterminados */
         * {
@@ -605,7 +608,6 @@
             }
         }
 
-
     </style>
 </head>
 <!-- Inicio del cuerpo de la página -->
@@ -704,14 +706,31 @@
                         </table>
                         <!-- Enlaces para vaciar el carrito y proceder a la compra -->
                         <center>
-                            <a id="vaciar-carrito" class="btn-3">Vaciar carrito</a>
-                            <a th:href="@{/comprar}" class="btn btn-3 " id="comprar-venta">Comprar</a>
+                            <a id="vaciar-carrito" class="btn-3"> Vaciar carrito 🗑️ </a>
+                            <a th:href="@{/comprar}" class="btn btn-3 " id="comprar-venta" onclick="return confirmarEliminacion(event)">Comprar 💲️</a>
                         </center>
                     </div>
                 </div>
             </ul>
         </div>
     </div>
+  <script>
+    function confirmarEliminacion(event) {
+      event.preventDefault(); // Evitar que el enlace se abra directamente
+
+      // Mostrar una ventana de confirmación con SweetAlert
+      Swal.fire({
+        title: '¡COMPRAS EXITOSAS 🛍️!',
+        text: '¡Confirma tus datos!',
+        confirmButtonText: 'Aceptar',
+        }).then((result) => {
+          // Redirigir a la tienda después de que el usuario haga clic en Aceptar
+          if (result.isConfirmed) {
+              window.location.href = 'comprar';
+          }
+      });
+    }
+  </script>
 </header>
 
 <!-- Contenido principal de la página -->
@@ -730,7 +749,7 @@
             TU VERDADERO POTENCIAL
         </p>
         <div class="btn-group">
-            <a th:href="@{/nuevo}" class="btn btn-primary mb-4">EMPIENZA HOY 💪</a>
+            <a th:href="@{/nuevo}" class="btn btn-primary mb-4">EMPIENZA HOY 💪🏻</a>
             <a th:href="@{/iniciar}" class="btn btn-success mb-4">INICIAR SESION</a>
         </div>
         <!-- Características de productos -->
@@ -739,7 +758,7 @@
 
         <div class="btn-group">
 
-            <a th:href="@{/entrenamiento}" class="btn btn-warning mb-6"> RECOMENDACIONES</a>
+            <a th:href="@{/recomendaciones}" class="btn btn-warning mb-6"> RECOMENDACIONES</a>
 
             <a th:href="@{/entrenamiento}" class="btn btn-dark mb-6"> GYM EN TIEMPO REAL</a>
         </div>
@@ -1011,7 +1030,7 @@
                 Únete a miles de InstaFitters y carga tu entrenamiento de motivación, tips y energía para lograr los resultados que buscas.
             </p>
             <p> <img  src="https://cdn.icon-icons.com/icons2/72/PNG/256/mobile_phone_14388.png" width="30" height="30" alt="car">
-            Nos puedes contactar 301 5015825 o el fijo 8741496. Llámanos! </p>
+            Nos puedes contactar 301 5015825 o el fijo 8741496. ¡Llámanos! </p>
             <p> <img  src="https://cdn.icon-icons.com/icons2/865/PNG/512/Citycons_location_icon-icons.com_67931.png" width="30" height="30" alt="car">
                  Estamos ubicados en el sector CRA 1 H # 6-50 B/ Centro, Neiva- Huila Colombia.</p>
         </div>
@@ -1138,7 +1157,6 @@
                 // Almacena los datos del carrito en localStorage
                 localStorage.setItem("carrito", JSON.stringify(carrito));
                 // Redirige a la página de registro de compra
-                window.location.href = "ventas.html";
             } else {
                 // Muestra un mensaje al usuario indicando que el carrito está vacío
                 alert("El carrito está vacío. Agrega productos antes de comprar.");
@@ -1157,22 +1175,25 @@
             }
         }
 
-        // Función para agregar un producto al carrito
-        function agregarProductoAlCarrito(e) {
-            if (e.target.classList.contains("agregar-carrito")) {
-                const productoSeleccionado = e.target.parentElement;
-                obtenerProductoInfo(productoSeleccionado);
+        //funcion para agregar al carrito
+      function agregarProductoAlCarrito(e) {
+        if (e.target.classList.contains("agregar-carrito")) {
+          const productoSeleccionado = e.target.parentElement;
+          obtenerProductoInfo(productoSeleccionado);
 
-                // Muestra un mensaje de notificación
-                mostrarMensaje("PRODUCTO AGREGADO AL CARRITO🛒✔️");
-            }
-        }
 
-        // Función para mostrar mensajes de notificación
-        function mostrarMensaje(mensaje) {
-            // Puedes personalizar la forma en que se muestra el mensaje, por ejemplo, usando una alerta
-            alert(mensaje);
+          // Muestra un mensaje de notificación utilizando SweetAlert
+          Swal.fire({
+            title: '¡Producto agregado al 🛒 !',
+            text: '¡El producto ha sido añadido correctamente!',
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            // Usa el icono de Font Awesome
+            iconHtml: '<i class="fas fa-check-circle"></i>'
+
+          });
         }
+      }
 
         // Función para obtener la información del producto seleccionado
         function obtenerProductoInfo(producto) {
@@ -1255,7 +1276,7 @@
         <!-- Centra un párrafo que contiene un enlace a las políticas de privacidad -->
         <center><p><a href="https://www.mintic.gov.co/portal/inicio/Secciones-auxiliares/Politicas/2627:Politicas-de-Privacidad-y-Condiciones-de-Uso">Políticas de privacidad </a></p></center>
     </div>
-    </form>
+
 </body>
 </html>
 

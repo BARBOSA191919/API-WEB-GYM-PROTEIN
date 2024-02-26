@@ -10,6 +10,8 @@
 
     <!-- Enlace al archivo CSS de Bootstrap para estilos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </head>
 <style>
     /* Estilos personalizados para el fondo y la tarjeta */
@@ -25,9 +27,20 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 120%;
-        z-index: -1; /* Para asegurarse de que el video esté detrás de todo */
+        width: 100vw; /* Ancho de la ventana del navegador */
+        height: 120vh; /* Altura de la ventana del navegador */
+        z-index: -1;
+        overflow: hidden; /* Para evitar que el video se desborde */
+        display: flex;
+        justify-content: center; /* Centra horizontalmente el video */
+        align-items: center; /* Centra verticalmente el video */
+    }
+
+    #video-container video {
+        min-width: 100%; /* Mínimo ancho del video igual al ancho de la ventana del navegador */
+        min-height: 100%; /* Mínimo altura del video igual a la altura de la ventana del navegador */
+        width: auto; /* Ancho automático para mantener la relación de aspecto */
+        height: auto; /* Altura automática para mantener la relación de aspecto */
     }
 
     .container {
@@ -167,18 +180,18 @@
                         <div class="form-group col-md-6">
                             <label>TIPO DE PRODUCTO</label>
                             <select class="form-control" th:field="*{tipoproducto}" required>
-                                <option value="Impermeable Siliconado 100%">Proteina Whey Standard 2 LB</option>
-                                <option value="Impermeable Desechable Adulto">Creatine Power Lb 10 LB</option>
-                                <option value="Impermeable Para Moto">Bi Pro, Proteina Classic 2 LB  </option>
-                                <option value="Moto bicicleta Plastico reflectivo">Proteína calórica, 10 LB </option>
-                                <option value="Pijama Cubierta">Kit Tres Termos Botella Motivacional </option>
-                                <option value="Capa Plástica Desechable">Termo 3 en 1 </option>
-                                <option value="Capa Plástica siliconado">Termo Botella Gym Estruche Cargadera Pbold </option>
-                                <option value="Impermeable siliconado rojo ">Buzo Deportivo Slim Fit Gym Lycra </option>
-                                <option value="Protector Antideslizante"> Bolso Deportivo Hombre o Mujer Color Rojo </option>
-                                <option value="Tipo sudadera 100% impermeable"> Maletín Puma Para Gym con Color Negro </option>
-                                <option value="Sudadera camufladae">Pantaloneta Licra Short Gym </option>
-                                <option value="Impermeable niños de coloroes">Pantaloneta X2 Licra Larga Hombre </option>
+                                <option value="Proteina Whey Standard 2 LB">Proteina Whey Standard 2 LB</option>
+                                <option value="Creatine Power Lb 10 LB">Creatine Power Lb 10 LB</option>
+                                <option value="Bi Pro, Proteina Classic 2 LB">Bi Pro, Proteina Classic 2 LB  </option>
+                                <option value="Proteína calórica, 10 LB">Proteína calórica, 10 LB </option>
+                                <option value="Kit Tres Termos  Motivacional ">Kit Tres Termos Botella Motivacional </option>
+                                <option value="Termo 3 en 1">Termo 3 en 1 </option>
+                                <option value="Termo Botella Gym Estruch">Termo Botella Gym Estruche Cargadera Pbold </option>
+                                <option value="Buzo Deportivo Slim  ">Buzo Deportivo Slim Fit Gym Lycra </option>
+                                <option value="Bolso Deportivo Hombre o Mujer"> Bolso Deportivo Hombre o Mujer Color Rojo </option>
+                                <option value="Maletín Puma Para Gym"> Maletín Puma Para Gym con Color Negro </option>
+                                <option value="Pantaloneta Licra">Pantaloneta Licra Short Gym </option>
+                                <option value="Pantaloneta X2 Licra ">Pantaloneta X2 Licra Larga Hombre </option>
 
                                 <!-- ... (opciones adicionales) -->
                             </select>
@@ -195,19 +208,28 @@
                     <!-- Pie de la tarjeta con botones de guardar y atrás -->
                     <div class="card-footer">
                         <center> <input type="submit" value="Guardar" class="btn btn-success">
-                            <a th:href="@{/impermeable}" class="btn btn-warning">Atrás</a> </center>
+                            <a th:href="@{/gym}" class="btn btn-warning">Atrás</a> </center>
                     </div>
                 </div>
-                <script>
-                    // Función para mostrar el mensaje de inicio de sesión exitoso
-                    function mostrarMensaje() {
-                        alert(" Venta exitosa ✅");
+              <script>
+                // Agregar un evento 'onsubmit' al formulario para llamar a la función cuando se envía el formulario
+                document.querySelector('form').addEventListener('submit', function(event) {
+                  mostrarMensaje();
+                });
+                // Función para mostrar el mensaje de inicio de sesión exitoso utilizando SweetAlert
+                function mostrarMensaje() {
+                  Swal.fire({
+                    title: '¡Compra exitosa!',
+                    text: '¡Gracias por comprar!',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                  }).then((result) => {
+                    // Redirigir a la tienda después de que el usuario haga clic en Aceptar
+                    if (result.isConfirmed) {
+                      window.location.href = 'gym'; // Reemplaza 'ruta-de-tu-tienda' con la URL de tu tienda
                     }
-                    // Agregar un evento 'onsubmit' al formulario para llamar a la función cuando se envía el formulario
-                    document.querySelector('form').addEventListener('submit', function() {
-                        mostrarMensaje();
-                    });
-
+                  });
+                }
                     document.addEventListener("DOMContentLoaded", () => {
                         // Recupera los datos del carrito desde localStorage
                         const carritoAlmacenado = localStorage.getItem("carrito");

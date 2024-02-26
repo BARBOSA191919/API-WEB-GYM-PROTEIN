@@ -32,7 +32,7 @@ public class ControllerPersona {
     }
 
     // Maneja solicitudes GET a "/impermeable"
-    @GetMapping("/impermeable")
+    @GetMapping("/gym")
     // Mapea el modelo con la vista "tienda" y devuelve el nombre de la vista
     public String impermeable(Model model) {
         // Obtiene la lista de personas desde el servicio

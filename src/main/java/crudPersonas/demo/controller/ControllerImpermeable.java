@@ -36,7 +36,7 @@ public class ControllerImpermeable {
     @PostMapping("/saves")
     public String saves(@Validated Impermeable i) {
         permeableService.save(i);
-        return "redirect:/impermeable";
+        return "redirect:/gym";
     }
 
     @GetMapping("/editar12/{id}")
@@ -69,6 +69,10 @@ public class ControllerImpermeable {
         return "index4";
     }
 
-
+    @GetMapping("/recomendaciones")
+    public String agregarrecomendaciones(Model model) {
+        model.addAttribute("iRegistroActividadService", new Impermeable());
+        return "redirect:http://localhost:4200/recomendaciones";
+    }
 
 }

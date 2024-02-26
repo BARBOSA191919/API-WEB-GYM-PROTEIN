@@ -33,7 +33,7 @@ public class ControllerVentas {
     @PostMapping("/save2")
     public String save2(@Validated Ventas i) {
         ventasService.save(i);
-        return "redirect:/impermeable";
+        return "redirect:/gym";
     }
 
     @GetMapping("/editar13/{id}")
@@ -58,4 +58,8 @@ public class ControllerVentas {
         model.addAttribute("ventas", new Ventas());
         return "ventas";
     }
-}
+    }
+
+
+
+

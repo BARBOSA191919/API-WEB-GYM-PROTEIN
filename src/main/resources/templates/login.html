@@ -10,6 +10,8 @@
 
     <!-- Icono de la página -->
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2511/PNG/96/coat_rain_jacket_raincoat_autumn_clothing_icon_150805.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </head>
 <style>
     /* Estilos para el fondo y cuerpo del body */
@@ -24,9 +26,20 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 120%;
-        z-index: -1; /* Para asegurarse de que el video esté detrás de todo */
+        width: 100vw; /* Ancho de la ventana del navegador */
+        height: 120vh; /* Altura de la ventana del navegador */
+        z-index: -1;
+        overflow: hidden; /* Para evitar que el video se desborde */
+        display: flex;
+        justify-content: center; /* Centra horizontalmente el video */
+        align-items: center; /* Centra verticalmente el video */
+    }
+
+    #video-container video {
+        min-width: 100%; /* Mínimo ancho del video igual al ancho de la ventana del navegador */
+        min-height: 100%; /* Mínimo altura del video igual a la altura de la ventana del navegador */
+        width: auto; /* Ancho automático para mantener la relación de aspecto */
+        height: auto; /* Altura automática para mantener la relación de aspecto */
     }
 
     /* Estilos para el contenedor principal */
@@ -49,6 +62,7 @@
         background-image: url('https://w.forfun.com/fetch/15/159efd54ce603cfcca2d252b65ad3373.jpeg');
         color: white;
     }
+
 </style>
 <body>
 <div id="video-container"></div>
@@ -90,6 +104,7 @@
         event.target.playVideo(); // Reproduce el video automáticamente
     }
 </script>
+
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-sm-10">
@@ -121,23 +136,35 @@
                             <div class="card-footer">
                                 <center>
                                     <input type="submit" value="Guardar" class="btn btn-success">
-                                    <a th:href="@{/impermeable}" class="btn btn-warning">Atrás</a>
+                                    <a th:href="@{/gym}" class="btn btn-warning">Atrás</a>
                                 </center>
                                 <div class="form-group">
                                     <span>Si eres nuevo usuario <a th:href="@{/nuevo}">regístrate aquí</a></span>
                                 </div>
                             </div>
-                            <script>
-                                // Función para mostrar el mensaje de inicio de sesión exitoso
-                                function mostrarMensaje() {
-                                    alert(" Sesión exitosa ✅");
-                                }
 
-                                // Agregar un evento 'onsubmit' al formulario para llamar a la función cuando se envía el formulario
-                                document.querySelector('form').addEventListener('submit', function() {
-                                    mostrarMensaje();
-                                });
-                            </script>
+                          <script>
+                            // Agregar un evento 'onsubmit' al formulario para llamar a la función cuando se envía el formulario
+                            document.querySelector('form').addEventListener('submit', function(event) {
+                              mostrarMensaje();
+                            });
+                            // Función para mostrar el mensaje de inicio de sesión exitoso utilizando SweetAlert
+                            function mostrarMensaje() {
+                              Swal.fire({
+                                title: '¡Sesión exitosa!',
+                                text: '¡Bienvenido!',
+                                icon: 'success',
+                                confirmButtonText: 'Aceptar'
+                              }).then((result) => {
+                                // Redirigir a la tienda después de que el usuario haga clic en Aceptar
+                                if (result.isConfirmed) {
+                                  window.location.href = 'gym'; //  la URL de tu tienda
+                                }
+                              });
+                              return false;
+                            }
+                          </script>
+
                         </div>
                     </div>
                 </form>
@@ -147,3 +174,5 @@
 </div>
 </body>
 </html>
+
+

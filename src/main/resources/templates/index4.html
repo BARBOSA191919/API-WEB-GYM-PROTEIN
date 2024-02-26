@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GymProtein</title>
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2050/PNG/512/dumbbell_gym_icon_124413.png" type="image/x-icon"><!--para agregar el icono a la pagina -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <!-- Bootstrap CSS -->
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -232,6 +234,8 @@
                     onclick="showContent('ejercicios')"
                     >Gestionar</a
                   >
+                  <a th:href="@{/gym}" class="btn btn-warning">Atrás</a>
+
                 </div>
               </div>
             </div>

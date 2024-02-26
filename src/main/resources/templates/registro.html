@@ -10,6 +10,7 @@
 
     <!-- Icono de la página -->
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2511/PNG/96/coat_rain_jacket_raincoat_autumn_clothing_icon_150805.png" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- Estilos personalizados para el fondo y la tarjeta -->
     <style>
@@ -24,9 +25,20 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 120%;
-            z-index: -1; /* Para asegurarse de que el video esté detrás de todo */
+            width: 100vw; /* Ancho de la ventana del navegador */
+            height: 120vh; /* Altura de la ventana del navegador */
+            z-index: -1;
+            overflow: hidden; /* Para evitar que el video se desborde */
+            display: flex;
+            justify-content: center; /* Centra horizontalmente el video */
+            align-items: center; /* Centra verticalmente el video */
+        }
+
+        #video-container video {
+            min-width: 100%; /* Mínimo ancho del video igual al ancho de la ventana del navegador */
+            min-height: 100%; /* Mínimo altura del video igual a la altura de la ventana del navegador */
+            width: auto; /* Ancho automático para mantener la relación de aspecto */
+            height: auto; /* Altura automática para mantener la relación de aspecto */
         }
 
         .container {
@@ -192,26 +204,36 @@
                 <!-- Pie de la tarjeta con checkbox de acuerdo y botones de guardar y atrás -->
                 <div class="card-footer">
                     <h6>
-                        <input type="checkbox" id="terminosCheckbox" name="terminosCheckbox" required>
-                        <label for="terminosCheckbox">Estoy de acuerdo con <a href="https://www.icontec.org/terminos-y-condiciones/">Términos y Condiciones</a></label>
+                      <input type="checkbox" id="terminosCheckbox" name="terminosCheckbox" required>
+                      <label for="terminosCheckbox">Estoy de acuerdo con <a href="https://www.icontec.org/terminos-y-condiciones/" target="_blank">Términos y Condiciones</a></label>
                     </h6>
                     <center>
                         <input type="submit" value="Guardar" class="btn btn-success">
-                        <a th:href="@{/impermeable}" class="btn btn-warning">Atrás</a>
+                        <a th:href="@{/gym}" class="btn btn-warning">Atrás</a>
                     </center>
                 </div>
             </div>
-            <script>
-                // Función para mostrar el mensaje de inicio de sesión exitoso
-                function mostrarMensaje() {
-                    alert(" Registro exitoso ✅");
-                }
+          <script>
+            // Agregar un evento 'onsubmit' al formulario para llamar a la función cuando se envía el formulario
+            document.querySelector('form').addEventListener('submit', function(event) {
+              mostrarMensaje();
+            });
 
-                // Agregar un evento 'onsubmit' al formulario para llamar a la función cuando se envía el formulario
-                document.querySelector('form').addEventListener('submit', function() {
-                    mostrarMensaje();
-                });
-            </script>
+            // Función para mostrar el mensaje de inicio de sesión exitoso utilizando SweetAlert
+            function mostrarMensaje() {
+              Swal.fire({
+                title: '¡Registro exitoso!',
+                text: '¡Inicia sesion!',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+              }).then((result) => {
+                // Redirigir a la tienda después de que el usuario haga clic en Aceptar
+                if (result.isConfirmed) {
+                  window.location.href = 'iniciar'; // Reemplaza 'ruta-de-tu-tienda' con la URL de tu tienda
+                }
+              });
+            }
+          </script>
         </form>
     </div>
 </div>
