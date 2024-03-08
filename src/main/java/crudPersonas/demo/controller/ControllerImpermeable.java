@@ -72,7 +72,6 @@ public class ControllerImpermeable {
     @GetMapping("/recomendaciones")
     public String agregarrecomendaciones(Model model) {
         model.addAttribute("iRegistroActividadService", new Impermeable());
-        return "redirect:http://localhost:4200/recomendaciones";
+        return "redirect:http://localhost:4200/login";
     }
-
 }

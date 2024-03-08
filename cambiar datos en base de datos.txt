@@ -1,8 +1,0 @@
-UPDATE personas SET estado_civil = 'Casado' WHERE id = '3233211';
-
-nombre de la tabla en xammpp , escoge la columna que quiere cambiar y le pone el id de la columna
-
-
-eliminar  datos- se cambia registro por el nombre de la tabla que tenga y el id o otro parametro que desea eliminar
-
-DELETE FROM registro WHERE id = '1';

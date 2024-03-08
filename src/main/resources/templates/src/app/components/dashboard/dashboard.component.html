@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recomendaciones de Proteínas y Entrenamiento</title>
+  <title>Proteínas y Entrenamiento</title>
   <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2050/PNG/512/dumbbell_gym_icon_124413.png" type="image/x-icon">
   <!--para agregar el icono a la pagina -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     .button {
       background-color: #4CAF50;
@@ -93,106 +91,99 @@
     .navbar-brand {
       width: 60%; /* Ocupa todo el ancho de la página */
       top: 0; /* Se fija en la parte superior */
-
+      color:red;
     }
 
   </style>
 </head>
-<body>
+<body class="bg-gray-900 text-white">
 <header>
 </header>
+<nav class="bg-gray-800">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center py-4">
+      <a class="text-2xl font-bold text-white" href="#">GymProtein ⚡</a>
+      <button class="text-white inline-block md:hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <div class="hidden md:flex space-x-4">
+        <a class="text-gray-300 hover:text-white" href="#">Inicio</a>
+        <a class="text-gray-300 hover:text-white" href="#">Entrenadores</a>
+        <a class="text-gray-300 hover:text-white" href="#">Nutricionistas</a>
+        <a class="text-gray-300 hover:text-white" href="#">Suscripción</a>
+            <button (click)="logOut()" class="nav-link btn-logout text-red bg-red-700 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-700 dark:hover:bg-red-800 dark:focus:ring-red-800">Cerrar Sesión</button> <!-- Cambiar color del botón -->
+      </div>
+      </div>
+    </div>
+  </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">GymProtein ⚡</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Entrenadores</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Nutricionistas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Suscripción</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 <div class="container" style="margin: 0 auto;">
-   <div class="section" style="float:left; width: 50%;">
-         <div class="container relative mx-auto p-4 py-4 lg:py-8 flex flex-col items-center">
-           <div class="px-4 md:pb-4 max-w-md mx-auto">
-             <h2 class="md:text-xl md:text-2xl text-center heading_font_family mb-2" style=""><span
-               style="color: #00f8b6;"><span class="text-3xl">PROTEINAS 🥤</span></span></h2>
-             <div class="mb-4 text-base text-center body_font_family" style=""><div class="editor-content"><span
-               style="color: rgb(196, 196, 196)">&nbsp;¡Ponte FUERTE con las recomendaciones más grandes de profesionals de Proteinas de todas las marcas!
+  <div class="section" style="float:left; width: 50%;">
+    <div class="container relative mx-auto p-4 py-4 lg:py-8 flex flex-col items-center">
+      <div class="px-4 md:pb-4 max-w-md mx-auto">
+        <h2 class="md:text-xl md:text-2xl text-center heading_font_family mb-2" style=""><span
+          style="color: #00f8b6;"><span class="text-3xl">PROTEINAS 🥤</span></span></h2>
+        <div class="mb-4 text-base text-center body_font_family" style=""><div class="editor-content"><span
+          style="color: rgb(196, 196, 196)">&nbsp;¡Ponte FUERTE con las recomendaciones más grandes de profesionals de Proteinas de todas las marcas!
                 Elige los consejos que deseas en on demand para ponerte en forma mientras te diviertes.</span></div></div>
-           </div>
-         </div>
-   <h2></h2>
-   <div class="card">
-    <h3>1. Proteína (Whey Protein) Optimun: </h3>
-      <p>✔️  Es difícil superar un clásico. Podría decirse que la proteína de suero más reconocida en el planeta, Gold Standard de Optimum Nutrition, es también probablemente la más fácil de conseguir según el análisís cientifíco.Te invitamos a observar el video.👀</p>
-   <iframe width="460" height="315" src="https://www.youtube.com/embed/hGe5amkOeG4?si=9DlTS7XTFcZLLi-2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
     </div>
-     <div class="card">
+    <h2></h2>
+    <div class="card">
+      <h3>1. Proteína (Whey Protein) Optimun: </h3>
+      <p>✔️  Es difícil superar un clásico. Podría decirse que la proteína de suero más reconocida en el planeta, Gold Standard de Optimum Nutrition, es también probablemente la más fácil de conseguir según el análisís cientifíco.Te invitamos a observar el video.👀</p>
+      <iframe width="460" height="315" src="https://www.youtube.com/embed/hGe5amkOeG4?si=9DlTS7XTFcZLLi-2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="card">
       <h3>2. Creatine Power (Megaplex)</h3>
-      <p>✔️ La caseína es una proteína de digestión lenta que es ideal para tomar antes de dormir.
-        Proporciona un suministro constante de aminoácidos durante la noche, lo que favorece la recuperación y el crecimiento muscular.</p>
-       <iframe width="460" height="315" src="https://www.youtube.com/embed/DrkUexKvGJM?si=ut8e5zPXpP4cZWCE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <p>✔️ Gracias a su contenido en aminoácidos de cadena ramificada (BCAA), esta proteína promueve una mejor síntesis de proteínas y provee mayor resistencia durante los entrenamientos. La proteína hipercalórica de suero es ideal para aumentar masa muscular y mejorar el rendimiento deportivo.</p>
+      <iframe width="460" height="315" src="https://www.youtube.com/embed/DrkUexKvGJM?si=ut8e5zPXpP4cZWCE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
     <div class="card">
       <h3>3. Bi Pro Proteina (BiPro )</h3>
-      <p>✔️ Las proteínas vegetales como la soja, el guisante y el cáñamo son excelentes alternativas para los vegetarianos y veganos. Son ricas en aminoácidos esenciales y ayudan a mantener la masa muscular.</p>
+      <p>✔️ Bi Pro complementa tu alimentación para que cumplas los requerimientos diarios de proteína y puedas cumplir tus objetivos ya se aumentar masa muscular o reducir porcentaje de grasa. Contiene 21 gramos de proteína, 0.5 gramos de grasa, menos de 1 gramo de azúcar y menos de 1 gramo de carbohidratos.</p>
       <iframe width="460" height="315" src="https://www.youtube.com/embed/YR0ngpq-x3o?si=5T5jnQk6s1olbUsu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
     <div class="card">
       <h3>4. Proteína calórica (Gainer Pro) </h3>
-      <p>✔️ Las proteínas vegetales como la soja, el guisante y el cáñamo son excelentes alternativas para los vegetarianos y veganos. Son ricas en aminoácidos esenciales y ayudan a mantener la masa muscular.</p>
+      <p>✔️ GAINER PRO es una mezcla de carbohidratos, proteínas + creatina diseñada para aumentar el peso corporal, potenciar el rendimiento deportivo, recuperar los tejidos y dar energía de alta potencia. Promueve la síntesis proteica y recupera las reservas de glucógeno muscular y hepático.</p>
       <iframe width="460" height="315" src="https://www.youtube.com/embed/dEVdfWNDP_A?si=QqtKY9oy9MtI5P9w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-     <div class="card">
-       <h3>5. Kit De Termos </h3>
-       <p>✔️ Kit Tres Termos (Marca Pines) :</p>
-       <p>✔️ Termo 3 en 1(Calidad Shaker):</p>
-       <p>✔️ Termo Botella Gym Estruche Cargadera (Calidad Pbold):</p>
+    <div class="card">
+      <h3>5. Kit De Termos </h3>
+      <p>✔️ Kit Tres Termos (Marca Pines) :</p>
+      <p>✔️ Termo 3 en 1(Calidad Shaker):</p>
+      <p>✔️ Termo Botella Gym Estruche Cargadera (Calidad Pbold):</p>
 
       <iframe width="460" height="315" src="https://www.youtube.com/embed/beWIVoXP_fs?si=l_OF-CBJc_DMhgZo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-     </div>
-     <div class="card">
-       <h3>6. Buzo y Pantaloneta Deportiva </h3>
-       <p>✔️ Buzo Deportivo Slim Fit Gym Lycra Fria (Calidad UV):</p>
-       <p>✔️ Pantaloneta Licra Short Gym  (Calidad Procter): </p>
-       <p>✔️ Pantaloneta X2 Licra Larga Hombre (Riple original)  </p>
-       <iframe width="460" height="315" src="https://www.youtube.com/embed/IB8-Kdlblu8?si=Gy81JR4fQ4AD45RV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-     </div>
-     <div class="card">
-       <h3>7. Bolsos Deporitovos</h3>
-       <p>✔️ Bolso Deportivo Hombre o Mujer Color Rojo (Marca Limits)</p>
-       <p>✔️️Maletín Puma Para Gym con Color Negro (Calidad Puma)</p>
-       <iframe width="460" height="315" src="https://www.youtube.com/embed/I1nSFFcbx58?si=g4MqaCZ8xFU3i6Tj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-     </div>
+    </div>
+    <div class="card">
+      <h3>6. Buzo y Pantaloneta Deportiva </h3>
+      <p>✔️ Buzo Deportivo Slim Fit Gym Lycra Fria (Calidad UV):</p>
+      <p>✔️ Pantaloneta Licra Short Gym  (Calidad Procter): </p>
+      <p>✔️ Pantaloneta X2 Licra Larga Hombre (Riple original)  </p>
+      <iframe width="460" height="315" src="https://www.youtube.com/embed/IB8-Kdlblu8?si=Gy81JR4fQ4AD45RV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="card">
+      <h3>7. Bolsos Deporitovos</h3>
+      <p>✔️ Bolso Deportivo Hombre o Mujer Color Rojo (Marca Limits)</p>
+      <p>✔️️Maletín Puma Para Gym con Color Negro (Calidad Puma)</p>
+      <iframe width="460" height="315" src="https://www.youtube.com/embed/I1nSFFcbx58?si=g4MqaCZ8xFU3i6Tj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
 
-     <div class="container relative mx-auto p-4 py-4 lg:py-8 flex flex-col items-center">
-       <div class="px-4 md:pb-4 max-w-md mx-auto">
-         <h2 class="md:text-xl md:text-2xl text-center heading_font_family mb-2" style=""><span
-           style="color: #00f8b6;"><span class="text-3xl">Nutricionistas Personalizados </span></span></h2>
-         <div class="mb-4 text-base text-center body_font_family" style=""><div class="editor-content"><span
-           style="color: rgb(196, 196, 196)">&nbsp;¡Sé parte de esta comunidad y disfruta de este viaje con tu cuerpo y mente!
+    <div class="container relative mx-auto p-4 py-4 lg:py-8 flex flex-col items-center">
+      <div class="px-4 md:pb-4 max-w-md mx-auto">
+        <h2 class="md:text-xl md:text-2xl text-center heading_font_family mb-2" style=""><span
+          style="color: #00f8b6;"><span class="text-3xl">Nutricionistas Personalizados </span></span></h2>
+        <div class="mb-4 text-base text-center body_font_family" style=""><div class="editor-content"><span
+          style="color: rgb(196, 196, 196)">&nbsp;¡Sé parte de esta comunidad y disfruta de este viaje con tu cuerpo y mente!
                </span></div></div>
-       </div>
-     </div>
+      </div>
+    </div>
 
-     <div class="nutritionist">
+    <div class="nutritionist">
       <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FSikptcPYS8GQF90qooq0_IFC-Karmona.png" alt="Nutricionista 1">
       <h3>Nutricionista 1</h3>
       <p>Categoría: Nutricionista deportivo</p>
@@ -217,14 +208,14 @@
       <button class="button" onclick="subscribe(7, 'Nutricionista 2')">Suscribirse por 7 días ($25)</button>
       <button class="button" onclick="subscribe(30, 'Nutricionista 2')">Suscribirse por 1 mes ($60)</button>
     </div>
-     <div class="nutritionist">
-       <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2Fl1qos4eLQ92p8Wpn7Crl_IFC-Pilar.png" alt="Nutricionista 2">
-       <h3>Nutricionista 4</h3>
-       <p>Categoría: Nutricionista clínico</p>
-       <p>Forma de trabajar: Enfoque en la salud gastrointestinal y el bienestar general.</p>
-       <button class="button" onclick="subscribe(7, 'Nutricionista 2')">Suscribirse por 7 días ($25)</button>
-       <button class="button" onclick="subscribe(30, 'Nutricionista 2')">Suscribirse por 1 mes ($60)</button>
-     </div>
+    <div class="nutritionist">
+      <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2Fl1qos4eLQ92p8Wpn7Crl_IFC-Pilar.png" alt="Nutricionista 2">
+      <h3>Nutricionista 4</h3>
+      <p>Categoría: Nutricionista clínico</p>
+      <p>Forma de trabajar: Enfoque en la salud gastrointestinal y el bienestar general.</p>
+      <button class="button" onclick="subscribe(7, 'Nutricionista 2')">Suscribirse por 7 días ($25)</button>
+      <button class="button" onclick="subscribe(30, 'Nutricionista 2')">Suscribirse por 1 mes ($60)</button>
+    </div>
   </div>
 </div>
 
@@ -269,7 +260,7 @@
             <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full"
                data-entity-id="P4R91NMxpWPwGc2lYH9m9">
               <img alt="" class="pb-card object-cover h-full w-full"
-                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FmtBKTTN6HzndjN0wymgD_1.png" height="250" />
+                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2F7lUDDDkRhG3CKaFlfbR1_3.png" height="250" />
               <div style="background-color: rgba(0,0,0,0); color: #00f8b6ff;"
                    class="md:text-left body_font_family max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 rounded-l-none rounded-lg">
                 <p></p>
@@ -282,20 +273,7 @@
             <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full"
                data-entity-id="P4R91NMxpWPwGc2lYH9m9">
               <img alt="" class="pb-card object-cover h-full w-full"
-                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FU2kSV8FrRCSISTVHYEcQ_2.png" height="250" />
-              <div style="background-color: rgba(0,0,0,0); color: #00f8b6ff;"
-                   class="md:text-left body_font_family max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 rounded-l-none rounded-lg">
-                <p></p>
-              </div>
-            </a>
-          </div>
-          </div>
-        <div class="container mx-auto flex flex-wrap -mx-1 justify-center">
-          <div class="my-1 w-full md:w-1/2 lg:w-1/3 text-center p-2">
-            <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full"
-               data-entity-id="P4R91NMxpWPwGc2lYH9m9">
-              <img alt="" class="pb-card object-cover h-full w-full"
-                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FmtBKTTN6HzndjN0wymgD_1.png" height="250" />
+                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2F5oZc707XS8a5lm1yGrxg_5.png" height="250" />
               <div style="background-color: rgba(0,0,0,0); color: #00f8b6ff;"
                    class="md:text-left body_font_family max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 rounded-l-none rounded-lg">
                 <p></p>
@@ -308,7 +286,7 @@
             <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full"
                data-entity-id="P4R91NMxpWPwGc2lYH9m9">
               <img alt="" class="pb-card object-cover h-full w-full"
-                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FU2kSV8FrRCSISTVHYEcQ_2.png" height="250" />
+                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2Fu3KPjQ6QxegN4g8UWMDn_6.png" height="250" />
               <div style="background-color: rgba(0,0,0,0); color: #00f8b6ff;"
                    class="md:text-left body_font_family max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 rounded-l-none rounded-lg">
                 <p></p>
@@ -321,7 +299,7 @@
             <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full"
                data-entity-id="P4R91NMxpWPwGc2lYH9m9">
               <img alt="" class="pb-card object-cover h-full w-full"
-                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FmtBKTTN6HzndjN0wymgD_1.png" height="250" />
+                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FX5axWhJSTedBcVrRR4ei_9.png" height="250" />
               <div style="background-color: rgba(0,0,0,0); color: #00f8b6ff;"
                    class="md:text-left body_font_family max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 rounded-l-none rounded-lg">
                 <p></p>
@@ -334,7 +312,7 @@
             <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full"
                data-entity-id="P4R91NMxpWPwGc2lYH9m9">
               <img alt="" class="pb-card object-cover h-full w-full"
-                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FU2kSV8FrRCSISTVHYEcQ_2.png" height="250" />
+                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FUPouMuMmT2KgDGjiDUqc_12.png" height="250" />
               <div style="background-color: rgba(0,0,0,0); color: #00f8b6ff;"
                    class="md:text-left body_font_family max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 rounded-l-none rounded-lg">
                 <p></p>
@@ -343,15 +321,15 @@
           </div>
         </div>
 
-            <div class="container relative mx-auto p-4 py-4 lg:py-8 flex flex-col items-center">
-              <div class="px-4 md:pb-4 max-w-md mx-auto">
-                <h2 class="md:text-xl md:text-2xl text-center heading_font_family mb-2" style=""><span
-                  style="color: #00f8b6;"><span class="text-3xl">SUSCRIPCION </span></span></h2>
-                <div class="mb-4 text-base text-center body_font_family" style=""><div class="editor-content"><span
-                  style="color: rgb(196, 196, 196)">&nbsp;¡Sé parte de esta comunidad y disfruta de este viaje con tu cuerpo y mente!
+        <div class="container relative mx-auto p-4 py-4 lg:py-8 flex flex-col items-center">
+          <div class="px-4 md:pb-4 max-w-md mx-auto">
+            <h2 class="md:text-xl md:text-2xl text-center heading_font_family mb-2" style=""><span
+              style="color: #00f8b6;"><span class="text-3xl">SUSCRIPCION </span></span></h2>
+            <div class="mb-4 text-base text-center body_font_family" style=""><div class="editor-content"><span
+              style="color: rgb(196, 196, 196)">&nbsp;¡Sé parte de esta comunidad y disfruta de este viaje con tu cuerpo y mente!
                </span></div></div>
-              </div>
-            </div>
+          </div>
+        </div>
         <div class="subscription-plan">
           <h2>MENSUAL</h2>
           <p>CARGO MENSUAL</p>
@@ -399,7 +377,7 @@
         </div>
         <div class="trainer">
           <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2F75HLS5ngREW5ZSvNqBKI_IFC-Mariana.png" alt="Entrenador 2">
-          <h3>Entrenador 2</h3>
+          <h3>Entrenador 3</h3>
           <p>Categoría: Entrenamiento de resistencia</p>
           <p>Forma de trabajar: Enfoque en cardio y ejercicios de alta intensidad.</p>
           <button class="button" onclick="subscribe(7, 'Entrenador 2')">Suscribirse por 7 días ($15)</button>
@@ -408,17 +386,22 @@
 
         <div class="trainer">
           <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2F75HLS5ngREW5ZSvNqBKI_IFC-Mariana.png" alt="Entrenador 2">
-          <h3>Entrenador 2</h3>
+          <h3>Entrenador 4</h3>
           <p>Categoría: Entrenamiento de resistencia</p>
           <p>Forma de trabajar: Enfoque en cardio y ejercicios de alta intensidad.</p>
           <button class="button" onclick="subscribe(7, 'Entrenador 2')">Suscribirse por 7 días ($15)</button>
           <button class="button" onclick="subscribe(30, 'Entrenador 2')">Suscribirse por 1 mes ($40)</button>
         </div>
 
-
       </div>
     </div>
   </section>
 </div>
+<footer class="bg-gray-800 py-4">
+  <div class="container mx-auto text-center">
+    <p class="text-gray-300">&copy; 2024 GymProtein. Todos los derechos reservados.</p>
+  </div>
+</footer>
 </body>
 </html>
+
