@@ -80,14 +80,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="impermeable:${impermeable}">
-      <td th:text="${impermeable.id}"></td>
-      <td th:text="${impermeable.correo}"></td>
-      <td th:text="${impermeable.contrasena}"></td>
+    <tr th:each="gym:${gym}">
+      <td th:text="${gym.id}"></td>
+      <td th:text="${gym.correo}"></td>
+      <td th:text="${gym.contrasena}"></td>
       <td>
         <div class="btn-group">
-          <a th:href="@{'/editar12/' + ${impermeable.id}}" class="btn btn-warning">Editar✍️</a>
-          <a th:href="@{'/eliminar12/' + ${impermeable.id}}" class="btn btn-danger " onclick="return confirmarEliminacion(event)">Eliminar🗑️</a>
+          <a th:href="@{'/editar12/' + ${gym.id}}" class="btn btn-warning">Editar✍️</a>
+          <a th:href="@{'/eliminar12/' + ${gym.id}}" class="btn btn-danger " onclick="return confirmarEliminacion(event)">Eliminar🗑️</a>
         </div>
       </td>
     </tr>

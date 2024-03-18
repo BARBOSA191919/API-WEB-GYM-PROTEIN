@@ -109,7 +109,7 @@ INSERT INTO `ejercicio_seq` (`next_val`) VALUES
 -- Estructura de tabla para la tabla `impermeable`
 --
 
-CREATE TABLE `impermeable` (
+CREATE TABLE `gym` (
   `correo` varchar(40) NOT NULL,
   `contrasena` varchar(20) NOT NULL,
   `id` bigint(20) NOT NULL
@@ -119,7 +119,7 @@ CREATE TABLE `impermeable` (
 -- Volcado de datos para la tabla `impermeable`
 --
 
-INSERT INTO `impermeable` (`correo`, `contrasena`, `id`) VALUES
+INSERT INTO `gym` (`correo`, `contrasena`, `id`) VALUES
 ('alicia12@gmail.com', '12345', 1953),
 ('anamariabarbosa@gmail.com', 'ano12345', 1602),
 ('ano12@gmail.com', 'ano123', 2002),

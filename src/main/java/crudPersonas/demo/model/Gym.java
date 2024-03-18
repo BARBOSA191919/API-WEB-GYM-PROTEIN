@@ -3,18 +3,18 @@ package crudPersonas.demo.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="impermeable")
-public class Impermeable {
+@Table(name="gym")
+public class Gym {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String correo;
     private String contrasena;
 
-    public Impermeable() {
+    public Gym() {
     }
 
-    public Impermeable(String correo, String contrasena,long id) {
+    public Gym(String correo, String contrasena, long id) {
         this.correo = correo;
         this.contrasena = contrasena;
         this.id=id;

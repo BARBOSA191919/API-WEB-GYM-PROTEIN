@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proteínas y Entrenamiento</title>
+  <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2050/PNG/512/dumbbell_gym_icon_124413.png" type="image/x-icon">
+  <!--para agregar el icono a la pagina -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+      color: white;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background-color: #131313;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 0 auto 10px auto;
+      width: 510px;
+      float:initial;
+    }
+
+
+    .nutritionist {
+      margin-bottom: 20px;
+    }
+
+    .trainer img,
+    .nutritionist img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 50%;
+    }
+
+    body {
+      background-color: rgba(10, 13, 28, 0.94);
+      color: white;
+      font-family: Arial, sans-serif;
+      margin-top: 50px;
+    }
+
+    .subscription-plan {
+      border: 2px solid #fff;
+      padding: 20px;
+      margin: 20px;
+      text-align: center;
+      width: 90%; /* Ajustar el ancho del contenedor */
+      max-width: 500px; /* Establecer un ancho máximo para evitar que se estire demasiado en pantallas grandes */
+      margin-left: auto; /* Centrar el contenedor horizontalmente */
+      margin-right: auto;
+
+    }
+
+    .subscription-plan h2,
+    .subscription-plan p {
+      color: #fff;
+    }
+
+    .subscription-plan button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .entrenador img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 50%;
+    }
+
+    .bg-gray-800 {
+      position: fixed; /* Fija la posición del navbar */
+      top: 0; /* Lo coloca en la parte superior */
+      left: 0;
+      width: 100%; /* Ocupa todo el ancho */
+      z-index: 9999; /* Asegura que esté por encima de todo */
+      padding:0px; /* Espaciado interno */
+      transition: background-color 0.3s; /* Transición suave para el cambio de color */
+    }
+
+    .bg-gray-800 a {
+      color: white; /* Color de texto */
+      text-decoration: none; /* Sin subrayado */
+      margin: 0 20px; /* Espacio entre elementos del menú */
+    }
+
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+<header>
+</header>
+<nav class="bg-gray-800"  id="menu">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center py-4">
+      <a class="text-2xl font-bold text-white" href="">GymProtein ⚡</a>
+      <button class="text-white inline-block md:hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <div>
+      </div>
+      <div class="hidden md:flex space-x-8">
+        <a class="text-gray-300 hover:text-white" (click)="scrollToSection('inicio')">Inicio</a>
+        <a class="text-gray-300 hover:text-white" (click)="scrollToSection('entrenadores')">Entrenadores</a>
+        <a class="text-gray-300 hover:text-white" (click)="scrollToSection('nutricionistas')">Nutricionistas</a>
+        <a class="text-gray-300 hover:text-white" (click)="scrollToSection('suscripcion')">Suscripción</a>
+        <div>
+          <button (click)="logOut()" class="nav-link btn-logout text-red bg-red-700 hover:bg-red-600 focus:ring-3 focus:outline-none focus:ring-red-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-700 dark:hover:bg-red-800 dark:focus:ring-red-800">Cerrar Sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Script para activar la animación al desplazarse hacia abajo -->
+<script>
+  window.addEventListener('scroll', function() {
+    var navbar = document.getElementById('menu');
+    if (window.scrollY > 0) {
+      navbar.style.backgroundColor = '#262b3f'; // Cambia el color de fondo al desplazarse hacia abajo
+    } else {
+      navbar.style.backgroundColor = '#100f0f'; // Restaura el color de fondo por defecto
+    }
+  });
+</script>
+
+<div class="container" style="margin: 0 auto;">
+  <!-- Sección de Proteínas -->
+  <div name="inicio" class="section" style="float:left; width: 50%;">
+    <div class="container relative mx-auto p-4 py-4 lg:py-8 flex flex-col items-center">
+      <div class="px-4 md:pb-4 max-w-md mx-auto">
+        <h2 class="md:text-xl md:text-2xl text-center heading_font_family mb-2" style="color: #00f8b6;"><span class="text-3xl">PROTEINAS 🥤</span></h2>
+        <div class="mb-4 text-base text-center body_font_family" style="color: rgb(196, 196, 196)">&nbsp;¡Ponte FUERTE con las recomendaciones más grandes de profesionales de Proteínas de todas las marcas! Elige los consejos que deseas en on demand para ponerte en forma mientras te diviertes.</div>
+      </div>
+    </div>
+    <h2></h2>
+
+    <div class="card">
+      <h3>1. Proteína (Whey Protein) Optimun: </h3>
+      <p>✔️  Es difícil superar un clásico. Podría decirse que la proteína de suero más reconocida en el planeta, Gold Standard de Optimum Nutrition, es también probablemente la más fácil de conseguir según el análisís cientifíco.Te invitamos a observar el video.👀</p>
+      <iframe width="460" height="315" src="https://www.youtube.com/embed/hGe5amkOeG4?si=9DlTS7XTFcZLLi-2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <div class="card">
+      <h3>2. Creatine Power (Megaplex)</h3>
+      <p>✔️ Gracias a su contenido en aminoácidos de cadena ramificada (BCAA), esta proteína promueve una mejor síntesis de proteínas y provee mayor resistencia durante los entrenamientos. La proteína hipercalórica de suero es ideal para aumentar masa muscular y mejorar el rendimiento deportivo.</p>
+      <iframe width="460" height="315" src="https://www.youtube.com/embed/DrkUexKvGJM?si=ut8e5zPXpP4cZWCE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="card">
+      <h3>3. Bi Pro Proteina (BiPro )</h3>
+      <p>✔️ Bi Pro complementa tu alimentación para que cumplas los requerimientos diarios de proteína y puedas cumplir tus objetivos ya se aumentar masa muscular o reducir porcentaje de grasa. Contiene 21 gramos de proteína, 0.5 gramos de grasa, menos de 1 gramo de azúcar y menos de 1 gramo de carbohidratos.</p>
+      <iframe width="460" height="315" src="https://www.youtube.com/embed/YR0ngpq-x3o?si=5T5jnQk6s1olbUsu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="card">
+      <h3>4. Proteína calórica (Gainer Pro) </h3>
+      <p>✔️ GAINER PRO es una mezcla de carbohidratos, proteínas + creatina diseñada para aumentar el peso corporal, potenciar el rendimiento deportivo, recuperar los tejidos y dar energía de alta potencia. Promueve la síntesis proteica y recupera las reservas de glucógeno muscular y hepático.</p>
+      <iframe width="460" height="315" src="https://www.youtube.com/embed/dEVdfWNDP_A?si=QqtKY9oy9MtI5P9w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="card">
+      <h3>5. Kit De Termos </h3>
+      <p>✔️ Kit Tres Termos (Marca Pines) :</p>
+      <p>✔️ Termo 3 en 1(Calidad Shaker):</p>
+      <p>✔️ Termo Botella Gym Estruche Cargadera (Calidad Pbold):</p>
+
+      <iframe width="460" height="315" src="https://www.youtube.com/embed/beWIVoXP_fs?si=l_OF-CBJc_DMhgZo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="card">
+      <h3>6. Buzo y Pantaloneta Deportiva </h3>
+      <p>✔️ Buzo Deportivo Slim Fit Gym Lycra Fria (Calidad UV):</p>
+      <p>✔️ Pantaloneta Licra Short Gym  (Calidad Procter): </p>
+      <p>✔️ Pantaloneta X2 Licra Larga Hombre (Riple original)  </p>
+      <iframe width="460" height="315" src="https://www.youtube.com/embed/IB8-Kdlblu8?si=Gy81JR4fQ4AD45RV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="card">
+      <h3>7. Bolsos Deporitovos</h3>
+      <p>✔️ Bolso Deportivo Hombre o Mujer Color Rojo (Marca Limits)</p>
+      <p>✔️️Maletín Puma Para Gym con Color Negro (Calidad Puma)</p>
+      <iframe width="460" height="315" src="https://www.youtube.com/embed/I1nSFFcbx58?si=g4MqaCZ8xFU3i6Tj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <div class="container relative mx-auto p-4 py-4 lg:py-8 flex flex-col items-center">
+      <div name="nutricionistas" class="px-4 md:pb-4 max-w-md mx-auto">
+        <h2 class="md:text-xl md:text-2xl text-center heading_font_family mb-2" style=""><span style="color: #00f8b6;"><span class="text-3xl">Nutricionistas Personalizados </span></span></h2>
+        <div class="mb-4 text-base text-center body_font_family" style=""><div class="editor-content"><span style="color: rgb(196, 196, 196)">&nbsp;¡Sé parte de esta comunidad y disfruta de este viaje con tu cuerpo y mente!
+         </span></div></div>
+      </div>
+    </div>
+
+      <div class="nutritionist flex flex-col items-center mb-8">
+        <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FTjIT6sjZQEWrhpC0UDzt_IFC-Cynthia.png" alt="Nutricionista 1" class="w-64 h-auto rounded-lg mb-4">
+        <h3 class="text-2xl font-bold mb-2">Nutricionista 1</h3>
+        <p class="text-base mb-2">👨🏽‍🔬 Categoría: Nutrólogo en afeccionesfísico</p>
+        <p class="text-base mb-4"> 🥗 Diseña dietas adaptadas a las necesidades específicas de cada atleta. </p>
+        <p>🥗 Evalua su nivel de actividad, objetivos, edad, sexo y condiciones médicas </p>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="subscribe(30, 'Nutricionista 1')">Suscribirse por 1 mes ($20)</button>
+      </div>
+
+      <div class="nutritionist flex flex-col items-center mb-8">
+        <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FJCbALzuiQLmvGi1zeDsl_IFC-AleAlvarez.png" alt="Nutricionista 2" class="w-64 h-auto rounded-lg mb-4">
+        <h3 class="text-2xl font-bold mb-2">Nutricionista 2</h3>
+        <p class="text-base mb-2">👨🏽‍🔬 Categoría: Nutrólogo  dietista</p>
+        <p class="text-base mb-4"> 🥗 Elabora dietas y planes alimenticios basados en productos de origen vegetal.</p>
+        <p>🥗 Aporta los nutrientes necesarios para un buen estado de salud.</p>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="subscribe(30, 'Nutricionista 2')">Suscribirse por 1 mes ($12)</button>
+      </div>
+
+      <div class="nutritionist flex flex-col items-center mb-8">
+        <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FH9A2dlRHqfBcxkHTQ8lg_IFC-CoralDeLaVega.png" alt="Nutricionista 3" class="w-64 h-auto rounded-lg mb-4">
+        <h3 class="text-2xl font-bold mb-2">Nutricionista 3</h3>
+        <p class="text-base mb-2">👨🏽‍🔬 Categoría en afecciones</p>
+        <p class="text-base mb-4"> 🍽️ Trata afecciones relacionadas con la nutrición.</p>
+        <p>🍽️ Ocupa de algunos trastornos del metabolismo que pueden ser tratados.</p>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="subscribe(7, 'Nutricionista 3')">Suscribirse por 7 días ($13)</button>
+      </div>
+
+      <div class="nutritionist flex flex-col items-center mb-8">
+        <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FuXh2ccNIQhOViZVzuccZ_IFC-AnaLu.png" alt="Nutricionista 4" class="w-64 h-auto rounded-lg mb-4">
+        <h3 class="text-2xl font-bold mb-2">Nutricionista 4</h3>
+        <p class="text-base mb-2">👨🏽‍🔬 Categoría: Nutrólogo en diagnosticos </p>
+        <p class="text-base mb-4"> 🍽️ Se ocupa de prevenir y diagnosticar mediante una alimentación equilibrada.</p>
+        <p>🍽️ Ocupa de algunos trastornos del metabolismo que pueden ser tratados.</p>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="subscribe(7, 'Nutricionista 4')">Suscribirse por 7 días ($15)</button>
+      </div>
+    </div>
+</div>
+
+
+
+<div id="categorias" class="section" style="float:left; width: 50%;">
+  <section class="content-block-1 relative overflow-hidden py-4 py-8 md:py-2" style="background-color: rgba(0,0,0,1);">
+  <div class="container relative mx-auto p-4 py-4 lg:py-8 flex flex-col items-center">
+    <div class="px-4 md:pb-4 max-w-md mx-auto">
+      <h2 class="md:text-xl md:text-2xl text-center heading_font_family mb-2"
+          style="color: #00f8b6;"><span class="text-3xl">CATEGORÍAS 🏋️</span></h2>
+      <div class="mb-4 text-base text-center body_font_family"
+           style="color: rgb(196, 196, 196)">&nbsp;Explora nuestras diversas categorías de
+        entrenamiento para alcanzar tus objetivos fitness.</div>
+    </div>
+  <h2></h2>
+
+      <div class="container mx-auto flex flex-wrap -mx-1 justify-center">
+          <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative" data-entity-id="P4R91NMxpWPwGc2lYH9m9">
+            <img alt="" class="object-cover w-80 h-full" src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FmtBKTTN6HzndjN0wymgD_1.png" >
+            <div style="color: #00f8b6ff;" class="text-left max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 bg-transparent rounded-l-none rounded-lg">
+              <p></p>
+            </div>
+          </a>
+
+        </div>
+  </div>
+    <div class="mb-4 text-base text-center body_font_family"
+         style="color: rgb(196, 196, 196)">&nbsp;✅ El entrenamiento de intervalos de alta intensidad, es un entrenamiento de fuerza-resistencia, ya que combina ejercicios anaeróbicos y aeróbicos. Habitualmente las sesiones HIIT pueden variar de entre 4 y 30 minutos
+    </div>
+
+      <div class="container mx-auto flex flex-wrap -mx-1 justify-center">
+        <div class="mx-1 mb-6">
+          <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full"
+             data-entity-id="P4R91NMxpWPwGc2lYH9m9">
+            <img alt="" class="pb-card object-cover w-80 h-full"
+                 src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FU2kSV8FrRCSISTVHYEcQ_2.png"  />
+            <div style="color: #00f8b6ff;" class="text-left max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 bg-transparent rounded-l-none rounded-lg">
+              <p></p>
+            </div>
+
+          </a>
+      </div>
+      </div>
+    <div class="mb-4 text-base text-center body_font_family"
+         style="color: rgb(196, 196, 196)">&nbsp; ✅ Es una actividad física con la que buscamos la mejora de la resistencia y el tono muscular. Utilizando barras y discos, durante una clase de Power se realizan ejercicios orientados a ganar tono muscular, lo que acelera el metabolismo y ayuda a bajar de peso.
+    </div>
+
+    <div class="container mx-auto flex flex-wrap -mx-1 justify-center">
+      <div class="mx-1 mb-6">
+        <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full" data-entity-id="P4R91NMxpWPwGc2lYH9m9">
+          <img alt="" class="pb-card object-cover w-80 h-full" src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2F7lUDDDkRhG3CKaFlfbR1_3.png" height="250" />
+          <div style="background-color: rgba(0,0,0,0); color: #00f8b6ff;" class="md:text-left body_font_family max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 rounded-l-none rounded-lg">
+            <p></p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="mb-4 text-base text-center body_font_family"
+         style="color: rgb(196, 196, 196)">&nbsp; ✅ Tiene como objetivo fortalecer el cuerpo y la mente desde la parte más profunda a la más superficial, aumentando y uniendo el dinamismo y la fuerza muscular con el control mental, la relajación y la respiración.
+    </div>
+        <div class="container mx-auto flex flex-wrap -mx-1 justify-center">
+          <div class="mx-1 mb-6">
+            <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full"
+               data-entity-id="P4R91NMxpWPwGc2lYH9m9">
+              <img alt="" class="pb-card object-cover w-80 h-full"
+                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2F5oZc707XS8a5lm1yGrxg_5.png" height="250" />
+              <div style="background-color: rgba(0,0,0,0); color: #00f8b6ff;"
+                   class="md:text-left body_font_family max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 rounded-l-none rounded-lg">
+                <p></p>
+              </div>
+            </a>
+          </div>
+        </div>
+    <div class="mb-4 text-base text-center body_font_family"
+         style="color: rgb(196, 196, 196)">&nbsp; ✅ Es un  grupo de deportes de combate de pie y una forma de boxeo, basados en patadas y puñetazos. El combate se desarrolla en un ring de boxeo, normalmente con guantes de boxeo, protectores bucales, pantalones cortos y pies descalzos para
+    </div>
+        <div class="container mx-auto flex flex-wrap -mx-1 justify-center">
+          <div class="mx-1 mb-6">
+            <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full"
+               data-entity-id="P4R91NMxpWPwGc2lYH9m9">
+              <img alt="" class="pb-card object-cover w-80 h-full"
+                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2Fu3KPjQ6QxegN4g8UWMDn_6.png" height="250" />
+              <div style="background-color: rgba(0,0,0,0); color: #00f8b6ff;"
+                   class="md:text-left body_font_family max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 rounded-l-none rounded-lg">
+                <p></p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+    <div class="mb-4 text-base text-center body_font_family"
+         style="color: rgb(196, 196, 196)">&nbsp; ✅ El ejercicio cardiovascular es todo ejercicio que aumenta la frecuencia cardíaca a un nivel donde aún es posible hablar pero se empieza a sudar un poco.
+    </div>
+
+        <div class="container mx-auto flex flex-wrap -mx-1 justify-center">
+          <div class="mx-1 mb-6">
+            <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full"
+               data-entity-id="P4R91NMxpWPwGc2lYH9m9">
+              <img alt="" class="pb-card object-cover w-80 h-full"
+                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FX5axWhJSTedBcVrRR4ei_9.png" height="250" />
+              <div style="background-color: rgba(0,0,0,0); color: #00f8b6ff;"
+                   class="md:text-left body_font_family max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 rounded-l-none rounded-lg">
+                <p></p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+    <div class="mb-4 text-base text-center body_font_family"
+         style="color: rgb(196, 196, 196)">&nbsp; ✅ Utiliza la resistencia para aumentar la capacidad de una persona para ejercer fuerza. Involucra el uso de máquinas de peso, peso libre, bandas elásticas o tubos, o el propio peso de la persona.
+    </div>
+
+        <div class="container mx-auto flex flex-wrap -mx-1 justify-center">
+          <div class="mx-1 mb-6">
+            <a href="https://instafit.uscreen.io/search?category_id=81537" class="block relative h-full"
+               data-entity-id="P4R91NMxpWPwGc2lYH9m9">
+              <img alt="" class="pb-card object-cover w-80 h-full"
+                   src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FUPouMuMmT2KgDGjiDUqc_12.png" height="250" />
+              <div style="background-color: rgba(0,0,0,0); color: #00f8b6ff;"
+                   class="md:text-left body_font_family max-w-xs absolute bottom-0 left-0 px-2 py-1 mt-2 mb-4 mr-2 rounded-l-none rounded-lg">
+                <p></p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+    <div class="mb-4 text-base text-center body_font_family"
+         style="color: rgb(196, 196, 196)">&nbsp; ✅ Está considerada un tipo de medicina complementaria para mente y cuerpo. La meditación puede producir un estado de relajamiento profundo y una mente tranquila. Durante la meditación, concentras tu atención y eliminas el flujo de pensamientos confusos que pueden estar llenando tu mente y provocándote estrés.
+    </div>
+
+    <div class="container relative mx-auto p-4 py-4 lg:py-12 flex flex-col items-center">
+      <div name="suscripcion" class="px-4 md:pb-4 max-w-md mx-auto">
+        <h2 class="md:text-xl md:text-2xl text-center heading_font_family mb-2" style=""><span style="color: #00f8b6;"><span class="text-3xl">SUSCRIPCIONES </span></span></h2>
+        <div class="mb-4 text-base text-center body_font_family" style=""><div class="editor-content"><span style="color: rgb(196, 196, 196)">&nbsp;¡Sé parte de esta comunidad y disfruta de este viaje con tu cuerpo y mente!</span></div></div>
+      </div>
+    </div>
+
+    <div class="subscription-plan">
+      <h2 style="font-size: 1.5rem; font-weight: bold;">MENSUAL</h2>
+      <p style="font-weight: bold;">CARGO MENSUAL</p>
+      <p style="font-size: 1.5rem; color: #00f8b6; font-weight: bold;">$189</p>
+      <p>• Acceso inmediato a ejercicios y contenido premium para tener aún más variedad.</p><br>
+      <p>• Disfruta de nuestra variedad de disciplinas: Fuerza, HIIT, Cardio, Yoga, Meditación y Más.</p><br>
+      <p>• Cancela cuando quieras sin costo.</p><br>
+      <p>• Obtén acceso ilimitado a un amplio catálogo de rutinas y programas de diferentes disciplinas.</p><br>
+
+      <button style="background-color: #00f8b6; color: #fff; padding: 10px 20px; border: none; border-radius: 5px;">¡COMIENZA AHORA!</button>
+    </div>
+
+    <div class="subscription-plan">
+      <h2 style="font-size: 1.5rem; font-weight: bold;">ANUAL</h2>
+      <p style="font-weight: bold;">CARGO ANUAL</p>
+      <p style="font-size: 1.5rem; color: #00f8b6; font-weight: bold;">$999</p>
+      <p>• Acceso inmediato a ejercicios y contenido premium para tener aún más variedad.</p><br>
+      <p>• ¡Ahora más de 50 días al pagar la anualidad!</p><br>
+      <p>• Cancela cuando quieras sin costo.</p><br>
+      <p>• Disfruta más de 1,000 workouts y programas de fitness, yoga y meditación ilimitados.</p><br>
+      <p>• Acceso exclusivo InstaFit Originals con los mejores coaches en español.</p><br>
+
+      <button style="background-color: #00f8b6; color: #fff; padding: 10px 20px; border: none; border-radius: 5px;">¡COMIENZA AHORA!</button>
+    </div>
+        <div class="container relative mx-auto p-4 py-4 lg:py-8 flex flex-col items-center">
+          <div name="entrenadores" class="px-4 md:pb-4 max-w-md mx-auto">
+            <h2 class="md:text-xl md:text-2xl text-center heading_font_family mb-2" style=""><span
+              style="color: #00f8b6;"><span class="text-3xl">Entrenadores Personalizados </span></span></h2>
+            <div class="mb-4 text-base text-center body_font_family" style=""><div class="editor-content"><span
+              style="color: rgb(196, 196, 196)">&nbsp;¡Sé parte de esta comunidad y disfruta de este viaje con tu cuerpo y mente!
+               </span></div></div>
+          </div>
+        </div>
+
+
+
+      <div class="entrenador flex flex-col items-center mb-8">
+        <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FSikptcPYS8GQF90qooq0_IFC-Karmona.png" alt="Entrenador 1" class="w-64 h-auto rounded-lg mb-4">
+        <h3 class="text-2xl font-bold mb-2">Entrenador 1</h3>
+        <p class="text-base mb-2">⛹️‍♂️ Categoría: Coach en Hipertrofia</p>
+        <p class="text-base mb-4"> 🏃 Ayuda a lograr un cuerpo tonificado </p>
+        <p> 🏃 Aumenta la musculatura sin aumentar la grasa.</p>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="subscribe(30, 'Entrenador 1')">Suscribirse por 1 mes ($9)</button>
+      </div>
+
+      <div class="entrenador flex flex-col items-center mb-8">
+        <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FCESkwJEeRumF5V7rdNRU_IFC-Raul.png" alt="Entrenador 2" class="w-64 h-auto rounded-lg mb-4">
+        <h3 class="text-2xl font-bold mb-2">Entrenador 2</h3>
+        <p class="text-base mb-2">⛹️‍♂️ Categoría: Coach en Fuerza Muscular</p>
+        <p class="text-base mb-4">🏃 Diseña para lograr la máxima fuerza y tamaño en levantar o empujar pesos pesados. </p>
+        <p>🏃 Práctica de powerlifting y bodybuilding  para aumentar la masa muscular. </p>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="subscribe(30, 'Entrenador 2')">Suscribirse por 1 mes ($5)</button>
+      </div>
+
+
+      <div class="entrenador flex flex-col items-center mb-8">
+        <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FnIMa98KRS9COetMKHVK9_IFC-Agusto.png" alt="Entrenador 1" class="w-64 h-auto rounded-lg mb-4">
+        <h3 class="text-2xl font-bold mb-2">Entrenador 3</h3>
+        <p class="text-base mb-2">⛹️‍ ️Categoría: Coach en Resistencia Muscular</p>
+        <p class="text-base mb-4"> 🏃 Una intensidad mayor en tu entrenamiento y aprovecharás tus fibras de contracción rápida</p>
+        <p>🏃 Contracción rápida son las fibras musculares más grandes y potentes del cuerpo.</p>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="subscribe(30, 'Entrenador 3')">Suscribirse por 1 mes ($7)</button>
+      </div>
+
+      <div class="entrenador flex flex-col items-center mb-8">
+        <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2FLxoJs1geS9C52oanTHSv_IFC-Niko.png" alt="Entrenador 4" class="w-64 h-auto rounded-lg mb-4">
+        <h3 class="text-2xl font-bold mb-2">Entrenador 4</h3>
+        <p class="text-base mb-2">⛹️‍♂️ Categoría: Coach de Hit</p>
+        <p class="text-base mb-4"> 🏃 Combina periodos cortos de ejercicios de velocidad y alta intensidad.</p>
+        <p>🏃 El menor tiempo posible en sesiones. Estas suelen durar entre 10 y 30 minutos.</p>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="subscribe(30, 'Entrenador 4')">Suscribirse por 1 mes ($8)</button>
+      </div>
+  </section>
+</div>
+
+<footer class="footer">
+  <div class="container px-5 py-8 mx-auto flex items-center justify-between sm:flex-row flex-col">
+    <a class="flex title-font font-medium items-center md:justify-start justify-center text-white"
+       href="">
+      <span class="ml-3 text-xl">GymProtein ⚡</span>
+    </a>
+    <div class="social-media-icons ml-auto">
+      <a href="https://www.instagram.com/somosadventureco" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1582/PNG/128/instagram_108043.png" alt="Instagram" height="40" width="40"  class="ml-4 text-gray-400 hover:text-gray-500"><i class="fab fa-instagram"></i></a>
+      <a href="https://api.whatsapp.com/send/?phone=573213949267&text&type=phone_number&app_absent=0" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1582/PNG/128/whatsapp_108042.png" alt="WhatsApp" height="40" width="40" class="ml-4 text-gray-400 hover:text-gray-500"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.facebook.com/somosadventureco" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1582/PNG/128/facebook_108044.png" alt="Facebook" height="40" width="40" class="ml-4 text-gray-400 hover:text-gray-500"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-700 sm:py-2 sm:mt-0 mt-4">
+      © 2023 GymProtein — Todos los derechos reservados.</p>
+  </div>
+</footer>
+</body>
+</html>
+

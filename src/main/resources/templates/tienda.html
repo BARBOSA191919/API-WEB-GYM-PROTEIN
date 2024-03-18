@@ -72,22 +72,35 @@
 
         /* Establece estilos para el menú, posición absoluta para que sea fijo en la parte superior */
         .menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%; /* Hace que el menú ocupe toda la página de ancho */
-            height: 8%;
-            backdrop-filter: blur(10px); /* Desenfoque del fondo del elemento */
-            display: flex;
-            align-items:center;
-            justify-content: space-between;
-            background-color: rgba(28, 30, 30, 0.62);
-            transition: background-color 0.5s;
-            z-index: 1000;
-            padding: 0px 20px; /* Agregado padding para espacio interno */
-            max-width: 1350px; /* Define el ancho máximo del menú */
-            margin: 0 auto; /* Centra el menú horizontalmente */
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 8%;
+          backdrop-filter: blur(10px);
+          display: flex;
+          align-items:center;
+          justify-content: space-between;
+          background-color: rgba(28, 30, 30, 0.62);
+          z-index: 1000;
+          padding: 0px 20px;
+          max-width: 1350px;
+          margin: 0 auto;
+          background-color: #0f1010; /* Color de fondo por defecto */
+          transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Transición suave con cubic-bezier */
+
         }
+        @keyframes slide-in {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(0); }
+        }
+
+        /* Transición de color al desplazarse hacia abajo */
+        .menu.scrolled {
+          background-color: #050e36;
+          animation: slide-in 0.5s ease forwards;
+        }
+
         /* Estilos para el logotipo del sitio */
         .logo {
             font-size: 15px;
@@ -120,7 +133,9 @@
             color: #f1f3ed;
             text-decoration: none;
             padding:20px 5px;
-            background: #111111;
+            background: #949391
+
+        ;
             border-radius: 25px;
         }
 
@@ -218,20 +233,27 @@
             margin-bottom: 25px;
         }
 
-        /* Estilos para el título h1 en el encabezado */
+        /* Estilos para el título principal con fondo negro */
         .header-txt h1 {
-            font-size: 70px;
-            text-transform: capitalize;
-            line-height: 1;
-            color: #de960f;
-            margin-bottom: 35px;
+          font-size: 70px;
+          text-transform: capitalize;
+          line-height: 1;
+          color: #de960f; /* Color naranja para destacar */
+          margin-bottom: 35px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Efecto de sombra para simular resaltador */
         }
 
-        /* Estilos para el párrafo en el encabezado */
+        /* Estilos para el párrafo en el encabezado con fondo negro */
         .header-txt p {
-            font-size: 17px;
-            color: #c6d0d0;
-            margin-bottom: 35px;
+          font-size: 16px; /* Tamaño de fuente más pequeño */
+          font-family: Arial, sans-serif; /* Tipografía alternativa */
+          color: #eaebef;
+          margin-bottom: 20px; /* Reducción del espacio inferior */
+          text-shadow: 1px 1px 2px rgb(16, 15, 15); /* Efecto de sombra para simular resaltador */
+
+        }
+        .highlighted {
+          color: #ffffff; /* Color blanco para resaltar el texto */
         }
 
         /* Estilos para los botones en la sección del encabezado */
@@ -451,7 +473,8 @@
 
         /* Estilos para la sección del pie de página */
         .footer {
-            background-color: #1d1d1e;
+            background-color: rgba(21, 21, 21, 0.94);
+            color: #9BCE21;
             padding: 80px 0;
         }
 
@@ -484,64 +507,66 @@
         /* Estilos para la sección de medios más pequeños (responsive) */
         @media (max-width: 991px) {
 
-            /* Estilos para el menú en dispositivos más pequeños */
-            .menu {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                background-color: #EFF3F4;
-                padding: 20px;
-                z-index: 1000;
-            }
+          /* Estilos para el menú en dispositivos más pequeños */
+          .menu {
+            position: fixed; /* Fija la posición del navbar */
+            top: 0; /* Lo coloca en la parte superior */
+            left: 0;
+            width: 100%; /* Ocupa todo el ancho */
+            z-index: 9999; /* Asegura que esté por encima de todo */
+            padding:0px; /* Espaciado interno */
+            transition: background-color 0.3s; /* Transición suave para el cambio de color */
+            background-color: #007bff; /* Color de fondo por defecto */
+          }
 
-            /* Muestra el ícono del menú en dispositivos más pequeños */
-            .menu label {
-                display: initial;
-            }
+          /* Transición de color al desplazarse hacia abajo */
+          .menu.scrolled {
+            background-color: #333; /* Color de fondo al desplazarse hacia abajo */
+          }
 
-            /* Ajustes de diseño para la barra de navegación en dispositivos más pequeños */
-            .menu .navbar {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
+          /* Muestra el ícono del menú en dispositivos más pequeños */
+          .menu label {
+            display: initial;
+          }
 
-            /* Ajustes de diseño para los elementos de la barra de navegación en dispositivos más pequeños */
-            .menu .navbar ul li {
-                margin-right: 20px;
-            }
+          /* Ajustes de diseño para la barra de navegación en dispositivos más pequeños */
+          .menu .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
 
-            /* Muestra la barra de navegación cuando el menú está marcado (hamburguesa) */
-            #menu:checked ~ .navbar {
-                display: initial;
-            }
+          /* Ajustes de diseño para los elementos de la barra de navegación en dispositivos más pequeños */
+          .menu .navbar ul li {
+            margin-right: 20px;
+          }
 
-            /* Estilos para el logo en dispositivos más pequeños */
-            .logo {
-                font-size: 25px;
-                color: #9BCE21;
-                text-transform: uppercase;
-                font-weight: 800;
-                text-decoration: none;
-            }
+          /* Muestra la barra de navegación cuando el menú está marcado (hamburguesa) */
+          #menu:checked ~ .navbar {
+            display: initial;
+          }
 
-            /* Estilos para los enlaces en la barra de navegación en dispositivos más pequeños */
-            .menu .navbar ul li a {
-                font-size: 18px;
-                color: #111419;
-                text-decoration: none;
-            }
+          /* Estilos para el logo en dispositivos más pequeños */
+          .logo {
+            font-size: 25px;
+            color: #9BCE21;
+            text-transform: uppercase;
+            font-weight: 800;
+            text-decoration: none;
+          }
 
-            /* Ajustes de diseño para el carrito en dispositivos más pequeños */
-            .submenu:hover #carrito {
-                .header {
-                width: 100%;
-            }
+          /* Estilos para los enlaces en la barra de navegación en dispositivos más pequeños */
+          .menu .navbar ul li a {
+            font-size: 18px;
+            color: #111419;
+            text-decoration: none;
+          }
 
-            /* Ajustes de diseño para el encabezado en dispositivos más pequeños */
-                padding: 50px 0 0 0;
-            }
+          /* Ajustes de diseño para el carrito en dispositivos más pequeños */
+          .submenu:hover #carrito {
+            width: 100%;
+            padding: 50px 0 0 0;
+          }
 
             /* Ajustes de diseño para el contenido del encabezado en dispositivos más pequeños */
             .header-content {
@@ -653,7 +678,7 @@
 </script>
 
 <!-- Encabezado de la página -->
-<header class="header">
+<header class="header" id="header">
     <!-- Contenedor del menú -->
     <div class="menu container">
         <!-- Logo de la página con enlace (sin destino real) -->
@@ -670,7 +695,7 @@
         </label>
 
         <!-- Menú de navegación -->
-        <nav class="navbar">
+        <nav class="navbar" >
             <!-- Lista desordenada de enlaces -->
             <ul>
                 <li><a href="#inicio">INICIO</a></li>
@@ -687,7 +712,7 @@
                 <!-- Submenú del carrito de compras -->
                 <div class="submenu">
                     <!-- Ícono de carrito de compras -->
-                    <img id="img-carrito" src="https://cdn.icon-icons.com/icons2/65/PNG/96/shoppingcart_accept_compra_12832.png" width="50" height="62" alt="car">
+                    <img id="img-carrito" src="https://cdn.icon-icons.com/icons2/1527/PNG/96/cart_106649.png" width="40" height="50" alt="car">
 
                     <!-- Contenido del carrito de compras (tabla y botones) -->
                     <div id="carrito">
@@ -737,42 +762,42 @@
 <div id="inicio" class="header-content container">
     <!-- Texto de bienvenida y ofertas especiales -->
     <div class="header-txt">
-        <span>Bienvenido a nuestra Bienvenido</span>
+      <span>BIENVENIDOS A NUESTRA BIENVENIDOS</span>
         <h1>OFERTAS ESPECIALES</h1>
-        <p>
+        <p >
             <!-- Descripción de productos y características -->
-            BIENVENIDO A
-            GYM PROTEIN,
-         VIVE LA MEJOR EXPERIENCIA
+          ✔️ VIVE LA MEJOR EXPERIENCIA
             DE
             ENTRENAMIENTO Y DESCUBRE
-            TU VERDADERO POTENCIAL
+            TU VERDADERO POTENCIAL.
         </p>
-        <div class="btn-group">
+
+
+      <div class="btn-group">
             <a th:href="@{/nuevo}" class="btn btn-primary mb-4">EMPIENZA HOY 💪🏻</a>
             <a th:href="@{/iniciar}" class="btn btn-success mb-4">INICIAR SESION</a>
         </div>
         <!-- Características de productos -->
-        <p>✔️ No te rindas. Sufre ahora y vive el resto de tu vida como un campeón
-            - Muhammad Ali</p>
+        <p>✔️ NO TE RINDAS. SUFRE AHORA Y VIVE EL RESTO DE TU VIDA COMO UN CAMPEÓN.MUHAMMAD ALI</p>
 
         <div class="btn-group">
 
-            <a th:href="@{/recomendaciones}" class="btn btn-warning mb-6"> RECOMENDACIONES</a>
+            <a th:href="@{/recomendaciones}" class="btn btn-warning mb-6"> VER RECOMENDACIONES</a>
 
-            <a th:href="@{/entrenamiento}" class="btn btn-dark mb-6"> GYM EN TIEMPO REAL</a>
+            <a th:href="@{/entrenamiento}" class="btn btn-dark mb-6"> ENTRENAMIENTO EN VIVO</a>
         </div>
-        <!-- Grupo de botones de acción (registro e inicio de sesión) -->
-        <!-- Enlaces adicionales -->
 
     </div>
 
-    <!-- Imagen principal -->
-    <div class="header-img">
-
-    </div>
 </div>
 
+<script>
+  window.addEventListener('scroll', function() {
+    var menu = document.querySelector('.menu');
+    var scrolled = window.scrollY > 0;
+    menu.classList.toggle('scrolled', scrolled);
+  });
+</script>
 <!-- Sección de ofertas con clase "oferts" y contenedor -->
 <section class="oferts container">
 
@@ -1272,7 +1297,7 @@
 <!-- Abre un div con la clase "footer" para el pie de página -->
     <div class="footer">
         <!-- Centra un párrafo que contiene el año y el mensaje de derechos de autor -->
-        <center><p>&copy; 2023  Impermeables Barbosa. Todos los derechos reservados</p></center>
+        <center><p>&copy; 2024 GymProtein. Todos los derechos reservados</p></center>
         <!-- Centra un párrafo que contiene un enlace a las políticas de privacidad -->
         <center><p><a href="https://www.mintic.gov.co/portal/inicio/Secciones-auxiliares/Politicas/2627:Politicas-de-Privacidad-y-Condiciones-de-Uso">Políticas de privacidad </a></p></center>
     </div>
