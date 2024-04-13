@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GymProtein</title>
+    <title>GYM PROTEIN</title>
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2050/PNG/512/dumbbell_gym_icon_124413.png" type="image/x-icon"><!--para agregar el icono a la pagina -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
@@ -22,12 +22,21 @@
     />
     <link rel="stylesheet" href="index.css" />
     <style>
+      body {
+        background-image: url('https://images4.alphacoders.com/134/thumb-1920-1345029.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+      }
       .navbar-brand {
         font-weight: bold;
         font-size: 24px;
+
       }
       .content-section {
         display: none;
+
       }
       .content-section.active {
         display: block;
@@ -80,17 +89,20 @@
       }
       .card {
         border: none;
+        background: rgba(255, 255, 255, 0.5); /* Fondo blanco con opacidad del 70% */
+        backdrop-filter: blur(1px); /* Efecto de desenfoque para mejorar la transparencia */
+
       }
       .sem {
-        background-color: rgb(191, 191, 255);
+        background-color: rgba(191, 191, 255, 0.5); /* 50% de opacidad */
       }
 
       .eje {
-        background-color: rgb(255, 191, 200);
+        background-color: rgba(255, 191, 200, 0.5); /* 70% de opacidad */
       }
 
       .act {
-        background-color: rgb(255, 255, 191);
+        background-color: rgba(238, 238, 137, 0.5 ); /* 30% de opacidad */
       }
 
       #actividad {
@@ -124,8 +136,30 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
       }
 
+      .white-bg-black-text {
+        background-image: url('https://st5.depositphotos.com/1009095/64509/i/950/depositphotos_645095036-stock-photo-fire-water-element-each-other.jpg');
+        background-color: rgba(0, 0, 0, 0.3); /* Opacidad */
+        background-blend-mode: multiply; /* Mezcla con el fondo */
+        background-size: cover;
+        background-position: center;
+        color: white;
+        opacity: 0.8; /* Opacidad de la imagen */
+
+      }
+      text-center mt-4 mb-4 image-bg{
+
+      }
+      .navbar.navbar-expand-lg.navbar-dark.bg-dark {
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 5), rgba(0, 0, 0, 0.2)),
+        url('https://i.pinimg.com/originals/c4/ff/ae/c4ffae2affad5154f0060a06b0ff40b9.jpg');
+        background-size: cover;
+        opacity: 0.9; /* Opacidad de la imagen */
+        background-position: center;
+
+      }
     </style>
   </head>
   <body class="bg-dark">
@@ -181,8 +215,8 @@
     <main>
       <section id="inicio" class="content-section active">
         <div class="container">
-          <h1 class="text-center mt-4 mb-4 text-white">
-            ¿Qué quieres hacer hoy?
+          <h1 class="text-center mt-4 mb-4 image-bg">
+          <span class="white-bg-black-text">¿QUÉ QUIERES HACER HOY?</span>
           </h1>
           <div class="row justify-content-center" style="gap: 10px">
             <div class="col-md-5">
@@ -244,8 +278,8 @@
       </section>
 
       <section id="semana" class="content-section">
-        <h1 class="text-center mt-4 mb-4 text-white">
-          ¡Aqui están los ejercicios de la semana!
+        <h1 class="text-center mt-4 mb-4 image-bg">
+          <span class="white-bg-black-text">¡AQUÍ ESTÁN TODOS LOS EJERCICIOS DE LA SEMANA!</span>
         </h1>
 
         <div
@@ -306,7 +340,9 @@
         <!-- Contenido de la sección de Semana -->
       </section>
       <section id="actividad" class="content-section">
-        <h1 class="text-center mt-4 mb-4 text-white">¡Revisa tu Actividad!</h1>
+        <h1 class="text-center mt-4 mb-4 image-bg">
+          <span class="white-bg-black-text">¡REVISA TU ACTIVIDAD!</span>
+        </h1>
         <table class="table table-primary">
           <thead>
             <tr>
@@ -326,7 +362,9 @@
         <div
           class="container d-flex justify-content-between align-items-center"
         >
-          <h1 class="text-left mt-4 mb-4 text-white">Ejercicios</h1>
+          <h1 class="text-center mt-4 mb-4 image-bg">
+            <span class="white-bg-black-text">EJERCICIOS</span>
+          </h1>
           <button
             id="btnNuevoEjercicio"
             data-toggle="modal"

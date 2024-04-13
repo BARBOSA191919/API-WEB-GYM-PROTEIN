@@ -19,4 +19,5 @@ export class LoginComponent {
   logInWithGoogle() {
     this.authService.logInWithGoogleProvider();
   }
+
 }

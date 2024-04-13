@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,19 +9,31 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class DashboardComponent {
 
-  constructor(private authService: AuthService) {
+  showLogoutOption: boolean = true;
+
+  constructor(private authService: AuthService) {}
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
 
   }
+  toggleLogoutOption() {
+    this.showLogoutOption = !this.showLogoutOption;
+  }
+
+
   scrollToSection(sectionName: string): void {
     const section = document.getElementsByName(sectionName)[0];
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      section.scrollIntoView({behavior: 'smooth'});
     }
   }
+
   logOut() {
     this.authService.logOut();
   }
 
+
 }
+
 
 

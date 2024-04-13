@@ -17,6 +17,7 @@ import java.util.List;
 @Controller
 @RequestMapping
 public class ControllerGym {
+
     @Autowired
     private IPgymService gymService;
 
@@ -68,6 +69,7 @@ public class ControllerGym {
         model.addAttribute("iRegistroActividadService", new Gym());
         return "index4";
     }
+
 
     @GetMapping("/recomendaciones")
     public String agregarrecomendaciones(Model model) {

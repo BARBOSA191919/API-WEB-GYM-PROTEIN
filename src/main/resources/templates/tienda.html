@@ -97,7 +97,7 @@
 
         /* Transición de color al desplazarse hacia abajo */
         .menu.scrolled {
-          background-color: #050e36;
+          background-color: #9BCE21;
           animation: slide-in 0.5s ease forwards;
         }
 
@@ -164,6 +164,8 @@
         .submenu #carrito {
             display: none;
             width: 100%;
+          margin:5px; /* Centra horizontalmente */
+
 
         }
 
@@ -181,8 +183,8 @@
             align-items: center;
             margin-bottom: 20px;
             margin-right: 30px;
-        }
 
+        }
 
         /* Estilos para las tablas en el contenido */
         table {
@@ -197,6 +199,21 @@
         /* Estilos para los botones y espaciado entre ellos */
         .btn {
             margin-right: 10px; /* Espaciado entre los botones */
+          font-weight: bold; /* Negrita */
+          text-transform: uppercase; /* Convertir texto a mayúsculas */
+          transition: all 0.3s ease; /* Transición suave */
+
+        }
+        /* Cambiar el color de fondo cuando se presiona el botón */
+        .btn:active {
+        }
+        .btn-group {
+          margin-bottom: 20px; /* Espacio entre grupos de botones */
+
+        }
+        /* Cambiar el color de fondo y el color del texto al pasar el cursor sobre los botones */
+        .btn:hover {
+          background-color: #0a0a0a; /* Color más oscuro cuando se presiona */
         }
 
         /* Estilos para el botón "borrar" */
@@ -216,12 +233,14 @@
             justify-content: space-between;
             align-items: center;
 
+
             }
 
         /* Estilos para la parte de texto del encabezado */
         .header-txt {
             flex-basis: 50%;
             margin-right: 25px;
+
         }
 
         /* Estilos para el elemento span */
@@ -231,11 +250,17 @@
             font-weight: 600;
             display: block;
             margin-bottom: 25px;
+          text-align: center;
+          background-color: #faf7f7; /* Fondo del texto */
+          border-radius: 20px; /* Borde redondeado */
+          margin-top: 60px; /* Espacio en la parte superior para desplazar hacia abajo */
+
         }
 
         /* Estilos para el título principal con fondo negro */
         .header-txt h1 {
-          font-size: 70px;
+          font-size: 60px;
+          margin-top:50px;
           text-transform: capitalize;
           line-height: 1;
           color: #de960f; /* Color naranja para destacar */
@@ -245,32 +270,25 @@
 
         /* Estilos para el párrafo en el encabezado con fondo negro */
         .header-txt p {
-          font-size: 16px; /* Tamaño de fuente más pequeño */
-          font-family: Arial, sans-serif; /* Tipografía alternativa */
-          color: #eaebef;
-          margin-bottom: 20px; /* Reducción del espacio inferior */
-          text-shadow: 1px 1px 2px rgb(16, 15, 15); /* Efecto de sombra para simular resaltador */
-
-        }
-        .highlighted {
-          color: #ffffff; /* Color blanco para resaltar el texto */
-        }
-
-        /* Estilos para los botones en la sección del encabezado */
-        .butons {
-            display: flex;
+          font-weight: bold; /* Texto en negrita */
+          font-size: 15px; /* Tamaño de fuente */
+          color: #faf7f7; /* Color del texto */
+          opacity: 0; /* Opacidad inicial */
+          animation: fadeIn 10s forwards; /* Animación de aparición */
+          padding: 5px; /* Espaciado interno */
+          background-color: #9BCE21; /* Fondo del texto */
+          border-radius: 20px; /* Borde redondeado */
+          border: 2px solid
         }
 
-        /* Estilos para el botón específico (.btn-1) */
-        .btn-1 {
-            display: inline-block;
-            padding: 2px 15px;
-            background-color: #98CE21;
-            margin-right: 10px;
-            color: #FFFFFF;
-            text-transform: capitalize;
-            margin-bottom: 100px;
-            text-decoration: none;
+        /* Animación para aparecer */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
 
         /* Estilos para la parte de la imagen en el encabezado */
@@ -298,6 +316,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+          font-weight: bold; /* Texto en negrita */
         }
 
         /* Estilos específicos para las ofertas (.b1, .b2, .b3) */
@@ -335,14 +354,19 @@
 
         /* Estilos para la sección de productos */
         .product {
-            padding: 0 0 50px 0;
             text-align: center;
+          font-weight: bold; /* Texto en negrita */
+          padding: 5px 0;
+          background-color: #faf7f7; /* Fondo del texto */
+          border-radius: 20px; /* Borde redondeado */
+          margin-top: 50px; /* Espacio en la parte superior para desplazar hacia abajo */
         }
 
         /* Estilos para el título h2 en la sección de productos */
         h2 {
             font-size: 40px;
             color: #111419;
+          font-weight: bold; /* Texto en negrita */
         }
 
         /* Estilos para el contenedor de las cajas de productos */
@@ -422,8 +446,6 @@
             background-color: #023b07;
         }
 
-
-
             /* Estilos específicos para .btn-3 */
         .btn-3 {
             margin: 0;
@@ -433,8 +455,14 @@
 
         /* Estilos para la sección de testimonios */
         .testimonial {
-            padding: 100px 0;
-            text-align: center;
+          padding: 0px 0;
+          text-align: center;
+          font-weight: bold; /* Texto en negrita */
+          color: #9BCE21; /* Color del texto */
+          background-color: #faf7f7; /* Fondo del texto */
+          border-radius: 20px; /* Borde redondeado */
+          margin-top: 60px; /* Espacio en la parte superior para desplazar hacia abajo */
+
         }
 
         /* Estilos para el contenido de testimonios */
@@ -447,10 +475,11 @@
         /* Estilos específicos para .testimonial-1 */
         .testimonial-1 {
             flex-basis: calc(50% - 20px);
-            padding: 50px;
+            padding: 40px;
             text-align: left;
             background-color: #F6FAFB;
             border-top: 5px solid #9BCE21;
+          font-weight: bold; /* Texto en negrita */
         }
 
         /* Estilos para la imagen dentro de .testimonial-1 */
@@ -514,19 +543,21 @@
             left: 0;
             width: 100%; /* Ocupa todo el ancho */
             z-index: 9999; /* Asegura que esté por encima de todo */
-            padding:0px; /* Espaciado interno */
+            padding: 10px 20px; /* Aumenta el relleno para mejorar la accesibilidad táctil */
             transition: background-color 0.3s; /* Transición suave para el cambio de color */
-            background-color: #007bff; /* Color de fondo por defecto */
+            background-color: #0c0c0c; /* Color de fondo por defecto */
           }
 
           /* Transición de color al desplazarse hacia abajo */
           .menu.scrolled {
-            background-color: #333; /* Color de fondo al desplazarse hacia abajo */
+            background-color: #9BCE21; /* Color de fondo al desplazarse hacia abajo */
           }
 
           /* Muestra el ícono del menú en dispositivos más pequeños */
           .menu label {
             display: initial;
+            cursor: pointer; /* Agrega un cursor de puntero para indicar que es interactivo */
+
           }
 
           /* Ajustes de diseño para la barra de navegación en dispositivos más pequeños */
@@ -534,103 +565,195 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding-top: 10px; /* Aumenta el espacio superior para mejorar la accesibilidad táctil */
           }
 
           /* Ajustes de diseño para los elementos de la barra de navegación en dispositivos más pequeños */
           .menu .navbar ul li {
-            margin-right: 20px;
+            margin-right: 10px;
           }
 
           /* Muestra la barra de navegación cuando el menú está marcado (hamburguesa) */
           #menu:checked ~ .navbar {
             display: initial;
+            width: 100%;
+            flex-direction: column; /* Cambia la disposición a una columna para dispositivos móviles */
+            align-items: flex-start; /* Alinea los elementos a la izquierda */
+            padding-top: 10px; /* Aumenta el espacio superior para mejorar la accesibilidad táctil */
           }
 
           /* Estilos para el logo en dispositivos más pequeños */
           .logo {
-            font-size: 25px;
-            color: #9BCE21;
+            font-size: 8px;
+            color: #eaebef;
             text-transform: uppercase;
-            font-weight: 800;
+            font-weight: 700;
             text-decoration: none;
           }
 
           /* Estilos para los enlaces en la barra de navegación en dispositivos más pequeños */
           .menu .navbar ul li a {
-            font-size: 18px;
-            color: #111419;
+            font-size: 12px;
+            color: #e7e9ec;
             text-decoration: none;
+            padding: 0px; /* Aumenta el espacio alrededor de los enlaces para mejorar la accesibilidad táctil */
+            display: block; /* Hace que los enlaces ocupen todo el ancho disponible */
+            width: 100%; /* Garantiza que los enlaces ocupen todo el ancho de la columna */
+            text-align: center; /* Centra el texto */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Agrega una línea divisoria entre los enlaces */
+          }
+          /* Estilos para el icono de flecha hacia abajo */
+          .menu-icono {
+            display: none; /* Oculta el icono de flecha hacia abajo en dispositivos más pequeños */
+          }
+          /* Media Queries para hacer el diseño responsive */
+          @media only screen and (max-width: 600px) {
+            /* Estilos para pantallas de hasta 600px de ancho */
+            header {
+              padding: 5px;
+            }
+
+            nav {
+              padding: 5px;
+            }
+
+            main {
+              padding: 10px;
+            }
+
+            footer {
+              padding: 10px;
+            }
+          }
+
+          @media only screen and (max-width: 300px) {
+            /* Estilos para pantallas de hasta 400px de ancho */
+            header {
+              font-size: 18px;
+            }
+
+            nav {
+              font-size: 14px;
+            }
+
+            main {
+              font-size: 16px;
+            }
+
+            footer {
+              font-size: 18px;
+            }
           }
 
           /* Ajustes de diseño para el carrito en dispositivos más pequeños */
           .submenu:hover #carrito {
             width: 100%;
-            padding: 50px 0 0 0;
+            padding: 10px 0 0 0;
+            margin-top: 5px;
           }
 
-            /* Ajustes de diseño para el contenido del encabezado en dispositivos más pequeños */
-            .header-content {
-                padding: 30px;
-                flex-direction: column;
-                text-align: center;
-            }
+          /* Ajustes de diseño para el contenido del encabezado en dispositivos más pequeños */
+          .header-content {
+            padding: 0px;
+            flex-direction: column;
 
-            /* Ajustes de diseño para el texto en el encabezado en dispositivos más pequeños */
-            .header-txt {
-                margin-right: 0;
-            }
+          }
 
-            /* Ajustes de diseño para los botones en dispositivos más pequeños */
-            .butons {
-                justify-content: center;
-            }
+          /* Ajustes de diseño para el texto en el encabezado en dispositivos más pequeños */
+          .header-txt {
+            margin-right: 0;
 
-            /* Ajustes de diseño para .btn-1 en dispositivos más pequeños */
-            .btn-1 {
-                margin-bottom: 0;
-            }
+          }
 
-            /* Oculta la imagen en dispositivos más pequeños */
-            .header-img {
-                display: none;
-            }
+          /* Oculta la imagen en dispositivos más pequeños */
+          .header-img {
+            display: none;
+          }
 
-            /* Ajustes de diseño para la sección de ofertas en dispositivos más pequeños */
-            .oferts {
-                padding: 30px;
-                flex-direction: column;
-            }
+          /* Ajustes de diseño para la sección de ofertas en dispositivos más pequeños */
+          .oferts {
+            padding: 10px;
+            flex-direction: column;
+          }
 
-            /* Ajustes de diseño para .ofert-1 en dispositivos más pequeños */
-            .ofert-1 {
-                margin-bottom: 15px;
-            }
+          /* Ajustes de diseño para .ofert-1 en dispositivos más pequeños */
+          .ofert-1 {
+            margin-bottom: 10px;
+          }
 
-            /* Ajustes de diseño para la sección de productos en dispositivos más pequeños */
-            .product {
-                padding: 0 30px 30px 30px;
-            }
+          /* Ajustes de diseño para la sección de productos en dispositivos más pequeños */
+          .product {
+            padding: 0 10px 10px 10px;
+          }
 
-            /* Ajustes de diseño para la sección de testimonios en dispositivos más pequeños */
-            .testimonial {
-                padding: 30px;
-            }
+          /* Ajustes de diseño para la sección de testimonios en dispositivos más pequeños */
+          .testimonial {
+            padding: 10px;
 
-            /* Ajustes de diseño para el contenido de testimonios en dispositivos más pequeños */
-            .testimonial-content {
-                margin-top: 20px;
-                flex-direction: column;
-            }
+          }
 
-            /* Estilos para los elementos del carrito en dispositivos más pequeños */
-            .imagen-carrito,
-            .nombre-carrito,
-            .precio-carrito,
-            .cantidad-carrito {
-                text-align: center;
-                padding: 10px;
-                vertical-align: middle; /* Centra el contenido verticalmente */
-            }
+          /* Ajustes de diseño para el contenido de testimonios en dispositivos más pequeños */
+          .testimonial-content {
+            margin-top: 10px;
+            flex-direction: column;
+          }
+          /* Ajustes de diseño para el contenido de testimonios en dispositivos más pequeños */
+          .footer-content{
+            margin-top: 10px;
+          }
+
+          /* Estilos para los elementos del carrito en dispositivos más pequeños */
+          .imagen-carrito,
+          .nombre-carrito,
+          .precio-carrito,
+          .cantidad-carrito {
+            text-align: center;
+            padding: 5px;
+            vertical-align: middle; /* Centra el contenido verticalmente */
+          }
+        }
+        /* Oculta el contenido del perfil por defecto */
+        /* Estilos para el menú desplegable del perfil */
+        .submenu:hover #perfil {
+          display: block;
+          position: absolute;
+          background-color: white;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          padding: 10px;
+          z-index: 1;
+        }
+
+        /* Estilos para el logotipo del perfil */
+        #img-perfil {
+          display: block;
+          margin:10px; /* Centra horizontalmente */
+        }
+        #img-carrito {
+          display: block;
+          margin:10px; /* Centra horizontalmente */
+        }
+
+        /* Estilos para los enlaces del perfil */
+        .perfil-link {
+          display: block;
+          color: #333; /* Color del texto */
+          font-size: 16px; /* Tamaño de fuente */
+          text-decoration: none; /* Sin subrayado */
+          padding: 5px 0; /* Espaciado */
+        }
+
+        /* Estilos para el enlace de cerrar sesión */
+        .cerrar-sesion-link {
+          color: red; /* Color rojo */
+          font-size: 16px; /* Tamaño de fuente */
+          text-decoration: none; /* Sin subrayado */
+          padding: 5px 0; /* Espaciado */
+          display: block;
+
+        }
+        /* Oculta el contenido del perfil por defecto */
+        #perfil {
+          display: none;
         }
 
     </style>
@@ -691,7 +814,7 @@
         <!-- Etiqueta para el ícono de menú -->
         <label for="menu">
             <!-- Imagen del ícono de menú -->
-            <img src="https://assets.stickpng.com/images/588a6507d06f6719692a2d15.png" height="50" width="50" class="menu-icono"  alt="menu">
+            <img src="https://cdn.icon-icons.com/icons2/2802/PNG/96/lines_icon_178720.png" height="20" width="20" class="menu-icono"  alt="menu">
         </label>
 
         <!-- Menú de navegación -->
@@ -705,6 +828,45 @@
                 <li><a href="#contacto">CONTACTO</a></li>
             </ul>
         </nav>
+      <!-- Contenedor del perfil de usuario -->
+      <div>
+        <ul>
+          <!-- Submenú del perfil de usuario -->
+          <div class="submenu">
+            <!-- Ícono de perfil de usuario -->
+            <img id="img-perfil" src="https://i.ibb.co/w4CQ7FW/perfil.png" width="50" height="50" alt="perfil">
+            <!-- Contenido del perfil de usuario -->
+            <div id="perfil" class="oculto">
+              <a href="https://nicepage.com/es/sd/3064700/mi-perfil-diseno-de-paginas-web"  class="perfil-link">Mi perfil</a>
+              <a href="https://developers.hubspot.es/docs/cms/building-blocks/website-settings" class="perfil-link">Configuración</a>
+              <!-- Aquí puedes colocar información adicional del perfil del usuario -->
+              <a href="#" onclick="cerrarSesion()" class="cerrar-sesion-link">Cerrar Sesión</a>
+            </div>
+          </div>
+        </ul>
+      </div>
+
+      <script>
+        // Verifica si hay un indicador de inicio de sesión en localStorage
+        if (localStorage.getItem('sesionIniciada')) {
+          // Si hay un inicio de sesión, muestra la imagen del perfil
+          document.getElementById('img-perfil').style.display = 'block';
+        } else {
+          // Si no hay un inicio de sesión, oculta la imagen del perfil
+          document.getElementById('img-perfil').style.display = 'none';
+        }
+        // Función para cerrar sesión
+        function cerrarSesion() {
+          // Elimina el indicador de inicio de sesión del almacenamiento local
+          localStorage.removeItem('sesionIniciada');
+
+          // Oculta la imagen del perfil
+          document.getElementById('img-perfil').style.display = 'none';
+
+          window.location.href = "/iniciar";
+
+        }
+      </script>
 
         <!-- Contenedor del carrito de compras -->
         <div>
@@ -712,7 +874,7 @@
                 <!-- Submenú del carrito de compras -->
                 <div class="submenu">
                     <!-- Ícono de carrito de compras -->
-                    <img id="img-carrito" src="https://cdn.icon-icons.com/icons2/1527/PNG/96/cart_106649.png" width="40" height="50" alt="car">
+                    <img id="img-carrito" src="https://cdn.icon-icons.com/icons2/1527/PNG/96/cart_106649.png" width="40" height="50" alt="carrito">
 
                     <!-- Contenido del carrito de compras (tabla y botones) -->
                     <div id="carrito">
@@ -731,14 +893,15 @@
                         </table>
                         <!-- Enlaces para vaciar el carrito y proceder a la compra -->
                         <center>
-                            <a id="vaciar-carrito" class="btn-3"> Vaciar carrito 🗑️ </a>
-                            <a th:href="@{/comprar}" class="btn btn-3 " id="comprar-venta" onclick="return confirmarEliminacion(event)">Comprar 💲️</a>
+                            <a id="vaciar-carrito" class="btn-3" style="color: red;"> VACIAR  <img  src="https://cdn.icon-icons.com/icons2/1808/PNG/96/trash-can_115312.png" width="12" height="15" alt="car"> </a>
+                            <a th:href="@{/comprar}" class="btn btn-3 " id="comprar-venta" style="color: darkgreen;" onclick="return confirmarEliminacion(event)">Comprar <img  src="https://cdn.icon-icons.com/icons2/210/PNG/96/US-dollar256_24937.png" width="20" height="20" alt="car"> </a>
                         </center>
                     </div>
                 </div>
             </ul>
         </div>
     </div>
+
   <script>
     function confirmarEliminacion(event) {
       event.preventDefault(); // Evitar que el enlace se abra directamente
@@ -762,33 +925,28 @@
 <div id="inicio" class="header-content container">
     <!-- Texto de bienvenida y ofertas especiales -->
     <div class="header-txt">
-      <span>BIENVENIDOS A NUESTRA BIENVENIDOS</span>
         <h1>OFERTAS ESPECIALES</h1>
-        <p >
+        <p > <img  src="https://cdn.icon-icons.com/icons2/3551/PNG/96/sport_bag_dumbbell_gym_sport_icon_224861.png" width="30" height="25" alt="car">
             <!-- Descripción de productos y características -->
-          ✔️ VIVE LA MEJOR EXPERIENCIA
+          VIVE LA MEJOR EXPERIENCIA
             DE
             ENTRENAMIENTO Y DESCUBRE
             TU VERDADERO POTENCIAL.
         </p>
 
+      <div class="btn-group">
+        <a th:href="@{/nuevo}" class="btn btn-primary mb-4" style="border: 2px solid #000; border-radius: 25px; color: #fff;"> EMPIENZA HOY <img  src="https://cdn.icon-icons.com/icons2/1854/PNG/512/2_116664.png" width="30" height="25" alt="car"></a>
+        <a th:href="@{/iniciar}" class="btn btn-success mb-4" style="border: 2px solid #000; border-radius: 25px; color: #fff;">INICIAR SESION <img  src="https://cdn.icon-icons.com/icons2/3361/PNG/96/register_internet_direction_web_right_button_enter_arrow_login_icon_210831.png" width="30" height="25" alt="car"></a>
+      </div>
+      <!-- Características de productos -->
+      <p><img  src="https://cdn.icon-icons.com/icons2/3550/PNG/96/punching_bag_boxeo_gym_boxing_bag_icon_224844.png" width="30" height="25" alt="car"> "NO TE RINDAS. SUFRE AHORA Y VIVE EL RESTO DE TU VIDA COMO UN CAMPEÓN" - MUHAMMAD ALI.</p>
 
       <div class="btn-group">
-            <a th:href="@{/nuevo}" class="btn btn-primary mb-4">EMPIENZA HOY 💪🏻</a>
-            <a th:href="@{/iniciar}" class="btn btn-success mb-4">INICIAR SESION</a>
-        </div>
-        <!-- Características de productos -->
-        <p>✔️ NO TE RINDAS. SUFRE AHORA Y VIVE EL RESTO DE TU VIDA COMO UN CAMPEÓN.MUHAMMAD ALI</p>
-
-        <div class="btn-group">
-
-            <a th:href="@{/recomendaciones}" class="btn btn-warning mb-6"> VER RECOMENDACIONES</a>
-
-            <a th:href="@{/entrenamiento}" class="btn btn-dark mb-6"> ENTRENAMIENTO EN VIVO</a>
-        </div>
+        <a th:href="@{/recomendaciones}" class="btn btn-warning mb-6" style="border: 2px solid #000; border-radius: 25px; color: #fff;"> VER RECOMENDACIONES <img  src="https://cdn.icon-icons.com/icons2/3551/PNG/96/water_bottle_dumbbell_gym_fitness_icon_224863.png" width="30" height="25" alt="car"></a>
+        <a th:href="@{/entrenamiento}" class="btn btn-danger mb-6" style="border: 2px solid #000; border-radius: 25px; color: #fff;"> ENTRENAMIENTO EN VIVO <img  src="https://cdn.icon-icons.com/icons2/3551/PNG/96/chest_body_building_gym_fitness_icon_224855.png" width="30" height="25" alt="car"></a>
+      </div>
 
     </div>
-
 </div>
 
 <script>
@@ -894,7 +1052,7 @@
         <div class="box">
             <img src="https://http2.mlstatic.com/D_NQ_NP_641528-MCO46752755175_072021-O.webp" height="250" width="250">
             <h3> Proteína calórica </h3>
-            <h3> 10 Libras  </h3>
+            <p> 10 Libras  </p>
             <p>Gainer Pro</p>
             <p class="precio">$204.900</p>
             <a  class="agregar-carrito btn-3" data-id="4">
@@ -1031,8 +1189,8 @@
             <p> 💪 Coach entrenador personal en Colombia. </p>
             <p> ⛹️ 28.461 clientes. </p>
             <p> 💸 Coach de gym desde 20.000/h.  </p>
-            <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2Fl1qos4eLQ92p8Wpn7Crl_IFC-Pilar.png" alt="920">
-            <h4>Ana Ortiz</h4>
+          <center> <img src="https://dtsvkkjw40x57.cloudfront.net/page-builder%2Fl1qos4eLQ92p8Wpn7Crl_IFC-Pilar.png" alt="920"></center>
+           <center><h4>Ana Ortiz</h4> </center>
         </div>
     </div>
 </section>
@@ -1048,16 +1206,16 @@
 
             <!-- Texto "CONTACTO" dentro de una etiqueta de span -->
            <center><span>CONTACTO</span></center>
-            <h1>COMUNICATE CON NOSOTROS </h1>
+            <center><h1>  <img  src="https://cdn.icon-icons.com/icons2/3723/PNG/512/online_information_marketing_social_contact_connection_internet_icon_230462.png"  width="200" height="200"  alt="car"></h1></center>
 
             <!-- Párrafo de descripción y contacto -->
             <p>
-                Únete a miles de InstaFitters y carga tu entrenamiento de motivación, tips y energía para lograr los resultados que buscas.
+              <img  src="https://cdn.icon-icons.com/icons2/2631/PNG/96/google_fitness_fit_app_new_logo_icon_159137.png" width="30" height="30" alt="car"> Únete a miles de InstaFitters y carga tu entrenamiento.
             </p>
             <p> <img  src="https://cdn.icon-icons.com/icons2/72/PNG/256/mobile_phone_14388.png" width="30" height="30" alt="car">
-            Nos puedes contactar 301 5015825 o el fijo 8741496. ¡Llámanos! </p>
+            Contacto:301 5015825 - 8741496. ¡Llámanos! </p>
             <p> <img  src="https://cdn.icon-icons.com/icons2/865/PNG/512/Citycons_location_icon-icons.com_67931.png" width="30" height="30" alt="car">
-                 Estamos ubicados en el sector CRA 1 H # 6-50 B/ Centro, Neiva- Huila Colombia.</p>
+              Sector CRA 5#6-50 B/ Centro, Neiva- Huila Colombia.</p>
         </div>
 
         <!-- División con clase "header-img" para la sección de imágenes -->
