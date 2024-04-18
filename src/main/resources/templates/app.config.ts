@@ -1,5 +1,13 @@
+/**
+ * Importaciones necesarias de Angular y Firebase para configurar la aplicación.
+ */
+
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
+
+/**
+  * Importación de las rutas definidas en el archivo 'app.routes' para configurar el enrutador de la aplicación.
+ */
 
 import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';

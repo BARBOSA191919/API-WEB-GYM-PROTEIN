@@ -1,3 +1,4 @@
+
 {
   "name": "my-app",
   "version": "0.0.0",
@@ -18,17 +19,33 @@
     "@angular/forms": "^17.2.0",
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
-    "@angular/router": "^17.2.0",
+    "@angular/router": "^17.3.3",
+    "@stripe/stripe-js": "^3.1.0",
+    "assert": "^2.1.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "gaxios": "^6.4.0",
+    "mailersend": "^2.2.0",
+    "nodemailer": "^6.9.13",
+    "path-browserify": "^1.0.1",
+    "querystring-es3": "^0.2.1",
     "rxjs": "~7.8.0",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
     "sweetalert2": "^11.10.6",
     "tslib": "^2.3.0",
+    "url": "^0.11.3",
+    "util": "^0.12.5",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^17.0.2",
     "@angular-devkit/build-angular": "^17.2.1",
     "@angular/cli": "^17.2.1",
     "@angular/compiler-cli": "^17.2.0",
+    "@babel/polyfill": "^7.12.1",
     "@types/jasmine": "~5.1.0",
+    "@types/nodemailer": "^6.4.14",
     "autoprefixer": "^10.4.17",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
@@ -38,6 +55,8 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
-    "typescript": "~5.3.2"
+    "typescript": "~5.3.2",
+    "webpack": "^4.47.0",
+    "webpack-cli": "^3.3.12"
   }
 }

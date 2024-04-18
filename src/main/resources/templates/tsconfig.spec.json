@@ -1,5 +1,7 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
+  // EXTENSIONES ADECUADES CON SU CONFIGRUACION POR DEFECTO AL INSTALAR ANGULAR
+
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",

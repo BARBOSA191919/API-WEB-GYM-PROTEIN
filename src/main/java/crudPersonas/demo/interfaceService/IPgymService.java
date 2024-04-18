@@ -1,6 +1,7 @@
 package crudPersonas.demo.interfaceService;
 
 import crudPersonas.demo.model.Gym;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,4 +18,6 @@ public interface IPgymService {
 
     public Gym getById(int id); // Método para obtener una persona por su correo
 
+
 }
+

@@ -17,6 +17,7 @@ import java.util.List;
 @Controller
 @RequestMapping
 public class ControllerGym {
+
     @Autowired
     private IPgymService gymService;
 
@@ -69,9 +70,12 @@ public class ControllerGym {
         return "index4";
     }
 
+    // Declara un método público llamado agregarrecomendaciones que maneja solicitudes GET a la ruta "/recomendaciones"
     @GetMapping("/recomendaciones")
     public String agregarrecomendaciones(Model model) {
+        // Agrega un atributo al modelo con el nombre "iRegistroActividadService" y un nuevo objeto de la clase Gym
         model.addAttribute("iRegistroActividadService", new Gym());
+        // Retorna una redirección a la URL "http://localhost:4200/login"
         return "redirect:http://localhost:4200/login";
     }
 }

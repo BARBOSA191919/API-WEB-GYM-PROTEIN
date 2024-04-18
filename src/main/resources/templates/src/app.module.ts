@@ -1,23 +1,33 @@
+/**
+ * Importaciones necesarias de Angular para definir un módulo.
+ */
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app/app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
+import { environment } from './environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { LoginComponent } from './components/login/login.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './app/components/login/login.component';
+import { SignUpComponent } from './app/components/sign-up/sign-up.component';
+import { DashboardComponent } from './app/components/dashboard/dashboard.component';
 import { AngularFireModule } from '@angular/fire/compat';
+
+/**
+ * Decorador que define el módulo 'AppModule'.
+ */
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignUpComponent,
-    DashboardComponent
+    DashboardComponent,
+
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -25,6 +35,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 
     // error solution NullInjectError
     AngularFireModule.initializeApp(environment.firebase)
+
   ],
   providers: [],
   bootstrap: [AppComponent]
